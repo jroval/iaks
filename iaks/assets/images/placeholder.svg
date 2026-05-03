@@ -1,0 +1,7 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#13131a"/>
+  <rect x="1" y="1" width="398" height="398" fill="none" stroke="#2a2a3a" stroke-width="2"/>
+  <text x="200" y="185" font-family="monospace" font-size="48" fill="#2a2a3a" text-anchor="middle">iaks</text>
+  <text x="200" y="230" font-family="monospace" font-size="12" fill="#444" text-anchor="middle">añade tu imagen aquí</text>
+  <text x="200" y="250" font-family="monospace" font-size="10" fill="#333" text-anchor="middle">assets/images/tu-archivo.jpg</text>
+</svg>

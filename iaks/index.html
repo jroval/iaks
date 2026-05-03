@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iaks — ilustración con alma</title>
+
+  <!-- Google Fonts: display font llamativo + body legible -->
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- =============================================
+       HEADER / NAV
+       ============================================= -->
+  <header class="header">
+    <div class="header__logo">iaks</div>
+    <nav class="header__nav">
+      <a href="#galeria">galería</a>
+       <a href="#como-funciona">como funciona</a>
+      <a href="#sobre">sobre mi</a>
+      <a href="#contacto">contacto</a>
+    </nav>
+  </header>
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+<section class="hero" id="hero">
+
+  <!-- Carrusel de fondo -->
+  <div class="hero__carrusel" id="hero-carrusel">
+    <!-- Las diapositivas se generan desde JS -->
+  </div>
+
+  <!-- Overlay oscuro encima de las imagenes -->
+  <div class="hero__overlay"></div>
+
+  <!-- Contenido encima del overlay -->
+  <div class="hero__contenido">
+    <p class="hero__tagline">ilustracion con alma</p>
+    <h1 class="hero__titulo">arte que<br/><span class="hero__acento">se lleva</span></h1>
+    <p class="hero__sub">Ilustraciones unicas en posters, tazas, stickers y mucho mas.<br/>Elige tu estilo. Elige tu objeto. Llevate un pedacito.</p>
+    <a href="#galeria" class="btn btn--grande">ver la galeria</a>
+  </div>
+
+  <!-- Flechas de navegacion -->
+  <button class="hero__flecha hero__flecha--prev" id="hero-prev" aria-label="anterior">&#8592;</button>
+  <button class="hero__flecha hero__flecha--next" id="hero-next" aria-label="siguiente">&#8594;</button>
+
+  <!-- Puntos indicadores -->
+  <div class="hero__puntos" id="hero-puntos"></div>
+
+</section>
+
+  <!-- =============================================
+       GALERÍA
+       ============================================= -->
+  <section class="galeria" id="galeria">
+    <div class="galeria__cabecera">
+      <h2 class="galeria__titulo">la colección</h2>
+
+      <!-- Filtros: cada botón tiene data-filtro con el valor del estilo -->
+      <div class="filtros" id="filtros">
+        <button class="filtro activo" data-filtro="todos">todos</button>
+        <!-- Los filtros de estilo se generan desde JS automáticamente -->
+      </div>
+    </div>
+
+    <!-- Las cards se generan desde JS -->
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="como-funciona" id="como-funciona">
+
+  <div class="como-funciona__cabecera">
+    <p class="como-funciona__etiqueta">el proceso</p>
+    <h2 class="como-funciona__titulo">asi funciona</h2>
+    <p class="como-funciona__sub">De tu foto a un objeto unico en cuatro pasos.</p>
+  </div>
+
+  <div class="como-funciona__pasos">
+
+    <div class="paso">
+      <div class="paso__numero">01</div>
+      <div class="paso__icono">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 12l2.5 2.5L16 9"/>
+        </svg>
+      </div>
+      <h3 class="paso__titulo">elige tu estilo</h3>
+      <p class="paso__texto">Explora la galeria y encuentra el estilo visual que mas te representa. Rotulador, lapiz, comic, retro pop o fantasia.</p>
+    </div>
+
+    <div class="paso__conector"></div>
+
+    <div class="paso">
+      <div class="paso__numero">02</div>
+      <div class="paso__icono">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="1"/>
+          <line x1="3" y1="9" x2="21" y2="9"/>
+          <line x1="9" y1="21" x2="9" y2="9"/>
+        </svg>
+      </div>
+      <h3 class="paso__titulo">elige tu regalo</h3>
+      <p class="paso__texto">Poster, taza, camiseta, sticker, llavero o pin. Elige el formato en el que quieres que viva tu ilustracion.</p>
+    </div>
+
+    <div class="paso__conector"></div>
+
+    <div class="paso">
+      <div class="paso__numero">03</div>
+      <div class="paso__icono">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+      </div>
+      <h3 class="paso__titulo">mandame tu foto</h3>
+      <p class="paso__texto">Una foto tuya, de alguien especial, una mascota, un lugar. Cualquier recuerdo que merezca convertirse en algo tangible.</p>
+    </div>
+
+    <div class="paso__conector"></div>
+
+    <div class="paso">
+      <div class="paso__numero">04</div>
+      <div class="paso__icono">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/>
+          <path d="M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+      <h3 class="paso__titulo">recibelo en casa</h3>
+      <p class="paso__texto">iaks transforma tu foto con el estilo elegido y te lo envia listo para sorprender. Un recuerdo con alma.</p>
+    </div>
+
+  </div>
+
+  <div class="como-funciona__cta">
+    <p>listo para empezar?</p>
+    <a href="#contacto" class="btn btn--grande">quiero el mio</a>
+  </div>
+
+</section>
+
+  <!-- =============================================
+       SOBRE
+       ============================================= -->
+  <section class="sobre" id="sobre">
+  <div class="sobre__contenido">
+
+    <div class="sobre__etiqueta">detrás de iaks</div>
+
+    <h2 class="sobre__titulo">el dibujo<br/><span class="sobre__acento">siempre estuvo</span><br/>primero</h2>
+
+    <div class="sobre__texto">
+      <p>iaks nace de una contradicción bonita: un estudiante de desarrollo web que no puede soltar el lápiz. Código de día, ilustración de noche, y la convicción de que las dos cosas se pueden mezclar sin perder el alma.</p>
+      <p>La inteligencia artificial no reemplaza la mirada — la amplifica. Permite que cualquiera pueda convertir un recuerdo, una cara, un momento, en algo que se puede tocar, colgar, regalar. Eso es lo que hace iaks.</p>
+      <p>Un recuerdo tangible. Con estilo.</p>
+    </div>
+
+    <div class="sobre__datos">
+      <div class="sobre__dato">
+        <span class="sobre__dato-num">6</span>
+        <span class="sobre__dato-label">estilos visuales</span>
+      </div>
+      <div class="sobre__dato">
+        <span class="sobre__dato-num">6</span>
+        <span class="sobre__dato-label">formatos de producto</span>
+      </div>
+      <div class="sobre__dato">
+        <span class="sobre__dato-num">1</span>
+        <span class="sobre__dato-label">obsesion</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sobre__visual">
+    <div class="sobre__marco">
+      <div class="sobre__marco-inner">
+        <img src="assets/images/iaks.png" alt="ilustracion iaks" class="sobre__imagen"/>
+      </div>
+      <div class="sobre__marco-deco"></div>
+    </div>
+  </div>
+
+</section>
+
+  <!-- =============================================
+       CONTACTO
+       ============================================= -->
+  <section class="contacto" id="contacto">
+    <h2 class="contacto__titulo">¿quieres algo?</h2>
+    <p>Escríbeme y lo hablamos.</p>
+    <!-- Placeholder: aquí irá el formulario o enlace a tienda externa -->
+    <a href="mailto:hola@iaks.art" class="btn btn--grande">hola@iaks.art</a>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <span>© 2025 iaks — hecho con cariño y píxeles</span>
+  </footer>
+
+  <!-- =============================================
+       MODAL (oculto por defecto, JS lo activa)
+       ============================================= -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="detalle de ilustración">
+  <div class="modal__caja">
+
+    <button class="modal__cerrar" id="modal-cerrar" aria-label="cerrar">&#x2715;</button>
+
+    <!-- Layout principal: preview + info -->
+    <div class="modal__layout">
+
+      <div class="modal__columna-preview">
+        <div class="modal__preview-wrap">
+          <img class="modal__preview" id="modal-preview" src="" alt="" />
+          <span class="modal__preview-label" id="modal-preview-label"></span>
+        </div>
+      </div>
+
+      <div class="modal__columna-info">
+        <p class="modal__estilo" id="modal-estilo"></p>
+        <h3 class="modal__titulo-pieza" id="modal-titulo"></h3>
+        <p class="modal__descripcion" id="modal-descripcion"></p>
+
+        <div class="modal__productos-titulo">en que lo quieres</div>
+        <div class="modal__productos" id="modal-productos"></div>
+
+        <div class="modal__compra">
+          <p class="modal__compra-seleccion" id="modal-seleccion">elige un producto para verlo</p>
+          <button class="btn btn--grande" id="modal-btn-compra" disabled>pedir este</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Panel de pedido: FUERA del layout, oculto por defecto -->
+    <div class="modal__pedido" id="modal-pedido">
+
+      <button class="modal__pedido-volver" id="modal-pedido-volver">← volver</button>
+
+      <div class="modal__pedido-resumen" id="modal-pedido-resumen"></div>
+
+      <div class="modal__pedido-campos">
+
+        <div class="campo">
+          <label class="campo__label" for="pedido-nombre">tu nombre</label>
+          <input class="campo__input" type="text" id="pedido-nombre" placeholder="como te llamas" />
+        </div>
+
+        <div class="campo">
+          <label class="campo__label" for="pedido-email">tu email</label>
+          <input class="campo__input" type="email" id="pedido-email" placeholder="donde te escribo" />
+        </div>
+
+        <div class="campo">
+          <label class="campo__label" for="pedido-foto">tu foto</label>
+          <div class="campo__upload" id="campo-upload">
+            <input class="campo__input-file" type="file" id="pedido-foto" accept="image/*" />
+            <div class="campo__upload-texto" id="upload-texto">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span>arrastra tu foto o haz clic</span>
+              <span class="campo__upload-sub">jpg, png — max 10mb</span>
+            </div>
+            <img class="campo__upload-preview" id="upload-preview" src="" alt="" />
+          </div>
+        </div>
+
+        <div class="campo">
+          <label class="campo__label" for="pedido-nota">nota (opcional)</label>
+          <textarea class="campo__input campo__textarea" id="pedido-nota" placeholder="algo que deba saber sobre la foto o el encargo"></textarea>
+        </div>
+
+      </div>
+
+      <button class="btn btn--grande modal__pedido-enviar" id="modal-pedido-enviar">confirmar pedido</button>
+
+      <div class="modal__confirmacion" id="modal-confirmacion">
+        <div class="modal__confirmacion-icono">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3 class="modal__confirmacion-titulo">pedido recibido</h3>
+        <p class="modal__confirmacion-texto" id="confirmacion-texto"></p>
+        <button class="btn btn--grande" id="modal-confirmacion-cerrar">cerrar</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="modal__overlay" id="modal-overlay"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
