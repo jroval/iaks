@@ -37,14 +37,22 @@
        HEADER / NAV
        ============================================= -->
   <header class="header">
-    <div class="header__logo">iaks</div>
-    <nav class="header__nav">
-      <a href="#galeria">galería</a>
-       <a href="#como-funciona">como funciona</a>
-      <a href="#sobre">sobre mi</a>
-      <a href="#contacto">contacto</a>
-    </nav>
-  </header>
+  <div class="header__logo">iaks</div>
+  <nav class="header__nav">
+    <a href="#galeria">galería</a>
+    <a href="#como-funciona">como funciona</a>
+    <a href="#sobre">sobre</a>
+    <a href="#contacto">contacto</a>
+  </nav>
+  <button class="carrito-btn" id="carrito-btn" aria-label="abrir carrito">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+    <span class="carrito-btn__contador" id="carrito-contador">0</span>
+  </button>
+</header>
 
   <!-- =============================================
        HERO
@@ -325,6 +333,26 @@
 
   </div>
 </div>
+
+<!-- PANEL CARRITO -->
+<div class="carrito-panel" id="carrito-panel">
+  <div class="carrito-panel__cabecera">
+    <h2 class="carrito-panel__titulo">tu carrito</h2>
+    <button class="carrito-panel__cerrar" id="carrito-cerrar">&#x2715;</button>
+  </div>
+  <div class="carrito-panel__items" id="carrito-items">
+    <!-- JS rellena esto -->
+  </div>
+  <div class="carrito-panel__footer" id="carrito-footer">
+    <div class="carrito-panel__total">
+      <span>total estimado</span>
+      <span id="carrito-total">0€</span>
+    </div>
+    <button class="btn btn--grande carrito-panel__tramitar" id="carrito-tramitar">tramitar pedido</button>
+    <p class="carrito-panel__aviso">los precios son orientativos, se confirman al tramitar</p>
+  </div>
+</div>
+<div class="carrito-overlay" id="carrito-overlay"></div>
 
 <div class="modal__overlay" id="modal-overlay"></div>
 

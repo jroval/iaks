@@ -458,7 +458,10 @@ function iniciarModal() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') cerrarModal();
   });
-  document.getElementById('modal-btn-compra').addEventListener('click', iniciarCompra);
+  document.getElementById('modal-btn-compra').addEventListener('click', () => {
+  const ilusId = Number(document.getElementById('modal').dataset.ilusActual);
+  añadirAlCarrito(ilusId, productoSeleccionado);
+});
 
   // Pedido
   document.getElementById('modal-pedido-volver').addEventListener('click', volverAlModal);
@@ -596,6 +599,140 @@ function iniciarScrollReveal() {
   });
 }
 
+/* =============================================
+   CARRITO
+   ============================================= */
+
+// El carrito vive en localStorage para que persista
+// si el usuario recarga la página
+let carrito = JSON.parse(localStorage.getItem('iaks-carrito')) || [];
+
+function guardarCarrito() {
+  localStorage.setItem('iaks-carrito', JSON.stringify(carrito));
+}
+
+function añadirAlCarrito(ilusId, productoId) {
+  const ilus = ilustraciones.find(il => il.id === ilusId);
+  const prod = productos.find(p => p.id === productoId);
+  if (!ilus || !prod) return;
+
+  const item = {
+    id: Date.now(), // id único para poder eliminar
+    ilusId,
+    productoId,
+    titulo: ilus.titulo,
+    estilo: ilus.estilo,
+    producto: prod.nombre,
+    precio: prod.precio,
+    imagen: ilus.mockups[productoId] || ilus.imagen,
+  };
+
+  carrito.push(item);
+  guardarCarrito();
+  actualizarContador();
+  mostrarFeedbackCarrito();
+}
+
+function eliminarDelCarrito(id) {
+  carrito = carrito.filter(item => item.id !== id);
+  guardarCarrito();
+  actualizarContador();
+  renderizarCarrito();
+}
+
+function actualizarContador() {
+  const contador = document.getElementById('carrito-contador');
+  contador.textContent = carrito.length;
+  if (carrito.length > 0) {
+    contador.classList.add('visible');
+  } else {
+    contador.classList.remove('visible');
+  }
+}
+
+// Feedback visual al añadir — el botón confirma la acción
+function mostrarFeedbackCarrito() {
+  const btn = document.getElementById('modal-btn-compra');
+  const textoOriginal = btn.textContent;
+  btn.textContent = 'añadido';
+  btn.style.borderColor = 'var(--neon-cyan)';
+  btn.style.color = 'var(--neon-cyan)';
+  setTimeout(() => {
+    btn.textContent = textoOriginal;
+    btn.style.borderColor = '';
+    btn.style.color = '';
+  }, 1500);
+}
+
+function renderizarCarrito() {
+  const contenedor = document.getElementById('carrito-items');
+  const footer = document.getElementById('carrito-footer');
+
+  if (carrito.length === 0) {
+    contenedor.innerHTML = `
+      <div class="carrito-vacio">
+        <div class="carrito-vacio__icono">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </div>
+        <p class="carrito-vacio__texto">tu carrito está vacío<br/>explora la galería y añade algo</p>
+        <button class="btn" onclick="cerrarCarrito()">ver galería</button>
+      </div>
+    `;
+    footer.style.display = 'none';
+    return;
+  }
+
+  footer.style.display = 'flex';
+
+  contenedor.innerHTML = carrito.map(item => `
+    <div class="carrito-item">
+      <img class="carrito-item__imagen" src="${item.imagen}" alt="${item.titulo}" />
+      <div class="carrito-item__info">
+        <div class="carrito-item__titulo">${item.titulo}</div>
+        <div class="carrito-item__detalle">${item.estilo.replace(/-/g, ' ')} — ${item.producto}</div>
+      </div>
+      <div class="carrito-item__precio">${item.precio}</div>
+      <button class="carrito-item__eliminar" onclick="eliminarDelCarrito(${item.id})" aria-label="eliminar">&#x2715;</button>
+    </div>
+  `).join('');
+
+  // Total orientativo — cogemos el primer número de cada precio
+  const total = carrito.reduce((acc, item) => {
+    const num = parseInt(item.precio.replace(/[^0-9]/g, ''));
+    return acc + (isNaN(num) ? 0 : num);
+  }, 0);
+  document.getElementById('carrito-total').textContent = 'desde ' + total + '€';
+}
+
+function abrirCarrito() {
+  renderizarCarrito();
+  document.getElementById('carrito-panel').classList.add('abierto');
+  document.getElementById('carrito-overlay').classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarCarrito() {
+  document.getElementById('carrito-panel').classList.remove('abierto');
+  document.getElementById('carrito-overlay').classList.remove('abierto');
+  document.body.style.overflow = '';
+}
+
+function iniciarCarritoUI() {
+  actualizarContador();
+  document.getElementById('carrito-btn').addEventListener('click', abrirCarrito);
+  document.getElementById('carrito-cerrar').addEventListener('click', cerrarCarrito);
+  document.getElementById('carrito-overlay').addEventListener('click', cerrarCarrito);
+  document.getElementById('carrito-tramitar').addEventListener('click', () => {
+    cerrarCarrito();
+    // Por ahora lleva a contacto — cuando conectes Formspree aquí irá el formulario
+    document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
 
 /* =============================================
    5. ARRANQUE
@@ -608,6 +745,7 @@ function init() {
   renderizarCards(ilustraciones);
   iniciarFiltros();
   iniciarModal();
+  iniciarCarritoUI(); 
   iniciarScrollReveal();
 }
 
