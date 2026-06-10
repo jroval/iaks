@@ -36,22 +36,40 @@
   <!-- =============================================
        HEADER / NAV
        ============================================= -->
-  <header class="header">
+  <header class="header" id="header">
   <div class="header__logo">iaks</div>
-  <nav class="header__nav">
-    <a href="#galeria">galería</a>
-    <a href="#como-funciona">como funciona</a>
-    <a href="#sobre">sobre</a>
-    <a href="#contacto">contacto</a>
+
+  <nav class="header__nav" id="header-nav">
+    <a href="#galeria" onclick="cerrarMenu()">galería</a>
+    <a href="#como-funciona" onclick="cerrarMenu()">como funciona</a>
+    <a href="#sobre" onclick="cerrarMenu()">sobre</a>
+    <a href="#contacto" onclick="cerrarMenu()">contacto</a>
   </nav>
-  <button class="carrito-btn" id="carrito-btn" aria-label="abrir carrito">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-      <line x1="3" y1="6" x2="21" y2="6"/>
-      <path d="M16 10a4 4 0 0 1-8 0"/>
-    </svg>
-    <span class="carrito-btn__contador" id="carrito-contador">0</span>
-  </button>
+
+  <div class="header__acciones">
+    <div class="idioma-toggle es" id="idioma-toggle">
+      <span class="idioma-toggle__label">ES</span>
+      <div class="idioma-toggle__pista">
+        <div class="idioma-toggle__bola"></div>
+      </div>
+      <span class="idioma-toggle__label">EN</span>
+    </div>
+
+    <button class="carrito-btn" id="carrito-btn" aria-label="abrir carrito">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span class="carrito-btn__contador" id="carrito-contador">0</span>
+    </button>
+
+    <button class="hamburguesa" id="hamburguesa" aria-label="abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </header>
 
   <!-- =============================================
@@ -82,25 +100,9 @@
   <!-- Puntos indicadores -->
   <div class="hero__puntos" id="hero-puntos"></div>
 
+  
+
 </section>
-
-  <!-- =============================================
-       GALERÍA
-       ============================================= -->
-  <section class="galeria" id="galeria">
-    <div class="galeria__cabecera">
-      <h2 class="galeria__titulo">la colección</h2>
-
-      <!-- Filtros: cada botón tiene data-filtro con el valor del estilo -->
-      <div class="filtros" id="filtros">
-        <button class="filtro activo" data-filtro="todos">todos</button>
-        <!-- Los filtros de estilo se generan desde JS automáticamente -->
-      </div>
-    </div>
-
-    <!-- Las cards se generan desde JS -->
-    <div class="grid" id="grid"></div>
-  </section>
 
   <section class="como-funciona" id="como-funciona">
 
@@ -178,6 +180,26 @@
 </section>
 
   <!-- =============================================
+       GALERÍA
+       ============================================= -->
+  <section class="galeria" id="galeria">
+    <div class="galeria__cabecera">
+      <h2 class="galeria__titulo">la colección</h2>
+
+      <!-- Filtros: cada botón tiene data-filtro con el valor del estilo -->
+      <div class="filtros" id="filtros">
+        <button class="filtro activo" data-filtro="todos">todos</button>
+        <!-- Los filtros de estilo se generan desde JS automáticamente -->
+      </div>
+    </div>
+
+    <!-- Las cards se generan desde JS -->
+    <div class="grid" id="grid"></div>
+  </section>
+
+
+
+  <!-- =============================================
        SOBRE
        ============================================= -->
   <section class="sobre" id="sobre">
@@ -217,6 +239,24 @@
       </div>
       <div class="sobre__marco-deco"></div>
     </div>
+  </div>
+
+</section>
+
+  <!-- =============================================
+       testimonios
+       ============================================= -->
+
+<section class="testimonios" id="testimonios">
+
+  <div class="testimonios__cabecera">
+    <p class="testimonios__etiqueta">lo que dicen</p>
+    <h2 class="testimonios__titulo">recuerdos reales</h2>
+    <p class="testimonios__sub">Fotos que se convirtieron en algo tangible.</p>
+  </div>
+
+  <div class="testimonios__grid" id="testimonios-grid">
+    <!-- JS rellena esto -->
   </div>
 
 </section>

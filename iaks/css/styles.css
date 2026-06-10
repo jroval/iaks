@@ -72,21 +72,27 @@ img {
   background: rgba(10, 10, 15, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-borde);
-  transform: translateY(-100%);    /* ← empieza oculto arriba */
+  transform: translateY(-100%);
   transition: transform 0.4s ease;
 }
 
 .header.visible {
-  transform: translateY(0);        /* ← JS añade esta clase */
+  transform: translateY(0);
 }
 
 .header__logo {
   font-family: 'Yeseva One', serif;
-  font-weight: 400;        /* Yeseva One solo tiene un peso, el 400 */
   font-size: 2rem;
   letter-spacing: 2px;
   color: var(--neon-amarillo);
   text-shadow: 0 0 20px var(--neon-amarillo), 0 0 40px rgba(245, 230, 66, 0.3);
+  z-index: 1;
+}
+
+.header__acciones {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .header__nav {
@@ -103,7 +109,81 @@ img {
 }
 
 .header__nav a:hover {
-  color: var(--neon-rosa);
+  color: var(--neon-cyan);
+}
+
+/* Hamburguesa */
+.hamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1;
+}
+
+.hamburguesa span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--texto-principal);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburguesa animada cuando el menu está abierto */
+.hamburguesa.abierto span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburguesa.abierto span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburguesa.abierto span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .hamburguesa {
+    display: flex;
+  }
+
+  .header__nav {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    order: 3;
+    border-top: 1px solid var(--color-borde);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+
+  .header__nav.abierto {
+    display: flex;
+  }
+
+  .header__nav a {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 0.9rem;
+  }
+
+  .header__nav a:last-child {
+    border-bottom: none;
+  }
 }
 
 /* =============================================
@@ -1078,8 +1158,8 @@ img {
 }
 
 .sobre__acento {
-  color: var(--neon-naranja);
-  text-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 30px rgba(193, 229, 245, 0.4);
 }
 
 .sobre__texto {
@@ -1469,6 +1549,230 @@ img {
   color: var(--texto-secundario);
   text-align: center;
   line-height: 1.5;
+}
+
+/* =============================================
+   TESTIMONIOS
+   ============================================= */
+.testimonios {
+  padding: 8rem 2.5rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+.testimonios__cabecera {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.testimonios__etiqueta {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin-bottom: 1rem;
+}
+
+.testimonios__titulo {
+  font-family: var(--fuente-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.testimonios__sub {
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+}
+
+.testimonios__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card de testimonio */
+.testimonio {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-card);
+  overflow: hidden;
+  transition: border-color var(--transicion), transform var(--transicion);
+}
+
+.testimonio:hover {
+  border-color: var(--neon-cyan);
+  transform: translateY(-4px);
+}
+
+/* Comparativa de imagenes */
+.testimonio__comparativa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  aspect-ratio: 2 / 1;
+  position: relative;
+}
+
+.testimonio__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Separador central con flecha */
+.testimonio__separador {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-amarillo);
+  font-size: 0.8rem;
+  z-index: 1;
+}
+
+/* Etiquetas original / resultado */
+.testimonio__etiqueta-foto {
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(10,10,15,0.8);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  color: var(--texto-secundario);
+}
+
+.testimonio__etiqueta-foto--original {
+  left: 0.5rem;
+}
+
+.testimonio__etiqueta-foto--resultado {
+  right: 0.5rem;
+}
+
+/* Info del cliente */
+.testimonio__info {
+  padding: 1.2rem;
+}
+
+.testimonio__cliente {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.testimonio__nombre {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.testimonio__ciudad {
+  font-size: 0.7rem;
+  color: var(--texto-secundario);
+}
+
+.testimonio__producto-tag {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  background: rgba(0, 245, 212, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.testimonio__mensaje {
+  font-size: 0.82rem;
+  color: var(--texto-secundario);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* Estado vacío */
+.testimonios__vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--texto-secundario);
+  font-size: 0.85rem;
+  padding: 3rem;
+  border: 1px dashed var(--color-borde);
+  border-radius: var(--radio-card);
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .testimonios__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   TOGGLE DE IDIOMA
+   ============================================= */
+.idioma-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.idioma-toggle__label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--texto-secundario);
+  transition: color var(--transicion);
+  user-select: none;
+}
+
+.idioma-toggle__pista {
+  width: 36px;
+  height: 20px;
+  background: var(--color-borde);
+  border-radius: 999px;
+  position: relative;
+  transition: background var(--transicion);
+}
+
+.idioma-toggle__bola {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  background: var(--texto-secundario);
+  border-radius: 50%;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+/* Estado EN activo */
+.idioma-toggle.en .idioma-toggle__pista {
+  background: var(--neon-cyan);
+}
+
+.idioma-toggle.en .idioma-toggle__bola {
+  transform: translateX(16px);
+  background: var(--color-fondo);
+}
+
+.idioma-toggle.en .idioma-toggle__label:last-child {
+  color: var(--neon-cyan);
+}
+
+.idioma-toggle.es .idioma-toggle__label:first-child {
+  color: var(--neon-amarillo);
 }
 
 /* =============================================

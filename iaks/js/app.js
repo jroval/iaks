@@ -32,10 +32,10 @@ const ilustraciones = [
   // --- ROTULADOR ---
   {
     id: 1,
-    titulo: "Cancha y movil",
-    estilo: "rotulador",
-    descripcion: "Rotulador directo, sin red. Una chica, una camiseta de baloncesto y el movil.",
-    imagen: "assets/images/mockups/rotulador/Taza.png",
+    titulo: "A TODO ROTU",
+    estilo: "ROTULADOR",
+    descripcion: "Rotulador directo, sin red.",
+    imagen: "assets/images/rotu.png",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/rotulador/poster.png",
@@ -50,10 +50,10 @@ const ilustraciones = [
   // --- LAPIZ ---
   {
     id: 2,
-    titulo: "Boceto de Memoria",
-    estilo: "lapiz",
+    titulo: "ESTILO LAPIZ",
+    estilo: "BOCETO A MANO",
     descripcion: "Trazos suaves y lineas quebradas que cuentan mas de lo que muestran.",
-    imagen: "assets/images/mockups/lapiz/poster.png",
+    imagen: "assets/images/boceto_lapiz.png",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/lapiz/poster.png",
@@ -68,9 +68,9 @@ const ilustraciones = [
   // --- COMIC REALISTA ---
   {
     id: 3,
-    titulo: "Ciudad Vertical",
-    estilo: "comic-realista",
-    descripcion: "Vineta urbana con sombras duras, perspectiva imposible y mucha actitud.",
+    titulo: "ESTILO COMIC",
+    estilo: "CÓMIC CLÁSICO",
+    descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud.",
     imagen: "assets/images/mockups/comic-realista/Llavero.png",
     color: "#f5e642",
     mockups: {
@@ -86,9 +86,9 @@ const ilustraciones = [
   // --- COMIC ANIME ---
   {
     id: 4,
-    titulo: "Domingo en Yokohama",
-    estilo: "comic-anime",
-    descripcion: "Paleta de papel reciclado y tipografia que huele a vinilo.",
+    titulo: "ESTILO ANIME",
+    estilo: "COMIC ANIME",
+    descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes, y mucho dramatismo.",
     imagen: "assets/images/mockups/comic-anime/camiseta.png",
     color: "#f5e642",
     mockups: {
@@ -104,9 +104,9 @@ const ilustraciones = [
   // --- COMIC FANTASIA ---
   {
     id: 5,
-    titulo: "La Guardia del Bosque",
-    estilo: "comic-fantasia",
-    descripcion: "Magia, pelo imposible y ojos grandes. Siempre hay un bosque y una promesa.",
+    titulo: "ESTILO FANTASÍA",
+    estilo: "COMIC FANTASÍA",
+    descripcion: "Magia, sofisticación y ojos grandes.",
     imagen: "assets/images/mockups/comic-fantasia/sticker.png",
     color: "#f5e642",
     mockups: {
@@ -121,9 +121,9 @@ const ilustraciones = [
    // --- VECTOR---
   {
     id: 6,
-    titulo: "La Guardia del Bosque",
-    estilo: "vector",
-    descripcion: "Magia, pelo imposible y ojos grandes. Siempre hay un bosque y una promesa.",
+    titulo: "ESTILO VECTOR",
+    estilo: "VECTOR",
+    descripcion: "minimalismo moderno, con colores planos y formas geométricas.",
     imagen: "assets/images/mockups/vector/pin.png",
     color: "#f5e642",
     mockups: {
@@ -190,6 +190,20 @@ const productos = [
   <line x1="9" y1="4" x2="15" y2="4"/>
 </svg>`
   },
+];
+
+const testimonios = [
+ 
+  // {
+  //   id: 1,
+  //   nombre: "Maria G.",
+  //   ciudad: "Madrid",
+  //   mensaje: "Flipé cuando vi el resultado. La taza es un regalo perfecto para mi madre.",
+  //   producto: "taza",
+  //   fotoOriginal: "assets/images/testimonios/maria-original.jpg",
+  //   fotoResultado: "assets/images/testimonios/maria-resultado.jpg",
+  //   estilo: "lapiz",
+  // },
 ];
 
 
@@ -733,6 +747,350 @@ function iniciarCarritoUI() {
   });
 }
 
+function renderizarTestimonios() {
+  const contenedor = document.getElementById('testimonios-grid');
+  if (!contenedor) return;
+
+  if (testimonios.length === 0) {
+    contenedor.innerHTML = `
+      <div class="testimonios__vacio">
+        pronto aqui aparecerán los primeros recuerdos reales.<br/>
+        sé el primero en compartir el tuyo.
+      </div>
+    `;
+    return;
+  }
+
+  contenedor.innerHTML = testimonios.map(t => `
+    <div class="testimonio">
+      <div class="testimonio__comparativa">
+        <img class="testimonio__foto" src="${t.fotoOriginal}" alt="foto original de ${t.nombre}" loading="lazy" />
+        <img class="testimonio__foto" src="${t.fotoResultado}" alt="ilustracion de ${t.nombre}" loading="lazy" />
+        <div class="testimonio__separador">→</div>
+        <span class="testimonio__etiqueta-foto testimonio__etiqueta-foto--original">original</span>
+        <span class="testimonio__etiqueta-foto testimonio__etiqueta-foto--resultado">${t.estilo.replace(/-/g, ' ')}</span>
+      </div>
+      <div class="testimonio__info">
+        <div class="testimonio__cliente">
+          <div>
+            <div class="testimonio__nombre">${t.nombre}</div>
+            <div class="testimonio__ciudad">${t.ciudad}</div>
+          </div>
+          <span class="testimonio__producto-tag">${t.producto}</span>
+        </div>
+        <p class="testimonio__mensaje">"${t.mensaje}"</p>
+      </div>
+    </div>
+  `).join('');
+}
+/* =============================================
+   INTERNACIONALIZACIÓN (i18n)
+   ============================================= */
+
+const traducciones = {
+  es: {
+    // Nav
+    nav: {
+      galeria: "galería",
+      comoFunciona: "como funciona",
+      sobre: "sobre",
+      contacto: "contacto",
+    },
+    // Hero
+    hero: {
+      tagline: "ilustración con alma",
+      titulo1: "arte que",
+      titulo2: "se lleva",
+      sub: "Ilustraciones únicas en pósters, tazas, stickers y mucho más.<br/>Elige tu estilo. Elige tu objeto. Llévate un pedacito.",
+      cta: "ver la galería",
+    },
+    // Galeria
+    galeria: {
+      titulo: "la colección",
+      filtroTodos: "todos",
+      ver: "ver",
+    },
+    // Como funciona
+    comoFunciona: {
+      etiqueta: "el proceso",
+      titulo: "asi funciona",
+      sub: "De tu foto a un objeto único en cuatro pasos.",
+      pasos: [
+        { titulo: "elige tu estilo", texto: "Explora la galería y encuentra el estilo visual que más te representa. Rotulador, lápiz, cómic, retro pop o fantasía." },
+        { titulo: "elige tu regalo", texto: "Póster, taza, camiseta, sticker, llavero o pin. Elige el formato en el que quieres que viva tu ilustración." },
+        { titulo: "mándame tu foto", texto: "Una foto tuya, de alguien especial, una mascota, un lugar. Cualquier recuerdo que merezca convertirse en algo tangible." },
+        { titulo: "recíbelo en casa", texto: "iaks transforma tu foto con el estilo elegido y te lo envía listo para sorprender. Un recuerdo con alma." },
+      ],
+      cta: "quiero el mío",
+    },
+    // Sobre
+    sobre: {
+      etiqueta: "detrás de iaks",
+      titulo1: "el dibujo",
+      titulo2: "siempre estuvo",
+      titulo3: "primero",
+      p1: "iaks nace de una contradicción bonita: un estudiante de desarrollo web que no puede soltar el lápiz. Código de día, ilustración de noche, y la convicción de que las dos cosas se pueden mezclar sin perder el alma.",
+      p2: "La inteligencia artificial no reemplaza la mirada — la amplifica. Permite que cualquiera pueda convertir un recuerdo, una cara, un momento, en algo que se puede tocar, colgar, regalar. Eso es lo que hace iaks.",
+      p3: "Un recuerdo tangible. Con estilo.",
+      dato1: "estilos visuales",
+      dato2: "formatos de producto",
+      dato3: "obsesión",
+    },
+    // Testimonios
+    testimonios: {
+      etiqueta: "lo que dicen",
+      titulo: "recuerdos reales",
+      sub: "Fotos que se convirtieron en algo tangible.",
+      vacio: "pronto aquí aparecerán los primeros recuerdos reales.<br/>sé el primero en compartir el tuyo.",
+      original: "original",
+    },
+    // Contacto
+    contacto: {
+      titulo: "¿quieres algo?",
+      sub: "Escríbeme y lo hablamos.",
+      cta: "hola@iaks.art",
+    },
+    // Modal
+    modal: {
+      eligeProducto: "elige un producto para verlo",
+      enQueLoQuieres: "en que lo quieres",
+      pedirEste: "añadir al carrito",
+      volver: "← volver",
+      tuNombre: "tu nombre",
+      placeholderNombre: "como te llamas",
+      tuEmail: "tu email",
+      placeholderEmail: "donde te escribo",
+      tuFoto: "tu foto",
+      uploadTexto: "arrastra tu foto o haz clic",
+      uploadSub: "jpg, png — max 10mb",
+      nota: "nota (opcional)",
+      placeholderNota: "algo que deba saber sobre la foto o el encargo",
+      confirmar: "confirmar pedido",
+      pedidoRecibido: "pedido recibido",
+      cerrar: "cerrar",
+    },
+    // Carrito
+    carrito: {
+      titulo: "tu carrito",
+      vacio: "tu carrito está vacío<br/>explora la galería y añade algo",
+      verGaleria: "ver galería",
+      totalEstimado: "total estimado",
+      tramitar: "tramitar pedido",
+      aviso: "los precios son orientativos, se confirman al tramitar",
+    },
+    // Footer
+    footer: "© 2025 iaks — hecho con cariño y píxeles",
+    // Productos
+    productos: {
+      poster: "Póster A3",
+      taza: "Taza",
+      camiseta: "Camiseta",
+      sticker: "Sticker",
+      llavero: "Llavero",
+      pin: "Pin",
+    },
+    // Ilustraciones
+    ilustraciones: [
+      { titulo: "ESTILO ROTU", descripcion: "Rotulador directo, sin red. El trazo lo dice todo." },
+      { titulo: "ESTILO LAPIZ", descripcion: "Trazos suaves y líneas quebradas que cuentan más de lo que muestran." },
+      { titulo: "ESTILO COMIC", descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud." },
+      { titulo: "ESTILO ANIME", descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes, y mucho dramatismo." },
+      { titulo: "ESTILO FANTASÍA", descripcion: "Magia, sofisticación y ojos grandes." },
+      { titulo: "ESTILO VECTOR", descripcion: "minimalismo moderno, con colores planos y formas geométricas." },
+    ],
+  },
+
+  en: {
+    nav: {
+      galeria: "gallery",
+      comoFunciona: "how it works",
+      sobre: "about",
+      contacto: "contact",
+    },
+    hero: {
+      tagline: "illustration with soul",
+      titulo1: "art you",
+      titulo2: "can keep",
+      sub: "Unique illustrations on posters, mugs, stickers and more.<br/>Pick your style. Pick your format. Take a piece home.",
+      cta: "see the gallery",
+    },
+    galeria: {
+      titulo: "the collection",
+      filtroTodos: "all",
+      ver: "view",
+    },
+    comoFunciona: {
+      etiqueta: "the process",
+      titulo: "how it works",
+      sub: "From your photo to a unique object in four steps.",
+      pasos: [
+        { titulo: "pick your style", texto: "Browse the gallery and find the visual style that represents you. Marker, pencil, comic, retro pop or fantasy." },
+        { titulo: "pick your gift", texto: "Poster, mug, t-shirt, sticker, keychain or pin. Choose the format where your illustration will live." },
+        { titulo: "send me your photo", texto: "A photo of you, someone special, a pet, a place. Any memory worth turning into something tangible." },
+        { titulo: "receive it at home", texto: "iaks transforms your photo in the chosen style and sends it ready to surprise. A memory with soul." },
+      ],
+      cta: "i want mine",
+    },
+    sobre: {
+      etiqueta: "behind iaks",
+      titulo1: "drawing",
+      titulo2: "always came",
+      titulo3: "first",
+      p1: "iaks was born from a beautiful contradiction: a web development student who can't put down the pencil. Code by day, illustration by night, with the conviction that both can mix without losing their soul.",
+      p2: "Artificial intelligence doesn't replace the eye — it amplifies it. It allows anyone to turn a memory, a face, a moment, into something you can touch, hang, or gift. That's what iaks does.",
+      p3: "A tangible memory. With style.",
+      dato1: "visual styles",
+      dato2: "product formats",
+      dato3: "obsession",
+    },
+    testimonios: {
+      etiqueta: "what they say",
+      titulo: "real memories",
+      sub: "Photos that became something tangible.",
+      vacio: "soon the first real memories will appear here.<br/>be the first to share yours.",
+      original: "original",
+    },
+    contacto: {
+      titulo: "want something?",
+      sub: "Write to me and let's talk.",
+      cta: "hola@iaks.art",
+    },
+    modal: {
+      eligeProducto: "pick a product to preview",
+      enQueLoQuieres: "what format do you want",
+      pedirEste: "add to cart",
+      volver: "← back",
+      tuNombre: "your name",
+      placeholderNombre: "what's your name",
+      tuEmail: "your email",
+      placeholderEmail: "where should i write you",
+      tuFoto: "your photo",
+      uploadTexto: "drag your photo or click",
+      uploadSub: "jpg, png — max 10mb",
+      nota: "note (optional)",
+      placeholderNota: "anything i should know about the photo or the order",
+      confirmar: "confirm order",
+      pedidoRecibido: "order received",
+      cerrar: "close",
+    },
+    carrito: {
+      titulo: "your cart",
+      vacio: "your cart is empty<br/>browse the gallery and add something",
+      verGaleria: "see gallery",
+      totalEstimado: "estimated total",
+      tramitar: "checkout",
+      aviso: "prices are estimates, confirmed upon checkout",
+    },
+    footer: "© 2025 iaks — made with care and pixels",
+    productos: {
+      poster: "A3 Poster",
+      taza: "Mug",
+      camiseta: "T-shirt",
+      sticker: "Sticker",
+      llavero: "Keychain",
+      pin: "Pin",
+    },
+    ilustraciones: [
+      { titulo: "MARKER STYLE", description: "Direct marker, no safety net. The line says it all." },
+      { titulo: "PENCIL STYLE", description: "Soft strokes and broken lines that tell more than they show." },
+      { titulo: "COMIC STYLE", description: "Urban panel with hard shadows, impossible perspective, and plenty of attitude." },
+      { titulo: "ANIME STYLE", description: "Direct inspiration from classic manga and anime: big eyes, and lots of drama." },
+      { titulo: "FANTASY STYLE", description: "Magic, sophistication, and big eyes." },
+      { titulo: "VECTOR STYLE", description: "Modern minimalism, with flat colors and geometric shapes." },
+    ],
+  },
+};
+
+let idiomaActual = localStorage.getItem('iaks-idioma') || 'es';
+
+function aplicarIdioma(idioma) {
+  idiomaActual = idioma;
+  localStorage.setItem('iaks-idioma', idioma);
+  const t = traducciones[idioma];
+
+  // Toggle visual
+  const toggle = document.getElementById('idioma-toggle');
+  toggle.className = 'idioma-toggle ' + idioma;
+
+  // Nav
+  document.querySelector('[href="#galeria"]').textContent = t.nav.galeria;
+  document.querySelector('[href="#como-funciona"]').textContent = t.nav.comoFunciona;
+  document.querySelector('[href="#sobre"]').textContent = t.nav.sobre;
+  document.querySelector('[href="#contacto"]').textContent = t.nav.contacto;
+
+  // Hero
+  document.querySelector('.hero__tagline').textContent = t.hero.tagline;
+  document.querySelector('.hero__titulo').innerHTML = t.hero.titulo1 + '<br/><span class="hero__acento">' + t.hero.titulo2 + '</span>';
+  document.querySelector('.hero__sub').innerHTML = t.hero.sub;
+  document.querySelector('.hero .btn--grande').textContent = t.hero.cta;
+
+  // Galeria
+  document.querySelector('.galeria__titulo').textContent = t.galeria.titulo;
+  document.querySelector('[data-filtro="todos"]').textContent = t.galeria.filtroTodos;
+
+  // Como funciona
+  document.querySelector('.como-funciona__etiqueta').textContent = t.comoFunciona.etiqueta;
+  document.querySelector('.como-funciona__titulo').textContent = t.comoFunciona.titulo;
+  document.querySelector('.como-funciona__sub').textContent = t.comoFunciona.sub;
+  const pasosTitulos = document.querySelectorAll('.paso__titulo');
+  const pasosTextos = document.querySelectorAll('.paso__texto');
+  t.comoFunciona.pasos.forEach((paso, i) => {
+    if (pasosTitulos[i]) pasosTitulos[i].textContent = paso.titulo;
+    if (pasosTextos[i]) pasosTextos[i].textContent = paso.texto;
+  });
+  document.querySelector('.como-funciona__cta .btn--grande').textContent = t.comoFunciona.cta;
+
+  // Sobre
+  document.querySelector('.sobre__etiqueta').textContent = t.sobre.etiqueta;
+  document.querySelector('.sobre__titulo').innerHTML =
+    t.sobre.titulo1 + '<br/><span class="sobre__acento">' + t.sobre.titulo2 + '</span><br/>' + t.sobre.titulo3;
+  const sobreParrafos = document.querySelectorAll('.sobre__texto p');
+  if (sobreParrafos[0]) sobreParrafos[0].textContent = t.sobre.p1;
+  if (sobreParrafos[1]) sobreParrafos[1].textContent = t.sobre.p2;
+  if (sobreParrafos[2]) sobreParrafos[2].textContent = t.sobre.p3;
+  const datoLabels = document.querySelectorAll('.sobre__dato-label');
+  if (datoLabels[0]) datoLabels[0].textContent = t.sobre.dato1;
+  if (datoLabels[1]) datoLabels[1].textContent = t.sobre.dato2;
+  if (datoLabels[2]) datoLabels[2].textContent = t.sobre.dato3;
+
+  // Testimonios
+  document.querySelector('.testimonios__etiqueta').textContent = t.testimonios.etiqueta;
+  document.querySelector('.testimonios__titulo').textContent = t.testimonios.titulo;
+  document.querySelector('.testimonios__sub').textContent = t.testimonios.sub;
+
+  // Contacto
+  document.querySelector('.contacto__titulo').textContent = t.contacto.titulo;
+  document.querySelector('.contacto p').textContent = t.contacto.sub;
+
+  // Footer
+  document.querySelector('.footer span').textContent = t.footer;
+
+  // Rerenderizar cards con titulos traducidos
+  const listaActual = ilustraciones.map((il, i) => ({
+    ...il,
+    titulo: t.ilustraciones[i]?.titulo || il.titulo,
+    descripcion: t.ilustraciones[i]?.descripcion || il.descripcion,
+  }));
+  renderizarCards(listaActual);
+  setTimeout(() => iniciarScrollReveal(), 100);
+
+  // Rerenderizar testimonios
+  renderizarTestimonios();
+
+  // Actualizar lang del html
+  document.documentElement.lang = idioma;
+}
+
+function iniciarToggleIdioma() {
+  const toggle = document.getElementById('idioma-toggle');
+  toggle.addEventListener('click', () => {
+    const nuevoIdioma = idiomaActual === 'es' ? 'en' : 'es';
+    aplicarIdioma(nuevoIdioma);
+  });
+  // Aplicar idioma guardado al cargar
+  aplicarIdioma(idiomaActual);
+}
+
 
 /* =============================================
    5. ARRANQUE
@@ -747,6 +1105,8 @@ function init() {
   iniciarModal();
   iniciarCarritoUI(); 
   iniciarScrollReveal();
+  renderizarTestimonios();
+  iniciarToggleIdioma();
 }
 
 document.addEventListener('DOMContentLoaded', init);
