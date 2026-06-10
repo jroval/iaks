@@ -35,7 +35,7 @@ const ilustraciones = [
     titulo: "A TODO ROTU",
     estilo: "ROTULADOR",
     descripcion: "Rotulador directo, sin red.",
-    imagen: "assets/images/rotu.png",
+    imagen: "assets/images/mockups/rotulador/taza.png",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/rotulador/poster.png",
@@ -53,7 +53,7 @@ const ilustraciones = [
     titulo: "ESTILO LAPIZ",
     estilo: "BOCETO A MANO",
     descripcion: "Trazos suaves y lineas quebradas que cuentan mas de lo que muestran.",
-    imagen: "assets/images/boceto_lapiz.png",
+    imagen: "assets/images/mockups/lapiz/poster.png",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/lapiz/poster.png",
