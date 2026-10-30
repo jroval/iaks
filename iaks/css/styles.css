@@ -1978,6 +1978,72 @@ img {
 }
 
 /* =============================================
+   CONDICIONES
+   ============================================= */
+.condiciones {
+  padding: 7rem 2.5rem;
+  border-top: 1px solid var(--color-borde);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.condiciones__cabecera,
+.condiciones__lista {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.condiciones__titulo {
+  font-family: var(--fuente-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.condiciones__sub {
+  margin-top: 0.75rem;
+  color: var(--texto-secundario);
+  font-size: 1.05rem;
+}
+
+.condiciones__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 0.5rem 2rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--color-borde);
+}
+
+.condiciones__item:last-child {
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.condiciones__item dt {
+  font-family: var(--fuente-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.condiciones__item dd {
+  color: var(--texto-secundario);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+  .condiciones {
+    padding: 5rem 1.2rem;
+  }
+
+  .condiciones__item {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
    QUE PODEMOS CREAR
    ============================================= */
 .categorias {
