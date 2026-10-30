@@ -2078,10 +2078,6 @@ img {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-
-  .categoria__papel {
-    aspect-ratio: 4 / 3;
-  }
 }
 
 /* =============================================
