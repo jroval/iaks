@@ -150,50 +150,48 @@ const ilustraciones = [
 /* =============================================
    PRODUCTOS
 
-   Para añadir un producto: añade un objeto aqui.
-   El id debe coincidir con la clave en mockups.
+   Precios PROVISIONALES (propuesta del briefing, sin calcular costes
+   reales). Cambia aqui el precio y se actualiza en toda la web.
+
+   mockup: clave de ilustraciones[].mockups que se usa como vista previa.
+   null = se ensena la ilustracion sola (retrato digital).
    ============================================= */
 
 const productos = [
   {
-    id: "poster",
-    nombre: "Póster A3",
-    precio: 12,
-    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/></svg>`
+    id: "digital",
+    nombre: "Retrato digital",
+    precio: 19.90,
+    mockup: null,
+    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/></svg>`
+  },
+  {
+    id: "lamina",
+    nombre: "Lámina",
+    precio: 34.90,
+    mockup: "poster",
+    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><line x1="5" y1="17" x2="19" y2="17"/></svg>`
+  },
+  {
+    id: "enmarcado",
+    nombre: "Cuadro enmarcado",
+    precio: 49.90,
+    mockup: "poster",
+    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><rect x="7" y="7" width="10" height="10"/></svg>`
   },
   {
     id: "taza",
     nombre: "Taza",
-    precio: 10,
+    precio: 22.90,
+    mockup: "taza",
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>`
-  },
-  {
-    id: "camiseta",
-    nombre: "Camiseta",
-    precio: 20,
-    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>`
-  },
-  {
-    id: "sticker",
-    nombre: "Sticker",
-    precio: 2,
-    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>`
   },
   {
     id: "llavero",
     nombre: "Llavero",
-    precio: 5,
+    precio: 9.90,
+    mockup: "llavero",
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>`
-  },
-  {
-    id: "pin",
-    nombre: "Pin",
-    precio: 4,
-    icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M9 4v6l-2 4h10l-2-4V4"/>
-  <line x1="12" y1="14" x2="12" y2="21"/>
-  <line x1="9" y1="4" x2="15" y2="4"/>
-</svg>`
   },
 ];
 
@@ -265,6 +263,11 @@ function renderizarCards(lista) {
 }
 
 
+// Imagen que se ensena al elegir un formato
+function vistaPrevia(ilus, prod) {
+  return prod.mockup ? ilus.mockups[prod.mockup] : ilus.ilustracion;
+}
+
 function precioMinimo() {
   return tr().ui.desde(Math.min(...productos.map(p => p.precio)));
 }
@@ -285,12 +288,12 @@ function ilusTraducida(ilus) {
 }
 
 
-function renderizarProductosModal(mockups) {
+function renderizarProductosModal(ilus) {
   const contenedor = document.getElementById('modal-productos');
   contenedor.innerHTML = '';
 
   productos.forEach(prod => {
-    const tieneMockup = mockups && mockups[prod.id];
+    const tieneMockup = vistaPrevia(ilus, prod);
     const opcion = document.createElement('button');
     opcion.className = 'producto-opcion' + (tieneMockup ? '' : ' sin-mockup');
     opcion.dataset.productoId = prod.id;
@@ -303,7 +306,7 @@ function renderizarProductosModal(mockups) {
     `;
 
     if (tieneMockup) {
-      opcion.addEventListener('click', () => seleccionarProducto(prod.id, nombreProducto(prod), mockups[prod.id]));
+      opcion.addEventListener('click', () => seleccionarProducto(prod.id, nombreProducto(prod), tieneMockup));
     }
 
     contenedor.appendChild(opcion);
@@ -328,7 +331,7 @@ function abrirModal(id) {
   document.getElementById('modal-titulo').textContent = ilus.estilo;
   document.getElementById('modal-descripcion').textContent = ilus.descripcion;
 
-  renderizarProductosModal(ilus.mockups);
+  renderizarProductosModal(ilus);
 
   // La vista previa arranca con la ilustracion; cambia al mockup al elegir formato
   productoSeleccionado = null;
@@ -629,7 +632,7 @@ function añadirAlCarrito(ilusId, productoId) {
     id: Date.now(), // id único para poder eliminar
     ilusId,
     productoId,
-    imagen: ilus.mockups[productoId] || ilus.imagen,
+    imagen: vistaPrevia(ilus, prod),
   };
 
   carrito.push(item);
@@ -883,6 +886,7 @@ const traducciones = {
       pasoDos: "paso 2 de 2 · tu foto y tus datos",
       eligeEnQue: "elige en qué lo quieres",
       eligeFormato: "elige un formato para verlo",
+      preciosOrientativos: "Precios orientativos hasta el lanzamiento.",
       continuar: "continuar →",
       cambiar: "← cambiar formato",
       estilo: "estilo",
@@ -903,7 +907,7 @@ const traducciones = {
       elegir: "elegir →",
       proximamente: "próximamente",
       disponibleEn: "disponible en",
-      desde: n => "desde " + n + "€",
+      desde: n => "desde " + n.toFixed(2).replace(".", ",") + " €",
       altEjemplo: estilo => "ejemplo de ilustración en estilo " + estilo.toLowerCase(),
       confirmacion: (nombre, email) => "Gracias, " + nombre + ". He recibido tu pedido y te escribo a " + email + " en menos de 24 h con todos los detalles.",
       ariaMenu: "abrir menú",
@@ -931,12 +935,11 @@ const traducciones = {
     },
     // Productos
     productos: {
-      poster: "Póster A3",
+      digital: "Retrato digital",
+      lamina: "Lámina",
+      enmarcado: "Cuadro enmarcado",
       taza: "Taza",
-      camiseta: "Camiseta",
-      sticker: "Sticker",
       llavero: "Llavero",
-      pin: "Pin",
     },
     // Ilustraciones
     ilustraciones: [
@@ -1029,6 +1032,7 @@ const traducciones = {
       pasoDos: "step 2 of 2 · your photo and details",
       eligeEnQue: "choose what to put it on",
       eligeFormato: "choose a format to preview it",
+      preciosOrientativos: "Indicative prices until launch.",
       continuar: "continue →",
       cambiar: "← change format",
       estilo: "style",
@@ -1049,7 +1053,7 @@ const traducciones = {
       elegir: "choose →",
       proximamente: "coming soon",
       disponibleEn: "available as",
-      desde: n => "from €" + n,
+      desde: n => "from €" + n.toFixed(2),
       altEjemplo: estilo => "example illustration in " + estilo.toLowerCase() + " style",
       confirmacion: (nombre, email) => "Thank you, " + nombre + ". I've received your order and I'll write to you at " + email + " within 24 hours with all the details.",
       ariaMenu: "open menu",
@@ -1075,12 +1079,11 @@ const traducciones = {
       aviso: "prices are estimates, confirmed upon checkout",
     },
     productos: {
-      poster: "A3 Poster",
+      digital: "Digital portrait",
+      lamina: "Art print",
+      enmarcado: "Framed portrait",
       taza: "Mug",
-      camiseta: "T-shirt",
-      sticker: "Sticker",
       llavero: "Keychain",
-      pin: "Pin",
     },
     ilustraciones: [
       { titulo: "MARKER STYLE", estilo: "Marker", descripcion: "Direct marker, no safety net. The line says it all." },
