@@ -210,6 +210,16 @@ const testimonios = [
 ];
 
 
+/* Entradas de "Descubre qué podemos crear". imagen: obra representativa
+   (assets/images/categorias/<id>.webp). Mientras sea null se ve un hueco de papel.
+   posicion (opcional): object-position si el recorte por defecto corta caras. */
+const categorias = [
+  { id: "mascotas", imagen: "assets/images/categorias/mascotas.webp" },
+  { id: "parejas", imagen: "assets/images/categorias/parejas.webp", posicion: "50% 0%" },
+  { id: "familias", imagen: "assets/images/categorias/familias.webp" },
+];
+
+
 /* Parejas reales foto original / resultado para el comparador de la portada.
    Mientras este vacio, la seccion no se muestra. Ejemplo:
    { original: "assets/images/antes-despues/ana-original.jpg",
@@ -754,6 +764,22 @@ function iniciarCarritoUI() {
   });
 }
 
+function renderizarCategorias() {
+  const t = tr().categorias;
+  // Sin páginas de colección todavía: cada entrada lleva a los estilos
+  document.getElementById('categorias-grid').innerHTML = categorias.map(cat => `
+    <a class="categoria" href="#galeria">
+      <div class="categoria__papel">
+        ${cat.imagen
+          ? `<img class="categoria__img" src="${cat.imagen}"${cat.posicion ? ` style="object-position: ${cat.posicion}"` : ''} alt="${t[cat.id]}" loading="lazy" />`
+          : `<span class="categoria__pronto">${t.pronto}</span>`}
+      </div>
+      <h3 class="categoria__nombre">${t[cat.id]}</h3>
+      <p class="categoria__texto">${t[cat.id + 'Texto']}</p>
+      <span class="categoria__enlace">${t.verEstilos}</span>
+    </a>`).join('');
+}
+
 function renderizarAntesDespues() {
   const seccion = document.getElementById('antes-despues');
   if (antesDespues.length === 0) {
@@ -828,6 +854,18 @@ const traducciones = {
       sub: "Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, listas para convertirse en un regalo único.",
       cta: "Crear mi regalo",
       cta2: "Ver cómo funciona",
+    },
+    categorias: {
+      titulo: "Descubre qué podemos crear",
+      sub: "Personas, parejas, familias y también quien te espera en casa moviendo la cola.",
+      verEstilos: "ver estilos →",
+      pronto: "muestra en camino",
+      mascotas: "Mascotas",
+      mascotasTexto: "Su mirada, su pose, su carácter. Convertidos en obra.",
+      parejas: "Parejas",
+      parejasTexto: "Vuestra foto favorita, contada de otra manera.",
+      familias: "Familias",
+      familiasTexto: "Todos juntos en una pieza para colgar en casa.",
     },
     galeria: {
       titulo: "Una foto, muchas formas de verla",
@@ -975,6 +1013,18 @@ const traducciones = {
       sub: "We turn your favourite photos into personalised works of art, ready to become a one-of-a-kind gift.",
       cta: "Create my gift",
       cta2: "See how it works",
+    },
+    categorias: {
+      titulo: "Discover what we can create",
+      sub: "People, couples, families and whoever is waiting for you at home, tail wagging.",
+      verEstilos: "see styles →",
+      pronto: "sample on its way",
+      mascotas: "Pets",
+      mascotasTexto: "Their look, their pose, their character. Turned into art.",
+      parejas: "Couples",
+      parejasTexto: "Your favourite photo, told in a different way.",
+      familias: "Families",
+      familiasTexto: "Everyone together in one piece to hang at home.",
     },
     galeria: {
       titulo: "One photo, many ways to see it",
@@ -1140,6 +1190,7 @@ function aplicarIdioma(idioma) {
   // Rerenderizar testimonios
   renderizarTestimonios();
   renderizarAntesDespues();
+  renderizarCategorias();
 
   // Actualizar lang del html
   document.documentElement.lang = idioma;

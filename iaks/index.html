@@ -24,6 +24,10 @@
   <meta name="twitter:description" content="Transforma tus fotografías favoritas en retratos artísticos y regalos personalizados. Descubre estilos originales para mascotas, parejas y familias." />
   <meta name="twitter:image" content="https://iaks.netlify.app/assets/images/preview.jpg" />
 
+  <!-- Favicon: la "i" del logo -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -100,6 +104,18 @@
   </div>
 
 </section>
+
+  <!-- =============================================
+       QUE PODEMOS CREAR (mascotas, parejas, familias)
+       Las cards se generan desde el array categorias de app.js
+       ============================================= -->
+  <section class="categorias" id="categorias">
+    <div class="categorias__cabecera">
+      <h2 class="categorias__titulo" data-i18n="categorias.titulo">Descubre qué podemos crear</h2>
+      <p class="categorias__sub" data-i18n="categorias.sub">Personas, parejas, familias y también quien te espera en casa moviendo la cola.</p>
+    </div>
+    <div class="categorias__grid" id="categorias-grid"></div>
+  </section>
 
   <!-- =============================================
        ESTILOS (galeria)

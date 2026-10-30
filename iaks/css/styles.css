@@ -1895,6 +1895,7 @@ img {
   }
 
   .hero,
+  .categorias,
   .galeria,
   .antes-despues,
   .como-funciona,
@@ -1973,6 +1974,109 @@ img {
   margin-top: 0.5rem;
   color: var(--texto-secundario);
   font-size: 0.95rem;
+}
+
+/* =============================================
+   QUE PODEMOS CREAR
+   ============================================= */
+.categorias {
+  padding: 6rem 2.5rem 2rem;
+}
+
+.categorias__cabecera {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.categorias__titulo {
+  font-family: var(--fuente-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.categorias__sub {
+  margin-top: 0.75rem;
+  color: var(--texto-secundario);
+  font-size: 1.05rem;
+}
+
+.categorias__grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.categoria {
+  color: inherit;
+  text-decoration: none;
+}
+
+.categoria__papel {
+  aspect-ratio: 4 / 5;
+  background: var(--color-papel);
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.categoria__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  mix-blend-mode: multiply;
+  transition: transform 0.5s ease;
+}
+
+.categoria:hover .categoria__img {
+  transform: scale(1.03);
+}
+
+.categoria__pronto {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--texto-secundario);
+}
+
+.categoria__nombre {
+  margin-top: 1rem;
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.categoria__texto {
+  margin-top: 0.3rem;
+  color: var(--texto-secundario);
+  font-size: 0.95rem;
+}
+
+.categoria__enlace {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--acento);
+}
+
+.categoria:hover .categoria__enlace {
+  color: var(--acento-hover);
+}
+
+@media (max-width: 640px) {
+  .categorias__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .categoria__papel {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 /* =============================================
