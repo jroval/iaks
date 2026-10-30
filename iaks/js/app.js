@@ -609,6 +609,19 @@ function iniciarHeader() {
       header.classList.remove('visible');
     }
   });
+
+  // Menú móvil
+  document.getElementById('hamburguesa').addEventListener('click', () => {
+    const abierto = document.getElementById('header-nav').classList.toggle('abierto');
+    document.getElementById('hamburguesa').classList.toggle('abierto', abierto);
+    document.getElementById('hamburguesa').setAttribute('aria-expanded', abierto);
+  });
+}
+
+function cerrarMenu() {
+  document.getElementById('header-nav').classList.remove('abierto');
+  document.getElementById('hamburguesa').classList.remove('abierto');
+  document.getElementById('hamburguesa').setAttribute('aria-expanded', false);
 }
 
 function iniciarScrollReveal() {
