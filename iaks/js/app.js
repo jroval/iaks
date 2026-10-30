@@ -221,6 +221,11 @@ const antesDespues = [
     resultado: "assets/images/antes-despues/sara-rotulador.webp",
     estilo: "rotulador",
   },
+  {
+    original: "assets/images/antes-despues/andrea-original.webp",
+    resultado: "assets/images/antes-despues/andrea-comic.webp",
+    estilo: "comic-realista",
+  },
 ];
 
 
