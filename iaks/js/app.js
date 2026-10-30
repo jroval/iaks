@@ -215,7 +215,13 @@ const testimonios = [
    { original: "assets/images/antes-despues/ana-original.jpg",
      resultado: "assets/images/antes-despues/ana-comic.jpg",
      estilo: "comic-realista" }  // carpeta del estilo, para el pie de foto */
-const antesDespues = [];
+const antesDespues = [
+  {
+    original: "assets/images/antes-despues/sara-original.webp",
+    resultado: "assets/images/antes-despues/sara-rotulador.webp",
+    estilo: "rotulador",
+  },
+];
 
 
 /* =============================================
