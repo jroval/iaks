@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iaks — convierte tu recuerdo en una ilustración única</title>
+  <title>iaks | Retratos artísticos y regalos personalizados</title>
 
   <!-- SEO básico -->
-  <meta name="description" content="iaks transforma tus fotos en ilustraciones únicas con diferentes estilos visuales. Llévatelas en pósters, tazas, camisetas, stickers y mucho más." />
+  <meta name="description" content="Transforma tus fotografías favoritas en retratos artísticos y regalos personalizados. Descubre estilos originales para mascotas, parejas y familias." />
   <meta name="author" content="iaks" />
   <link rel="canonical" href="https://iaks.netlify.app" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="iaks — convierte tu recuerdo en una ilustración única" />
-  <meta property="og:description" content="iaks transforma tus fotos en ilustraciones únicas con diferentes estilos visuales. Llévatelas en pósters, tazas, camisetas, stickers y mucho más." />
+  <meta property="og:title" content="iaks | Retratos artísticos y regalos personalizados" />
+  <meta property="og:description" content="Transforma tus fotografías favoritas en retratos artísticos y regalos personalizados. Descubre estilos originales para mascotas, parejas y familias." />
   <meta property="og:image" content="https://iaks.netlify.app/assets/images/preview.jpg" />
   <meta property="og:url" content="https://iaks.netlify.app" />
   <meta property="og:type" content="website" />
@@ -20,14 +20,14 @@
 
   <!-- Twitter/X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="iaks — convierte tu recuerdo en una ilustración única" />
-  <meta name="twitter:description" content="iaks transforma tus fotos en ilustraciones únicas con diferentes estilos visuales. Llévatelas en pósters, tazas, camisetas, stickers y mucho más." />
+  <meta name="twitter:title" content="iaks | Retratos artísticos y regalos personalizados" />
+  <meta name="twitter:description" content="Transforma tus fotografías favoritas en retratos artísticos y regalos personalizados. Descubre estilos originales para mascotas, parejas y familias." />
   <meta name="twitter:image" content="https://iaks.netlify.app/assets/images/preview.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -40,10 +40,10 @@
   <div class="header__logo">iaks</div>
 
   <nav class="header__nav" id="header-nav">
-    <a href="#galeria" onclick="cerrarMenu()">galería</a>
-    <a href="#como-funciona" onclick="cerrarMenu()">como funciona</a>
-    <a href="#sobre" onclick="cerrarMenu()">sobre</a>
-    <a href="#contacto" onclick="cerrarMenu()">contacto</a>
+    <a href="#galeria" onclick="cerrarMenu()" data-i18n="nav.estilos">Estilos</a>
+    <a href="#como-funciona" onclick="cerrarMenu()" data-i18n="nav.comoFunciona">Cómo funciona</a>
+    <a href="#sobre" onclick="cerrarMenu()" data-i18n="nav.historia">Nuestra historia</a>
+    <a href="#contacto" onclick="cerrarMenu()" data-i18n="nav.contacto">Contacto</a>
   </nav>
 
   <div class="header__acciones">
@@ -55,7 +55,7 @@
       <span class="idioma-toggle__label">EN</span>
     </div>
 
-    <button class="carrito-btn" id="carrito-btn" aria-label="abrir carrito">
+    <button class="carrito-btn" id="carrito-btn" aria-label="abrir carrito" data-i18n-aria="ui.ariaCarrito" hidden>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -64,7 +64,7 @@
       <span class="carrito-btn__contador" id="carrito-contador">0</span>
     </button>
 
-    <button class="hamburguesa" id="hamburguesa" aria-label="abrir menu">
+    <button class="hamburguesa" id="hamburguesa" aria-label="abrir menú" data-i18n-aria="ui.ariaMenu">
       <span></span>
       <span></span>
       <span></span>
@@ -77,39 +77,64 @@
        ============================================= -->
 <section class="hero" id="hero">
 
-  <!-- Carrusel de fondo -->
-  <div class="hero__carrusel" id="hero-carrusel">
-    <!-- Las diapositivas se generan desde JS -->
-  </div>
-
-  <!-- Overlay oscuro encima de las imagenes -->
-  <div class="hero__overlay"></div>
-
-  <!-- Contenido encima del overlay -->
+  <!-- Texto a la izquierda, obra a la derecha (en movil, una encima de otra) -->
   <div class="hero__contenido">
-    <p class="hero__tagline">ilustracion con alma</p>
-    <h1 class="hero__titulo">arte que<br/><span class="hero__acento">se lleva</span></h1>
-    <p class="hero__sub">Ilustraciones unicas en posters, tazas, stickers y mucho mas.<br/>Elige tu estilo. Elige tu objeto. Llevate un pedacito.</p>
-    <a href="#galeria" class="btn btn--grande">ver la galeria</a>
+    <h1 class="hero__titulo" data-i18n-html="hero.titulo">Tu foto.<br/><span class="hero__acento">Otra forma de arte.</span></h1>
+    <p class="hero__sub" data-i18n="hero.sub">Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, listas para convertirse en un regalo único.</p>
+    <div class="hero__botones">
+      <a href="#galeria" class="btn btn--grande" data-i18n="hero.cta">Crear mi regalo</a>
+      <a href="#como-funciona" class="btn btn--grande btn--secundario" data-i18n="hero.cta2">Ver cómo funciona</a>
+    </div>
   </div>
 
-  <!-- Flechas de navegacion -->
-  <button class="hero__flecha hero__flecha--prev" id="hero-prev" aria-label="anterior">&#8592;</button>
-  <button class="hero__flecha hero__flecha--next" id="hero-next" aria-label="siguiente">&#8594;</button>
+  <div class="hero__visual">
+    <!-- Carrusel: las diapositivas se generan desde JS -->
+    <div class="hero__carrusel" id="hero-carrusel"></div>
 
-  <!-- Puntos indicadores -->
-  <div class="hero__puntos" id="hero-puntos"></div>
+    <!-- Flechas de navegacion -->
+    <button class="hero__flecha hero__flecha--prev" id="hero-prev" aria-label="anterior" data-i18n-aria="ui.ariaAnterior">&#8592;</button>
+    <button class="hero__flecha hero__flecha--next" id="hero-next" aria-label="siguiente" data-i18n-aria="ui.ariaSiguiente">&#8594;</button>
 
-  
+    <!-- Puntos indicadores -->
+    <div class="hero__puntos" id="hero-puntos"></div>
+  </div>
 
 </section>
 
+  <!-- =============================================
+       ESTILOS (galeria)
+       ============================================= -->
+  <section class="galeria" id="galeria">
+    <div class="galeria__cabecera">
+      <h2 class="galeria__titulo" data-i18n="galeria.titulo">Una foto, muchas formas de verla</h2>
+      <p class="galeria__sub" data-i18n="galeria.sub">Elige el estilo que más te guste. Después decides en qué quieres llevarlo.</p>
+    </div>
+
+    <!-- Las cards se generan desde JS -->
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- =============================================
+       ANTES / DESPUES
+       Se oculta sola mientras el array antesDespues de app.js este vacio
+       ============================================= -->
+  <section class="antes-despues" id="antes-despues">
+    <div class="antes-despues__cabecera">
+      <h2 class="antes-despues__titulo" data-i18n="antesDespues.titulo">De la foto original a la obra</h2>
+      <p class="antes-despues__sub" data-i18n="antesDespues.sub">Desliza para comparar.</p>
+    </div>
+    <div class="antes-despues__grid" id="antes-despues-grid"></div>
+  </section>
+
+  <!-- =============================================
+       COMO FUNCIONA
+       ============================================= -->
   <section class="como-funciona" id="como-funciona">
 
   <div class="como-funciona__cabecera">
-    <p class="como-funciona__etiqueta">el proceso</p>
-    <h2 class="como-funciona__titulo">asi funciona</h2>
-    <p class="como-funciona__sub">De tu foto a un objeto unico en cuatro pasos.</p>
+    <p class="como-funciona__etiqueta" data-i18n="como.etiqueta">el proceso</p>
+    <h2 class="como-funciona__titulo" data-i18n="como.titulo">Así funciona</h2>
+    <p class="como-funciona__sub" data-i18n="como.sub">De tu foto a un regalo con personalidad, en cuatro pasos.</p>
   </div>
 
   <div class="como-funciona__pasos">
@@ -122,8 +147,8 @@
           <path d="M8 12l2.5 2.5L16 9"/>
         </svg>
       </div>
-      <h3 class="paso__titulo">elige tu estilo</h3>
-      <p class="paso__texto">Explora la galeria y encuentra el estilo visual que mas te representa. Rotulador, lapiz, comic, retro pop o fantasia.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso1">Elige tu creación</h3>
+      <p class="paso__texto" data-i18n="como.paso1Texto">Escoge el estilo artístico y el producto que más te gusten.</p>
     </div>
 
     <div class="paso__conector"></div>
@@ -132,13 +157,13 @@
       <div class="paso__numero">02</div>
       <div class="paso__icono">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="1"/>
-          <line x1="3" y1="9" x2="21" y2="9"/>
-          <line x1="9" y1="21" x2="9" y2="9"/>
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
         </svg>
       </div>
-      <h3 class="paso__titulo">elige tu regalo</h3>
-      <p class="paso__texto">Poster, taza, camiseta, sticker, llavero o pin. Elige el formato en el que quieres que viva tu ilustracion.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso2">Envíanos tu foto</h3>
+      <p class="paso__texto" data-i18n="como.paso2Texto">Sube la imagen que quieres transformar: una persona, una pareja, tu familia o tu mascota.</p>
     </div>
 
     <div class="paso__conector"></div>
@@ -147,13 +172,12 @@
       <div class="paso__numero">03</div>
       <div class="paso__icono">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="17 8 12 3 7 8"/>
-          <line x1="12" y1="3" x2="12" y2="15"/>
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
         </svg>
       </div>
-      <h3 class="paso__titulo">mandame tu foto</h3>
-      <p class="paso__texto">Una foto tuya, de alguien especial, una mascota, un lugar. Cualquier recuerdo que merezca convertirse en algo tangible.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso3">Cuidamos cada detalle</h3>
+      <p class="paso__texto" data-i18n="como.paso3Texto">Trabajamos la transformación artística para que conserve lo que hace reconocible a quien aparece en ella.</p>
     </div>
 
     <div class="paso__conector"></div>
@@ -162,72 +186,67 @@
       <div class="paso__numero">04</div>
       <div class="paso__icono">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14"/>
-          <path d="M12 5l7 7-7 7"/>
+          <rect x="3" y="8" width="18" height="13" rx="1"/>
+          <path d="M12 8v13"/>
+          <path d="M3 12h18"/>
+          <path d="M12 8c-1.5-3-5-3-5-1s3 1 5 1c2 0 5 1 5-1s-3.5-2-5 1Z"/>
         </svg>
       </div>
-      <h3 class="paso__titulo">recibelo en casa</h3>
-      <p class="paso__texto">iaks transforma tu foto con el estilo elegido y te lo envia listo para sorprender. Un recuerdo con alma.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso4">Recibe tu regalo</h3>
+      <p class="paso__texto" data-i18n="como.paso4Texto">Cuando el diseño está listo, lo producimos y te lo enviamos en los plazos indicados.</p>
     </div>
 
   </div>
 
   <div class="como-funciona__cta">
-    <p>listo para empezar?</p>
-    <a href="#galeria" class="btn btn--grande">quiero el mio</a>
+    <a href="#galeria" class="btn btn--grande" data-i18n="como.cta">Crear mi regalo</a>
   </div>
 
 </section>
 
   <!-- =============================================
-       GALERÍA
+       POR QUE IAKS
        ============================================= -->
-  <section class="galeria" id="galeria">
-    <div class="galeria__cabecera">
-      <h2 class="galeria__titulo">la colección</h2>
-
-      <!-- Filtros: cada botón tiene data-filtro con el valor del estilo -->
-      <div class="filtros" id="filtros">
-        <button class="filtro activo" data-filtro="todos">todos</button>
-        <!-- Los filtros de estilo se generan desde JS automáticamente -->
-      </div>
-    </div>
-
-    <!-- Las cards se generan desde JS -->
-    <div class="grid" id="grid"></div>
+  <section class="porque" id="porque">
+    <h2 class="porque__titulo" data-i18n="porque.titulo">Por qué iaks</h2>
+    <ul class="porque__lista">
+      <li class="porque__item">
+        <h3 class="porque__item-titulo" data-i18n="porque.p1">Dirección artística</h3>
+        <p class="porque__item-texto" data-i18n="porque.p1Texto">Cada imagen sigue una intención estética, no el resultado por defecto de una herramienta.</p>
+      </li>
+      <li class="porque__item">
+        <h3 class="porque__item-titulo" data-i18n="porque.p2">Identidad reconocible</h3>
+        <p class="porque__item-texto" data-i18n="porque.p2Texto">Rostro, peinado y expresión se respetan en la medida que permite cada estilo.</p>
+      </li>
+      <li class="porque__item">
+        <h3 class="porque__item-titulo" data-i18n="porque.p3">Estilos seleccionados</h3>
+        <p class="porque__item-texto" data-i18n="porque.p3Texto">Pocos estilos, bien trabajados y coherentes entre sí.</p>
+      </li>
+      <li class="porque__item">
+        <h3 class="porque__item-titulo" data-i18n="porque.p4">Atención al detalle</h3>
+        <p class="porque__item-texto" data-i18n="porque.p4Texto">Revisamos y corregimos cada resultado antes de darlo por bueno.</p>
+      </li>
+      <li class="porque__item">
+        <h3 class="porque__item-titulo" data-i18n="porque.p5">Pensado para regalar</h3>
+        <p class="porque__item-texto" data-i18n="porque.p5Texto">Productos elegidos para que la ilustración luzca como lo que es: un regalo.</p>
+      </li>
+    </ul>
   </section>
 
-
-
   <!-- =============================================
-       SOBRE
+       NUESTRA HISTORIA
        ============================================= -->
   <section class="sobre" id="sobre">
   <div class="sobre__contenido">
 
-    <div class="sobre__etiqueta">detrás de iaks</div>
+    <div class="sobre__etiqueta" data-i18n="sobre.etiqueta">nuestra historia</div>
 
-    <h2 class="sobre__titulo">el dibujo<br/><span class="sobre__acento">siempre estuvo</span><br/>primero</h2>
+    <h2 class="sobre__titulo" data-i18n-html="sobre.titulo">Una foto puede ser<br/><span class="sobre__acento">mucho más</span></h2>
 
     <div class="sobre__texto">
-      <p>iaks nace de una contradicción bonita: un estudiante de desarrollo web que no puede soltar el lápiz. Código de día, ilustración de noche, y la convicción de que las dos cosas se pueden mezclar sin perder el alma.</p>
-      <p>La inteligencia artificial no reemplaza la mirada — la amplifica. Permite que cualquiera pueda convertir un recuerdo, una cara, un momento, en algo que se puede tocar, colgar, regalar. Eso es lo que hace iaks.</p>
-      <p>Un recuerdo tangible. Con estilo.</p>
-    </div>
-
-    <div class="sobre__datos">
-      <div class="sobre__dato">
-        <span class="sobre__dato-num">6</span>
-        <span class="sobre__dato-label">estilos visuales</span>
-      </div>
-      <div class="sobre__dato">
-        <span class="sobre__dato-num">6</span>
-        <span class="sobre__dato-label">formatos de producto</span>
-      </div>
-      <div class="sobre__dato">
-        <span class="sobre__dato-num">1</span>
-        <span class="sobre__dato-label">obsesion</span>
-      </div>
+      <p data-i18n="sobre.p1">Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.</p>
+      <p data-i18n="sobre.p2">Exploramos las posibilidades de la inteligencia artificial desde la dirección artística, cuidando los estilos, los detalles y la identidad de cada imagen.</p>
+      <p data-i18n="sobre.p3">Porque personalizar no debería consistir simplemente en añadir una foto a un objeto.</p>
     </div>
 
   </div>
@@ -235,7 +254,7 @@
   <div class="sobre__visual">
     <div class="sobre__marco">
       <div class="sobre__marco-inner">
-        <img src="assets/images/iaks.png" alt="ilustracion iaks" class="sobre__imagen"/>
+        <img src="assets/images/iaks.png" alt="ilustración de iaks enmarcada en un salón" class="sobre__imagen" data-i18n-alt="ui.altSobre"/>
       </div>
       <div class="sobre__marco-deco"></div>
     </div>
@@ -244,15 +263,15 @@
 </section>
 
   <!-- =============================================
-       testimonios
+       EXPERIENCIAS REALES (oculta hasta tener la primera)
        ============================================= -->
 
 <section class="testimonios" id="testimonios">
 
   <div class="testimonios__cabecera">
-    <p class="testimonios__etiqueta">lo que dicen</p>
-    <h2 class="testimonios__titulo">recuerdos reales</h2>
-    <p class="testimonios__sub">Fotos que se convirtieron en algo tangible.</p>
+    <p class="testimonios__etiqueta" data-i18n="testimonios.etiqueta">lo que dicen</p>
+    <h2 class="testimonios__titulo" data-i18n="testimonios.titulo">Experiencias reales</h2>
+    <p class="testimonios__sub" data-i18n="testimonios.sub">Regalos que ya han encontrado su sitio.</p>
   </div>
 
   <div class="testimonios__grid" id="testimonios-grid">
@@ -262,29 +281,39 @@
 </section>
 
   <!-- =============================================
-       CONTACTO
+       CTA FINAL + CONTACTO
        ============================================= -->
   <section class="contacto" id="contacto">
-    <h2 class="contacto__titulo">¿quieres algo?</h2>
-    <p>Escríbeme y lo hablamos.</p>
-    <!-- Placeholder: aquí irá el formulario o enlace a tienda externa -->
-    <a href="mailto:hola@iaks.art" class="btn btn--grande">hola@iaks.art</a>
+    <h2 class="contacto__titulo" data-i18n="contacto.titulo">Hay una foto que merece convertirse en algo especial.</h2>
+    <a href="#galeria" class="btn btn--grande" data-i18n="contacto.cta">Crear mi regalo personalizado</a>
+    <p class="contacto__dudas"><span data-i18n="contacto.dudas">¿Tienes una idea o una duda? Escríbenos a</span> <a href="mailto:hola@iaks.art">hola@iaks.art</a></p>
   </section>
 
   <!-- =============================================
        FOOTER
        ============================================= -->
   <footer class="footer">
-    <span>© 2025 iaks — hecho con cariño y píxeles</span>
+    <div class="footer__marca">
+      <span class="footer__logo">iaks</span>
+      <p data-i18n="footer.lema">Retratos artísticos y regalos personalizados.</p>
+    </div>
+    <nav class="footer__enlaces" aria-label="pie de página" data-i18n-aria="footer.aria">
+      <a href="#galeria" data-i18n="nav.estilos">Estilos</a>
+      <a href="#como-funciona" data-i18n="nav.comoFunciona">Cómo funciona</a>
+      <a href="#sobre" data-i18n="nav.historia">Nuestra historia</a>
+      <a href="mailto:hola@iaks.art">hola@iaks.art</a>
+      <a href="https://www.instagram.com/iaks_dev/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <span class="footer__copy" data-i18n="footer.copy">© 2026 iaks</span>
   </footer>
 
   <!-- =============================================
        MODAL (oculto por defecto, JS lo activa)
        ============================================= -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="detalle de ilustración">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="elige estilo y formato" data-i18n-aria="ui.ariaModal">
   <div class="modal__caja">
 
-    <button class="modal__cerrar" id="modal-cerrar" aria-label="cerrar">&#x2715;</button>
+    <button class="modal__cerrar" id="modal-cerrar" aria-label="cerrar" data-i18n-aria="ui.ariaCerrar">&#x2715;</button>
 
     <!-- Layout principal: preview + info -->
     <div class="modal__layout">
@@ -297,16 +326,16 @@
       </div>
 
       <div class="modal__columna-info">
-        <p class="modal__estilo" id="modal-estilo"></p>
+        <p class="modal__estilo" data-i18n="ui.pasoUno">paso 1 de 2</p>
         <h3 class="modal__titulo-pieza" id="modal-titulo"></h3>
         <p class="modal__descripcion" id="modal-descripcion"></p>
 
-        <div class="modal__productos-titulo">en que lo quieres</div>
+        <div class="modal__productos-titulo" data-i18n="ui.eligeEnQue">elige en qué lo quieres</div>
         <div class="modal__productos" id="modal-productos"></div>
 
         <div class="modal__compra">
-          <p class="modal__compra-seleccion" id="modal-seleccion">elige un producto para verlo</p>
-          <button class="btn btn--grande" id="modal-btn-compra" disabled>pedir este</button>
+          <p class="modal__compra-seleccion" id="modal-seleccion">elige un formato para verlo</p>
+          <button class="btn btn--grande" id="modal-btn-compra" disabled data-i18n="ui.continuar">continuar →</button>
         </div>
       </div>
 
@@ -315,24 +344,25 @@
     <!-- Panel de pedido: FUERA del layout, oculto por defecto -->
     <div class="modal__pedido" id="modal-pedido">
 
-      <button class="modal__pedido-volver" id="modal-pedido-volver">← volver</button>
+      <button class="modal__pedido-volver" id="modal-pedido-volver" data-i18n="ui.cambiar">← cambiar formato</button>
 
+      <p class="modal__estilo" data-i18n="ui.pasoDos">paso 2 de 2 · tu foto y tus datos</p>
       <div class="modal__pedido-resumen" id="modal-pedido-resumen"></div>
 
       <div class="modal__pedido-campos">
 
         <div class="campo">
-          <label class="campo__label" for="pedido-nombre">tu nombre</label>
-          <input class="campo__input" type="text" id="pedido-nombre" placeholder="como te llamas" />
+          <label class="campo__label" for="pedido-nombre" data-i18n="ui.tuNombre">tu nombre</label>
+          <input class="campo__input" type="text" id="pedido-nombre" placeholder="¿cómo te llamas?" data-i18n-placeholder="ui.phNombre" />
         </div>
 
         <div class="campo">
-          <label class="campo__label" for="pedido-email">tu email</label>
-          <input class="campo__input" type="email" id="pedido-email" placeholder="donde te escribo" />
+          <label class="campo__label" for="pedido-email" data-i18n="ui.tuEmail">tu email</label>
+          <input class="campo__input" type="email" id="pedido-email" placeholder="¿dónde te escribo?" data-i18n-placeholder="ui.phEmail" />
         </div>
 
         <div class="campo">
-          <label class="campo__label" for="pedido-foto">tu foto</label>
+          <label class="campo__label" for="pedido-foto" data-i18n="ui.tuFoto">tu foto</label>
           <div class="campo__upload" id="campo-upload">
             <input class="campo__input-file" type="file" id="pedido-foto" accept="image/*" />
             <div class="campo__upload-texto" id="upload-texto">
@@ -341,21 +371,21 @@
                 <polyline points="17 8 12 3 7 8"/>
                 <line x1="12" y1="3" x2="12" y2="15"/>
               </svg>
-              <span>arrastra tu foto o haz clic</span>
-              <span class="campo__upload-sub">jpg, png — max 10mb</span>
+              <span data-i18n="ui.uploadTexto">arrastra tu foto o haz clic</span>
+              <span class="campo__upload-sub" data-i18n="ui.uploadSub">jpg o png · máx. 10 MB</span>
             </div>
             <img class="campo__upload-preview" id="upload-preview" src="" alt="" />
           </div>
         </div>
 
         <div class="campo">
-          <label class="campo__label" for="pedido-nota">nota (opcional)</label>
-          <textarea class="campo__input campo__textarea" id="pedido-nota" placeholder="algo que deba saber sobre la foto o el encargo"></textarea>
+          <label class="campo__label" for="pedido-nota" data-i18n="ui.nota">nota (opcional)</label>
+          <textarea class="campo__input campo__textarea" id="pedido-nota" placeholder="algo que deba saber sobre la foto o el encargo" data-i18n-placeholder="ui.phNota"></textarea>
         </div>
 
       </div>
 
-      <button class="btn btn--grande modal__pedido-enviar" id="modal-pedido-enviar">confirmar pedido</button>
+      <button class="btn btn--grande modal__pedido-enviar" id="modal-pedido-enviar" data-i18n="ui.confirmar">confirmar pedido</button>
 
       <div class="modal__confirmacion" id="modal-confirmacion">
         <div class="modal__confirmacion-icono">
@@ -364,9 +394,9 @@
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
         </div>
-        <h3 class="modal__confirmacion-titulo">pedido recibido</h3>
+        <h3 class="modal__confirmacion-titulo" data-i18n="ui.pedidoRecibido">pedido recibido</h3>
         <p class="modal__confirmacion-texto" id="confirmacion-texto"></p>
-        <button class="btn btn--grande" id="modal-confirmacion-cerrar">cerrar</button>
+        <button class="btn btn--grande" id="modal-confirmacion-cerrar" data-i18n="ui.cerrar">cerrar</button>
       </div>
 
     </div>
@@ -377,19 +407,19 @@
 <!-- PANEL CARRITO -->
 <div class="carrito-panel" id="carrito-panel">
   <div class="carrito-panel__cabecera">
-    <h2 class="carrito-panel__titulo">tu carrito</h2>
-    <button class="carrito-panel__cerrar" id="carrito-cerrar">&#x2715;</button>
+    <h2 class="carrito-panel__titulo" data-i18n="ui.carritoTitulo">tu carrito</h2>
+    <button class="carrito-panel__cerrar" id="carrito-cerrar" aria-label="cerrar" data-i18n-aria="ui.ariaCerrar">&#x2715;</button>
   </div>
   <div class="carrito-panel__items" id="carrito-items">
     <!-- JS rellena esto -->
   </div>
   <div class="carrito-panel__footer" id="carrito-footer">
     <div class="carrito-panel__total">
-      <span>total estimado</span>
+      <span data-i18n="ui.totalEstimado">total estimado</span>
       <span id="carrito-total">0€</span>
     </div>
-    <button class="btn btn--grande carrito-panel__tramitar" id="carrito-tramitar">tramitar pedido</button>
-    <p class="carrito-panel__aviso">los precios son orientativos, se confirman al tramitar</p>
+    <button class="btn btn--grande carrito-panel__tramitar" id="carrito-tramitar" data-i18n="ui.tramitar">tramitar pedido</button>
+    <p class="carrito-panel__aviso" data-i18n="ui.avisoPrecios">los precios son orientativos, se confirman al tramitar</p>
   </div>
 </div>
 <div class="carrito-overlay" id="carrito-overlay"></div>

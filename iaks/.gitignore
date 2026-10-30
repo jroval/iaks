@@ -1,0 +1,5 @@
+# Local Netlify folder
+.netlify
+
+# Caché de la herramienta de revisión de diseño
+.impeccable

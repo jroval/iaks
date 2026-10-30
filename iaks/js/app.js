@@ -4,9 +4,8 @@
    Estructura:
    1. DATOS (ilustraciones y productos)
    2. RENDERIZADO (generar HTML desde datos)
-   3. FILTROS
-   4. MODAL
-   5. ARRANQUE (init)
+   3. MODAL
+   4. ARRANQUE (init)
    ============================================= */
 
 
@@ -17,8 +16,8 @@
    Para añadir una nueva ilustración: solo añade
    un objeto nuevo al array. El resto se hace solo.
    
-   ESTILOS disponibles (el mismo texto que usas
-   en el filtro y en cada objeto):
+   ESTILOS disponibles (carpetas de mockups
+   y de assets/images/estilos):
    - "rotulador"
    - "lapiz"
    - "comic-realista"
@@ -33,9 +32,10 @@ const ilustraciones = [
   {
     id: 1,
     titulo: "A TODO ROTU",
-    estilo: "ROTULADOR",
-    descripcion: "Rotulador directo, sin red.",
+    estilo: "Rotulador",
+    descripcion: "Rotulador directo, sin red. El trazo lo dice todo.",
     imagen: "assets/images/mockups/rotulador/taza.png",
+    ilustracion: "assets/images/estilos/rotulador.webp",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/rotulador/poster.png",
@@ -51,9 +51,10 @@ const ilustraciones = [
   {
     id: 2,
     titulo: "ESTILO LAPIZ",
-    estilo: "BOCETO A MANO",
-    descripcion: "Trazos suaves y lineas quebradas que cuentan mas de lo que muestran.",
+    estilo: "Boceto a mano",
+    descripcion: "Trazos suaves y líneas quebradas que cuentan más de lo que muestran.",
     imagen: "assets/images/mockups/lapiz/poster.png",
+    ilustracion: "assets/images/estilos/lapiz.webp",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/lapiz/poster.png",
@@ -69,9 +70,10 @@ const ilustraciones = [
   {
     id: 3,
     titulo: "ESTILO COMIC",
-    estilo: "CÓMIC CLÁSICO",
+    estilo: "Cómic clásico",
     descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud.",
     imagen: "assets/images/mockups/comic-realista/Llavero.png",
+    ilustracion: "assets/images/estilos/comic-realista.webp",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/comic-realista/poster.png",
@@ -87,9 +89,10 @@ const ilustraciones = [
   {
     id: 4,
     titulo: "ESTILO ANIME",
-    estilo: "COMIC ANIME",
-    descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes, y mucho dramatismo.",
+    estilo: "Cómic anime",
+    descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes y mucho dramatismo.",
     imagen: "assets/images/mockups/comic-anime/camiseta.png",
+    ilustracion: "assets/images/estilos/comic-anime.webp",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/comic-anime/poster.png",
@@ -105,9 +108,10 @@ const ilustraciones = [
   {
     id: 5,
     titulo: "ESTILO FANTASÍA",
-    estilo: "COMIC FANTASÍA",
-    descripcion: "Magia, sofisticación y ojos grandes.",
+    estilo: "Cómic fantasía",
+    descripcion: "Magia, sofisticación y un aire de cuento.",
     imagen: "assets/images/mockups/comic-fantasia/sticker.png",
+    ilustracion: "assets/images/estilos/comic-fantasia.webp",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/comic-fantasia/poster.png",
@@ -122,9 +126,10 @@ const ilustraciones = [
   {
     id: 6,
     titulo: "ESTILO VECTOR",
-    estilo: "VECTOR",
-    descripcion: "minimalismo moderno, con colores planos y formas geométricas.",
+    estilo: "Vector",
+    descripcion: "Minimalismo moderno: colores planos y formas geométricas.",
     imagen: "assets/images/mockups/vector/pin.png",
+    ilustracion: "assets/images/estilos/vector.webp",
     color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/vector/poster.png",
@@ -152,38 +157,38 @@ const ilustraciones = [
 const productos = [
   {
     id: "poster",
-    nombre: "Poster A3",
-    precio: "desde 12EUR",
+    nombre: "Póster A3",
+    precio: 12,
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/></svg>`
   },
   {
     id: "taza",
     nombre: "Taza",
-    precio: "desde 10EUR",
+    precio: 10,
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>`
   },
   {
     id: "camiseta",
     nombre: "Camiseta",
-    precio: "desde 20EUR",
+    precio: 20,
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>`
   },
   {
     id: "sticker",
     nombre: "Sticker",
-    precio: "desde 2EUR",
+    precio: 2,
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>`
   },
   {
     id: "llavero",
     nombre: "Llavero",
-    precio: "desde 5EUR",
+    precio: 5,
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>`
   },
   {
     id: "pin",
     nombre: "Pin",
-    precio: "desde 4EUR",
+    precio: 4,
     icono: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
   <path d="M9 4v6l-2 4h10l-2-4V4"/>
   <line x1="12" y1="14" x2="12" y2="21"/>
@@ -207,23 +212,17 @@ const testimonios = [
 ];
 
 
+/* Parejas reales foto original / resultado para el comparador de la portada.
+   Mientras este vacio, la seccion no se muestra. Ejemplo:
+   { original: "assets/images/antes-despues/ana-original.jpg",
+     resultado: "assets/images/antes-despues/ana-comic.jpg",
+     estilo: "comic-realista" }  // carpeta del estilo, para el pie de foto */
+const antesDespues = [];
+
+
 /* =============================================
    2. RENDERIZADO
    ============================================= */
-
-function renderizarFiltros() {
-  const contenedorFiltros = document.getElementById('filtros');
-  const estilosUnicos = [...new Set(ilustraciones.map(il => il.estilo))];
-
-  estilosUnicos.forEach(estilo => {
-    const btn = document.createElement('button');
-    btn.className = 'filtro';
-    btn.dataset.filtro = estilo;
-    btn.textContent = estilo.replace(/-/g, ' ');
-    contenedorFiltros.appendChild(btn);
-  });
-}
-
 
 function renderizarCards(lista) {
   const grid = document.getElementById('grid');
@@ -236,26 +235,24 @@ function renderizarCards(lista) {
     card.dataset.estilo = ilus.estilo;
 
     card.innerHTML = `
-      <div class="card__imagen-wrap">
+      <div class="card__imagen-wrap card__imagen-wrap--ilustracion">
         <img
           class="card__imagen"
-          src="${ilus.imagen}"
-          alt="${ilus.titulo}"
+          src="${ilus.ilustracion}"
+          alt="${tr().ui.altEjemplo(ilus.estilo)}"
           loading="lazy"
           onerror="this.parentElement.style.background='${ilus.color}22'; this.style.display='none'"
         />
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,${ilus.color}22,transparent);pointer-events:none;"></div>
-      </div>
-      <div class="card__overlay">
-        <div class="card__nombre">${ilus.titulo}</div>
-        <div class="card__estilo-tag">${ilus.estilo.replace(/-/g, ' ')}</div>
       </div>
       <div class="card__info">
         <div>
-          <div class="card__info-nombre">${ilus.titulo}</div>
-          <div class="card__info-estilo">${ilus.estilo.replace(/-/g, ' ')}</div>
+          <div class="card__info-nombre">${ilus.estilo.replace(/-/g, ' ')}</div>
+          <div class="card__formatos" title="${tr().ui.disponibleEn} ${productos.map(p => nombreProducto(p).toLowerCase()).join(', ')}">
+            ${productos.map(p => p.icono).join('')}
+            <span>${precioMinimo()}</span>
+          </div>
         </div>
-        <span style="color:${ilus.color};font-size:0.7rem;letter-spacing:1px;">ver</span>
+        <span class="card__cta">${tr().ui.elegir}</span>
       </div>
     `;
 
@@ -265,6 +262,26 @@ function renderizarCards(lista) {
 
   // Aqui, una sola vez, cuando todas las cards ya estan en el DOM
   iniciarScrollReveal();
+}
+
+
+function precioMinimo() {
+  return tr().ui.desde(Math.min(...productos.map(p => p.precio)));
+}
+
+
+// Atajos para leer los textos del idioma activo
+function tr() {
+  return traducciones[idiomaActual];
+}
+
+function nombreProducto(prod) {
+  return tr().productos[prod.id] || prod.nombre;
+}
+
+// Devuelve la ilustracion con estilo, titulo y descripcion en el idioma activo
+function ilusTraducida(ilus) {
+  return { ...ilus, ...tr().ilustraciones[ilustraciones.indexOf(ilus)] };
 }
 
 
@@ -281,12 +298,12 @@ function renderizarProductosModal(mockups) {
 
     opcion.innerHTML = `
       <span class="producto-opcion__icono">${prod.icono}</span>
-      <div class="producto-opcion__nombre">${prod.nombre}</div>
-      <div class="producto-opcion__precio">${tieneMockup ? prod.precio : 'proximamente'}</div>
+      <div class="producto-opcion__nombre">${nombreProducto(prod)}</div>
+      <div class="producto-opcion__precio">${tieneMockup ? tr().ui.desde(prod.precio) : tr().ui.proximamente}</div>
     `;
 
     if (tieneMockup) {
-      opcion.addEventListener('click', () => seleccionarProducto(prod.id, prod.nombre, mockups[prod.id]));
+      opcion.addEventListener('click', () => seleccionarProducto(prod.id, nombreProducto(prod), mockups[prod.id]));
     }
 
     contenedor.appendChild(opcion);
@@ -295,59 +312,34 @@ function renderizarProductosModal(mockups) {
 
 
 /* =============================================
-   3. FILTROS
-   ============================================= */
-
-function iniciarFiltros() {
-  const contenedorFiltros = document.getElementById('filtros');
-
-  contenedorFiltros.addEventListener('click', (evento) => {
-    if (!evento.target.matches('.filtro')) return;
-
-    const filtroElegido = evento.target.dataset.filtro;
-
-    document.querySelectorAll('.filtro').forEach(btn => btn.classList.remove('activo'));
-    evento.target.classList.add('activo');
-
-    if (filtroElegido === 'todos') {
-      renderizarCards(ilustraciones);
-    } else {
-      const filtradas = ilustraciones.filter(il => il.estilo === filtroElegido);
-      renderizarCards(filtradas);
-    }
-  });
-}
-
-
-/* =============================================
-   4. MODAL
+   3. MODAL
    ============================================= */
 
 let productoSeleccionado = null;
+let previewTimer = null; // fundido del mockup; se cancela al reabrir el modal
 
 function abrirModal(id) {
-  const ilus = ilustraciones.find(il => il.id === id);
-  if (!ilus) return;
+  const base = ilustraciones.find(il => il.id === id);
+  if (!base) return;
+  const ilus = ilusTraducida(base);
 
   document.getElementById('modal').dataset.ilusActual = ilus.id;
 
-  document.getElementById('modal-estilo').textContent = ilus.estilo.replace(/-/g, ' ');
-  document.getElementById('modal-titulo').textContent = ilus.titulo;
+  document.getElementById('modal-titulo').textContent = ilus.estilo;
   document.getElementById('modal-descripcion').textContent = ilus.descripcion;
 
-  // Preview arranca con la imagen principal de la ilustracion
-  const preview = document.getElementById('modal-preview');
-  preview.src = ilus.imagen;
-  preview.alt = ilus.titulo;
-
-  document.getElementById('modal-preview-label').textContent = '';
-
-  // Resetear seleccion
-  productoSeleccionado = null;
-  document.getElementById('modal-seleccion').textContent = 'elige un producto para verlo';
-  document.getElementById('modal-btn-compra').disabled = true;
-
   renderizarProductosModal(ilus.mockups);
+
+  // La vista previa arranca con la ilustracion; cambia al mockup al elegir formato
+  productoSeleccionado = null;
+  clearTimeout(previewTimer);
+  const preview = document.getElementById('modal-preview');
+  preview.style.opacity = '1';
+  preview.src = ilus.ilustracion;
+  preview.alt = tr().ui.altEjemplo(ilus.estilo);
+  document.getElementById('modal-preview-label').textContent = '';
+  document.getElementById('modal-seleccion').textContent = tr().ui.eligeFormato;
+  document.getElementById('modal-btn-compra').disabled = true;
 
   document.getElementById('modal').classList.add('abierto');
   document.getElementById('modal-overlay').classList.add('abierto');
@@ -378,32 +370,39 @@ function seleccionarProducto(id, nombre, rutaMockup) {
 
   // Transicion suave: fade out, cambia imagen, fade in
   preview.style.opacity = '0';
-  setTimeout(() => {
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(() => {
     preview.src = rutaMockup;
     preview.alt = nombre;
     preview.style.opacity = '1';
   }, 150);
 
+  const prod = productos.find(p => p.id === id);
   document.getElementById('modal-preview-label').textContent = nombre;
-  document.getElementById('modal-seleccion').textContent = nombre + ' seleccionado';
+  document.getElementById('modal-seleccion').textContent = nombre + ' · ' + tr().ui.desde(prod.precio);
   document.getElementById('modal-btn-compra').disabled = false;
 }
 
 
 function abrirFormularioPedido() {
   const ilusId = Number(document.getElementById('modal').dataset.ilusActual);
-  const ilus = ilustraciones.find(il => il.id === ilusId);
+  const ilus = ilusTraducida(ilustraciones.find(il => il.id === ilusId));
   const prod = productos.find(p => p.id === productoSeleccionado);
+  const ui = tr().ui;
 
   // Rellenar el resumen con lo elegido
   document.getElementById('modal-pedido-resumen').innerHTML = `
     <div class="resumen__item">
-      <span class="resumen__label">estilo</span>
-      <span class="resumen__valor">${ilus.estilo.replace(/-/g, ' ')}</span>
+      <span class="resumen__label">${ui.estilo}</span>
+      <span class="resumen__valor">${ilus.estilo}</span>
     </div>
     <div class="resumen__item">
-      <span class="resumen__label">formato</span>
-      <span class="resumen__valor">${prod.nombre}</span>
+      <span class="resumen__label">${ui.formato}</span>
+      <span class="resumen__valor">${nombreProducto(prod)}</span>
+    </div>
+    <div class="resumen__item">
+      <span class="resumen__label">${ui.precio}</span>
+      <span class="resumen__valor">${ui.desde(prod.precio)}</span>
     </div>
   `;
 
@@ -455,8 +454,7 @@ function enviarPedido() {
   document.getElementById('modal-pedido-enviar').style.display = 'none';
   document.querySelector('.modal__pedido-volver').style.display = 'none';
 
-  document.getElementById('confirmacion-texto').textContent =
-    'Gracias ' + nombre + '. He recibido tu pedido y te escribo a ' + email + ' en menos de 24h con todos los detalles.';
+  document.getElementById('confirmacion-texto').textContent = tr().ui.confirmacion(nombre, email);
 
   document.getElementById('modal-confirmacion').classList.add('activa');
 }
@@ -472,10 +470,7 @@ function iniciarModal() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') cerrarModal();
   });
-  document.getElementById('modal-btn-compra').addEventListener('click', () => {
-  const ilusId = Number(document.getElementById('modal').dataset.ilusActual);
-  añadirAlCarrito(ilusId, productoSeleccionado);
-});
+  document.getElementById('modal-btn-compra').addEventListener('click', abrirFormularioPedido);
 
   // Pedido
   document.getElementById('modal-pedido-volver').addEventListener('click', volverAlModal);
@@ -525,13 +520,13 @@ function iniciarCarrusel() {
     const slide = document.createElement('div');
     slide.className = 'hero__diapositiva' + (i === 0 ? ' activa' : '');
     slide.style.backgroundImage = `url('${img.src}')`;
-    slide.setAttribute('aria-label', img.titulo);
+    slide.setAttribute('aria-hidden', 'true'); // decorativa
     contenedor.appendChild(slide);
 
     // Crear punto indicador
     const punto = document.createElement('button');
     punto.className = 'hero__punto' + (i === 0 ? ' activo' : '');
-    punto.setAttribute('aria-label', 'ir a ' + img.titulo);
+    punto.setAttribute('aria-label', img.titulo); // aplicarIdioma lo traduce
     punto.addEventListener('click', () => irADiapositiva(i));
     contenedorPuntos.appendChild(punto);
   });
@@ -634,10 +629,6 @@ function añadirAlCarrito(ilusId, productoId) {
     id: Date.now(), // id único para poder eliminar
     ilusId,
     productoId,
-    titulo: ilus.titulo,
-    estilo: ilus.estilo,
-    producto: prod.nombre,
-    precio: prod.precio,
     imagen: ilus.mockups[productoId] || ilus.imagen,
   };
 
@@ -692,8 +683,8 @@ function renderizarCarrito() {
             <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
         </div>
-        <p class="carrito-vacio__texto">tu carrito está vacío<br/>explora la galería y añade algo</p>
-        <button class="btn" onclick="cerrarCarrito()">ver galería</button>
+        <p class="carrito-vacio__texto">${tr().carrito.vacio}</p>
+        <button class="btn" onclick="cerrarCarrito()">${tr().carrito.verGaleria}</button>
       </div>
     `;
     footer.style.display = 'none';
@@ -702,24 +693,26 @@ function renderizarCarrito() {
 
   footer.style.display = 'flex';
 
-  contenedor.innerHTML = carrito.map(item => `
+  // Los textos salen de los datos actuales, no de lo guardado, para respetar el idioma activo
+  contenedor.innerHTML = carrito.map(item => {
+    const ilus = ilusTraducida(ilustraciones.find(il => il.id === item.ilusId));
+    const prod = productos.find(p => p.id === item.productoId);
+    return `
     <div class="carrito-item">
-      <img class="carrito-item__imagen" src="${item.imagen}" alt="${item.titulo}" />
+      <img class="carrito-item__imagen" src="${item.imagen}" alt="${ilus.estilo} — ${nombreProducto(prod)}" />
       <div class="carrito-item__info">
-        <div class="carrito-item__titulo">${item.titulo}</div>
-        <div class="carrito-item__detalle">${item.estilo.replace(/-/g, ' ')} — ${item.producto}</div>
+        <div class="carrito-item__titulo">${ilus.estilo}</div>
+        <div class="carrito-item__detalle">${nombreProducto(prod)}</div>
       </div>
-      <div class="carrito-item__precio">${item.precio}</div>
-      <button class="carrito-item__eliminar" onclick="eliminarDelCarrito(${item.id})" aria-label="eliminar">&#x2715;</button>
+      <div class="carrito-item__precio">${tr().ui.desde(prod.precio)}</div>
+      <button class="carrito-item__eliminar" onclick="eliminarDelCarrito(${item.id})" aria-label="${tr().carrito.eliminar}">&#x2715;</button>
     </div>
-  `).join('');
+  `;
+  }).join('');
 
-  // Total orientativo — cogemos el primer número de cada precio
-  const total = carrito.reduce((acc, item) => {
-    const num = parseInt(item.precio.replace(/[^0-9]/g, ''));
-    return acc + (isNaN(num) ? 0 : num);
-  }, 0);
-  document.getElementById('carrito-total').textContent = 'desde ' + total + '€';
+  // Total orientativo
+  const total = carrito.reduce((acc, item) => acc + productos.find(p => p.id === item.productoId).precio, 0);
+  document.getElementById('carrito-total').textContent = tr().ui.desde(total);
 }
 
 function abrirCarrito() {
@@ -747,17 +740,37 @@ function iniciarCarritoUI() {
   });
 }
 
+function renderizarAntesDespues() {
+  const seccion = document.getElementById('antes-despues');
+  if (antesDespues.length === 0) {
+    seccion.hidden = true;
+    return;
+  }
+
+  const t = tr().antesDespues;
+  // El deslizador es un input range: funciona con raton, teclado y tactil sin codigo extra
+  document.getElementById('antes-despues-grid').innerHTML = antesDespues.map(par => {
+    const ilus = ilustraciones.find(il => il.ilustracion.includes('/' + par.estilo + '.'));
+    const estilo = ilus ? ilusTraducida(ilus).estilo : '';
+    return `
+    <figure class="comparador" style="--pos: 50%">
+      <img class="comparador__img" src="${par.original}" alt="${t.original}" loading="lazy" />
+      <img class="comparador__img comparador__img--resultado" src="${par.resultado}" alt="${t.resultado} · ${estilo}" loading="lazy" />
+      <span class="comparador__etiqueta comparador__etiqueta--original">${t.original}</span>
+      <span class="comparador__etiqueta comparador__etiqueta--resultado">${estilo || t.resultado}</span>
+      <input class="comparador__rango" type="range" min="0" max="100" value="50" aria-label="${t.aria}"
+        oninput="this.parentElement.style.setProperty('--pos', this.value + '%')" />
+    </figure>`;
+  }).join('');
+}
+
 function renderizarTestimonios() {
   const contenedor = document.getElementById('testimonios-grid');
   if (!contenedor) return;
 
+  // Sin testimonios la sección parece a medio hacer: se oculta hasta tener el primero
   if (testimonios.length === 0) {
-    contenedor.innerHTML = `
-      <div class="testimonios__vacio">
-        pronto aqui aparecerán los primeros recuerdos reales.<br/>
-        sé el primero en compartir el tuyo.
-      </div>
-    `;
+    document.getElementById('testimonios').hidden = true;
     return;
   }
 
@@ -789,97 +802,133 @@ function renderizarTestimonios() {
 
 const traducciones = {
   es: {
-    // Nav
+    // Portada (claves usadas en data-i18n="seccion.clave" del HTML)
     nav: {
-      galeria: "galería",
-      comoFunciona: "como funciona",
-      sobre: "sobre",
-      contacto: "contacto",
+      estilos: "Estilos",
+      comoFunciona: "Cómo funciona",
+      historia: "Nuestra historia",
+      contacto: "Contacto",
     },
-    // Hero
     hero: {
-      tagline: "ilustración con alma",
-      titulo1: "arte que",
-      titulo2: "se lleva",
-      sub: "Ilustraciones únicas en pósters, tazas, stickers y mucho más.<br/>Elige tu estilo. Elige tu objeto. Llévate un pedacito.",
-      cta: "ver la galería",
+      titulo: 'Tu foto.<br/><span class="hero__acento">Otra forma de arte.</span>',
+      sub: "Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, listas para convertirse en un regalo único.",
+      cta: "Crear mi regalo",
+      cta2: "Ver cómo funciona",
     },
-    // Galeria
     galeria: {
-      titulo: "la colección",
-      filtroTodos: "todos",
-      ver: "ver",
+      titulo: "Una foto, muchas formas de verla",
+      sub: "Elige el estilo que más te guste. Después decides en qué quieres llevarlo.",
     },
-    // Como funciona
-    comoFunciona: {
+    antesDespues: {
+      titulo: "De la foto original a la obra",
+      sub: "Desliza para comparar.",
+      original: "original",
+      resultado: "iaks",
+      aria: "Comparar la foto original con la transformación",
+    },
+    como: {
       etiqueta: "el proceso",
-      titulo: "asi funciona",
-      sub: "De tu foto a un objeto único en cuatro pasos.",
-      pasos: [
-        { titulo: "elige tu estilo", texto: "Explora la galería y encuentra el estilo visual que más te representa. Rotulador, lápiz, cómic, retro pop o fantasía." },
-        { titulo: "elige tu regalo", texto: "Póster, taza, camiseta, sticker, llavero o pin. Elige el formato en el que quieres que viva tu ilustración." },
-        { titulo: "mándame tu foto", texto: "Una foto tuya, de alguien especial, una mascota, un lugar. Cualquier recuerdo que merezca convertirse en algo tangible." },
-        { titulo: "recíbelo en casa", texto: "iaks transforma tu foto con el estilo elegido y te lo envía listo para sorprender. Un recuerdo con alma." },
-      ],
-      cta: "quiero el mío",
+      titulo: "Así funciona",
+      sub: "De tu foto a un regalo con personalidad, en cuatro pasos.",
+      paso1: "Elige tu creación",
+      paso1Texto: "Escoge el estilo artístico y el producto que más te gusten.",
+      paso2: "Envíanos tu foto",
+      paso2Texto: "Sube la imagen que quieres transformar: una persona, una pareja, tu familia o tu mascota.",
+      paso3: "Cuidamos cada detalle",
+      paso3Texto: "Trabajamos la transformación artística para que conserve lo que hace reconocible a quien aparece en ella.",
+      paso4: "Recibe tu regalo",
+      paso4Texto: "Cuando el diseño está listo, lo producimos y te lo enviamos en los plazos indicados.",
+      cta: "Crear mi regalo",
     },
-    // Sobre
+    porque: {
+      titulo: "Por qué iaks",
+      p1: "Dirección artística",
+      p1Texto: "Cada imagen sigue una intención estética, no el resultado por defecto de una herramienta.",
+      p2: "Identidad reconocible",
+      p2Texto: "Rostro, peinado y expresión se respetan en la medida que permite cada estilo.",
+      p3: "Estilos seleccionados",
+      p3Texto: "Pocos estilos, bien trabajados y coherentes entre sí.",
+      p4: "Atención al detalle",
+      p4Texto: "Revisamos y corregimos cada resultado antes de darlo por bueno.",
+      p5: "Pensado para regalar",
+      p5Texto: "Productos elegidos para que la ilustración luzca como lo que es: un regalo.",
+    },
     sobre: {
-      etiqueta: "detrás de iaks",
-      titulo1: "el dibujo",
-      titulo2: "siempre estuvo",
-      titulo3: "primero",
-      p1: "iaks nace de una contradicción bonita: un estudiante de desarrollo web que no puede soltar el lápiz. Código de día, ilustración de noche, y la convicción de que las dos cosas se pueden mezclar sin perder el alma.",
-      p2: "La inteligencia artificial no reemplaza la mirada — la amplifica. Permite que cualquiera pueda convertir un recuerdo, una cara, un momento, en algo que se puede tocar, colgar, regalar. Eso es lo que hace iaks.",
-      p3: "Un recuerdo tangible. Con estilo.",
-      dato1: "estilos visuales",
-      dato2: "formatos de producto",
-      dato3: "obsesión",
+      etiqueta: "nuestra historia",
+      titulo: 'Una foto puede ser<br/><span class="sobre__acento">mucho más</span>',
+      p1: "Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.",
+      p2: "Exploramos las posibilidades de la inteligencia artificial desde la dirección artística, cuidando los estilos, los detalles y la identidad de cada imagen.",
+      p3: "Porque personalizar no debería consistir simplemente en añadir una foto a un objeto.",
     },
-    // Testimonios
     testimonios: {
       etiqueta: "lo que dicen",
-      titulo: "recuerdos reales",
-      sub: "Fotos que se convirtieron en algo tangible.",
-      vacio: "pronto aquí aparecerán los primeros recuerdos reales.<br/>sé el primero en compartir el tuyo.",
+      titulo: "Experiencias reales",
+      sub: "Regalos que ya han encontrado su sitio.",
       original: "original",
     },
-    // Contacto
     contacto: {
-      titulo: "¿quieres algo?",
-      sub: "Escríbeme y lo hablamos.",
-      cta: "hola@iaks.art",
+      titulo: "Hay una foto que merece convertirse en algo especial.",
+      cta: "Crear mi regalo personalizado",
+      dudas: "¿Tienes una idea o una duda? Escríbenos a",
     },
-    // Modal
-    modal: {
-      eligeProducto: "elige un producto para verlo",
-      enQueLoQuieres: "en que lo quieres",
-      pedirEste: "añadir al carrito",
-      volver: "← volver",
+    footer: {
+      lema: "Retratos artísticos y regalos personalizados.",
+      copy: "© 2026 iaks",
+      aria: "pie de página",
+    },
+    // Textos de la interfaz (modal, cards, accesibilidad)
+    ui: {
+      titulo: "iaks | Retratos artísticos y regalos personalizados",
+      pasoUno: "paso 1 de 2",
+      pasoDos: "paso 2 de 2 · tu foto y tus datos",
+      eligeEnQue: "elige en qué lo quieres",
+      eligeFormato: "elige un formato para verlo",
+      continuar: "continuar →",
+      cambiar: "← cambiar formato",
+      estilo: "estilo",
+      formato: "formato",
+      precio: "precio",
       tuNombre: "tu nombre",
-      placeholderNombre: "como te llamas",
+      phNombre: "¿cómo te llamas?",
       tuEmail: "tu email",
-      placeholderEmail: "donde te escribo",
+      phEmail: "¿dónde te escribo?",
       tuFoto: "tu foto",
       uploadTexto: "arrastra tu foto o haz clic",
-      uploadSub: "jpg, png — max 10mb",
+      uploadSub: "jpg o png · máx. 10 MB",
       nota: "nota (opcional)",
-      placeholderNota: "algo que deba saber sobre la foto o el encargo",
+      phNota: "algo que deba saber sobre la foto o el encargo",
       confirmar: "confirmar pedido",
       pedidoRecibido: "pedido recibido",
       cerrar: "cerrar",
+      elegir: "elegir →",
+      proximamente: "próximamente",
+      disponibleEn: "disponible en",
+      desde: n => "desde " + n + "€",
+      altEjemplo: estilo => "ejemplo de ilustración en estilo " + estilo.toLowerCase(),
+      confirmacion: (nombre, email) => "Gracias, " + nombre + ". He recibido tu pedido y te escribo a " + email + " en menos de 24 h con todos los detalles.",
+      ariaMenu: "abrir menú",
+      ariaCarrito: "abrir carrito",
+      carritoTitulo: "tu carrito",
+      totalEstimado: "total estimado",
+      tramitar: "tramitar pedido",
+      avisoPrecios: "los precios son orientativos, se confirman al tramitar",
+      ariaAnterior: "anterior",
+      ariaSiguiente: "siguiente",
+      ariaCerrar: "cerrar",
+      ariaModal: "elige estilo y formato",
+      ariaIrA: estilo => "ir a " + estilo.toLowerCase(),
+      altSobre: "ilustración de iaks enmarcada en un salón",
     },
     // Carrito
     carrito: {
       titulo: "tu carrito",
       vacio: "tu carrito está vacío<br/>explora la galería y añade algo",
       verGaleria: "ver galería",
+      eliminar: "eliminar",
       totalEstimado: "total estimado",
       tramitar: "tramitar pedido",
       aviso: "los precios son orientativos, se confirman al tramitar",
     },
-    // Footer
-    footer: "© 2025 iaks — hecho con cariño y píxeles",
     // Productos
     productos: {
       poster: "Póster A3",
@@ -891,97 +940,140 @@ const traducciones = {
     },
     // Ilustraciones
     ilustraciones: [
-      { titulo: "ESTILO ROTU", descripcion: "Rotulador directo, sin red. El trazo lo dice todo." },
-      { titulo: "ESTILO LAPIZ", descripcion: "Trazos suaves y líneas quebradas que cuentan más de lo que muestran." },
-      { titulo: "ESTILO COMIC", descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud." },
-      { titulo: "ESTILO ANIME", descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes, y mucho dramatismo." },
-      { titulo: "ESTILO FANTASÍA", descripcion: "Magia, sofisticación y ojos grandes." },
-      { titulo: "ESTILO VECTOR", descripcion: "minimalismo moderno, con colores planos y formas geométricas." },
+      { titulo: "ESTILO ROTU", estilo: "Rotulador", descripcion: "Rotulador directo, sin red. El trazo lo dice todo." },
+      { titulo: "ESTILO LAPIZ", estilo: "Boceto a mano", descripcion: "Trazos suaves y líneas quebradas que cuentan más de lo que muestran." },
+      { titulo: "ESTILO COMIC", estilo: "Cómic clásico", descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud." },
+      { titulo: "ESTILO ANIME", estilo: "Cómic anime", descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes y mucho dramatismo." },
+      { titulo: "ESTILO FANTASÍA", estilo: "Cómic fantasía", descripcion: "Magia, sofisticación y un aire de cuento." },
+      { titulo: "ESTILO VECTOR", estilo: "Vector", descripcion: "Minimalismo moderno: colores planos y formas geométricas." },
     ],
   },
 
   en: {
     nav: {
-      galeria: "gallery",
-      comoFunciona: "how it works",
-      sobre: "about",
-      contacto: "contact",
+      estilos: "Styles",
+      comoFunciona: "How it works",
+      historia: "Our story",
+      contacto: "Contact",
     },
     hero: {
-      tagline: "illustration with soul",
-      titulo1: "art you",
-      titulo2: "can keep",
-      sub: "Unique illustrations on posters, mugs, stickers and more.<br/>Pick your style. Pick your format. Take a piece home.",
-      cta: "see the gallery",
+      titulo: 'Your photo.<br/><span class="hero__acento">Another kind of art.</span>',
+      sub: "We turn your favourite photos into personalised works of art, ready to become a one-of-a-kind gift.",
+      cta: "Create my gift",
+      cta2: "See how it works",
     },
     galeria: {
-      titulo: "the collection",
-      filtroTodos: "all",
-      ver: "view",
+      titulo: "One photo, many ways to see it",
+      sub: "Pick the style you like best. Then choose what you want it on.",
     },
-    comoFunciona: {
+    antesDespues: {
+      titulo: "From the original photo to the artwork",
+      sub: "Slide to compare.",
+      original: "original",
+      resultado: "iaks",
+      aria: "Compare the original photo with the transformation",
+    },
+    como: {
       etiqueta: "the process",
-      titulo: "how it works",
-      sub: "From your photo to a unique object in four steps.",
-      pasos: [
-        { titulo: "pick your style", texto: "Browse the gallery and find the visual style that represents you. Marker, pencil, comic, retro pop or fantasy." },
-        { titulo: "pick your gift", texto: "Poster, mug, t-shirt, sticker, keychain or pin. Choose the format where your illustration will live." },
-        { titulo: "send me your photo", texto: "A photo of you, someone special, a pet, a place. Any memory worth turning into something tangible." },
-        { titulo: "receive it at home", texto: "iaks transforms your photo in the chosen style and sends it ready to surprise. A memory with soul." },
-      ],
-      cta: "i want mine",
+      titulo: "How it works",
+      sub: "From your photo to a gift with personality, in four steps.",
+      paso1: "Choose your creation",
+      paso1Texto: "Pick the art style and the product you like best.",
+      paso2: "Send us your photo",
+      paso2Texto: "Upload the picture you want to transform: a person, a couple, your family or your pet.",
+      paso3: "We take care of every detail",
+      paso3Texto: "We work on the artistic transformation so it keeps what makes the people in it recognisable.",
+      paso4: "Receive your gift",
+      paso4Texto: "Once the design is ready, we produce it and ship it within the stated delivery times.",
+      cta: "Create my gift",
+    },
+    porque: {
+      titulo: "Why iaks",
+      p1: "Art direction",
+      p1Texto: "Every image follows a clear aesthetic intent, not a tool's default output.",
+      p2: "Recognisable identity",
+      p2Texto: "Face, hair and expression are kept as faithfully as each style allows.",
+      p3: "Curated styles",
+      p3Texto: "A few styles, carefully developed and consistent with each other.",
+      p4: "Attention to detail",
+      p4Texto: "We review and refine every result before calling it done.",
+      p5: "Made to be given",
+      p5Texto: "Products chosen so the illustration looks like what it is: a gift.",
     },
     sobre: {
-      etiqueta: "behind iaks",
-      titulo1: "drawing",
-      titulo2: "always came",
-      titulo3: "first",
-      p1: "iaks was born from a beautiful contradiction: a web development student who can't put down the pencil. Code by day, illustration by night, with the conviction that both can mix without losing their soul.",
-      p2: "Artificial intelligence doesn't replace the eye — it amplifies it. It allows anyone to turn a memory, a face, a moment, into something you can touch, hang, or gift. That's what iaks does.",
-      p3: "A tangible memory. With style.",
-      dato1: "visual styles",
-      dato2: "product formats",
-      dato3: "obsession",
+      etiqueta: "our story",
+      titulo: 'A photo can be<br/><span class="sobre__acento">so much more</span>',
+      p1: "Behind iaks there is a simple idea: a photograph can become something far more special when it is worked on with creative intent.",
+      p2: "We explore what artificial intelligence can do through art direction, taking care of the styles, the details and the identity in every image.",
+      p3: "Because personalising shouldn't just mean putting a photo on an object.",
     },
     testimonios: {
       etiqueta: "what they say",
-      titulo: "real memories",
-      sub: "Photos that became something tangible.",
-      vacio: "soon the first real memories will appear here.<br/>be the first to share yours.",
+      titulo: "Real experiences",
+      sub: "Gifts that have already found their place.",
       original: "original",
     },
     contacto: {
-      titulo: "want something?",
-      sub: "Write to me and let's talk.",
-      cta: "hola@iaks.art",
+      titulo: "There's a photo that deserves to become something special.",
+      cta: "Create my personalised gift",
+      dudas: "Have an idea or a question? Write to us at",
     },
-    modal: {
-      eligeProducto: "pick a product to preview",
-      enQueLoQuieres: "what format do you want",
-      pedirEste: "add to cart",
-      volver: "← back",
+    footer: {
+      lema: "Art portraits and personalised gifts.",
+      copy: "© 2026 iaks",
+      aria: "footer",
+    },
+    ui: {
+      titulo: "iaks | Art portraits and personalised gifts",
+      pasoUno: "step 1 of 2",
+      pasoDos: "step 2 of 2 · your photo and details",
+      eligeEnQue: "choose what to put it on",
+      eligeFormato: "choose a format to preview it",
+      continuar: "continue →",
+      cambiar: "← change format",
+      estilo: "style",
+      formato: "format",
+      precio: "price",
       tuNombre: "your name",
-      placeholderNombre: "what's your name",
+      phNombre: "what's your name?",
       tuEmail: "your email",
-      placeholderEmail: "where should i write you",
+      phEmail: "where should I write to you?",
       tuFoto: "your photo",
-      uploadTexto: "drag your photo or click",
-      uploadSub: "jpg, png — max 10mb",
+      uploadTexto: "drag your photo here or click",
+      uploadSub: "jpg or png · max. 10 MB",
       nota: "note (optional)",
-      placeholderNota: "anything i should know about the photo or the order",
+      phNota: "anything I should know about the photo or the order",
       confirmar: "confirm order",
       pedidoRecibido: "order received",
       cerrar: "close",
+      elegir: "choose →",
+      proximamente: "coming soon",
+      disponibleEn: "available as",
+      desde: n => "from €" + n,
+      altEjemplo: estilo => "example illustration in " + estilo.toLowerCase() + " style",
+      confirmacion: (nombre, email) => "Thank you, " + nombre + ". I've received your order and I'll write to you at " + email + " within 24 hours with all the details.",
+      ariaMenu: "open menu",
+      ariaCarrito: "open cart",
+      carritoTitulo: "your cart",
+      totalEstimado: "estimated total",
+      tramitar: "checkout",
+      avisoPrecios: "prices are estimates and confirmed at checkout",
+      ariaAnterior: "previous",
+      ariaSiguiente: "next",
+      ariaCerrar: "close",
+      ariaModal: "choose style and format",
+      ariaIrA: estilo => "go to " + estilo.toLowerCase(),
+      altSobre: "iaks illustration framed in a living room",
     },
     carrito: {
       titulo: "your cart",
       vacio: "your cart is empty<br/>browse the gallery and add something",
       verGaleria: "see gallery",
+      eliminar: "remove",
       totalEstimado: "estimated total",
       tramitar: "checkout",
       aviso: "prices are estimates, confirmed upon checkout",
     },
-    footer: "© 2025 iaks — made with care and pixels",
     productos: {
       poster: "A3 Poster",
       taza: "Mug",
@@ -991,12 +1083,12 @@ const traducciones = {
       pin: "Pin",
     },
     ilustraciones: [
-      { titulo: "MARKER STYLE", description: "Direct marker, no safety net. The line says it all." },
-      { titulo: "PENCIL STYLE", description: "Soft strokes and broken lines that tell more than they show." },
-      { titulo: "COMIC STYLE", description: "Urban panel with hard shadows, impossible perspective, and plenty of attitude." },
-      { titulo: "ANIME STYLE", description: "Direct inspiration from classic manga and anime: big eyes, and lots of drama." },
-      { titulo: "FANTASY STYLE", description: "Magic, sophistication, and big eyes." },
-      { titulo: "VECTOR STYLE", description: "Modern minimalism, with flat colors and geometric shapes." },
+      { titulo: "MARKER STYLE", estilo: "Marker", descripcion: "Direct marker, no safety net. The line says it all." },
+      { titulo: "PENCIL STYLE", estilo: "Pencil sketch", descripcion: "Soft strokes and broken lines that tell more than they show." },
+      { titulo: "COMIC STYLE", estilo: "Classic comic", descripcion: "Urban panel with hard shadows, impossible perspective and plenty of attitude." },
+      { titulo: "ANIME STYLE", estilo: "Anime comic", descripcion: "Direct inspiration from classic manga and anime: big eyes and lots of drama." },
+      { titulo: "FANTASY STYLE", estilo: "Fantasy comic", descripcion: "Magic, sophistication and a fairy-tale touch." },
+      { titulo: "VECTOR STYLE", estilo: "Vector", descripcion: "Modern minimalism, with flat colors and geometric shapes." },
     ],
   },
 };
@@ -1012,70 +1104,28 @@ function aplicarIdioma(idioma) {
   const toggle = document.getElementById('idioma-toggle');
   toggle.className = 'idioma-toggle ' + idioma;
 
-  // Nav
-  document.querySelector('[href="#galeria"]').textContent = t.nav.galeria;
-  document.querySelector('[href="#como-funciona"]').textContent = t.nav.comoFunciona;
-  document.querySelector('[href="#sobre"]').textContent = t.nav.sobre;
-  document.querySelector('[href="#contacto"]').textContent = t.nav.contacto;
+  // Textos del HTML marcados con data-i18n="seccion.clave" (y sus variantes -html, -placeholder, -aria, -alt)
+  const leer = ruta => ruta.split('.').reduce((obj, clave) => obj?.[clave], t);
+  document.title = t.ui.titulo;
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = leer(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = leer(el.dataset.i18nHtml); });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = leer(el.dataset.i18nPlaceholder); });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', leer(el.dataset.i18nAria)); });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = leer(el.dataset.i18nAlt); });
 
-  // Hero
-  document.querySelector('.hero__tagline').textContent = t.hero.tagline;
-  document.querySelector('.hero__titulo').innerHTML = t.hero.titulo1 + '<br/><span class="hero__acento">' + t.hero.titulo2 + '</span>';
-  document.querySelector('.hero__sub').innerHTML = t.hero.sub;
-  document.querySelector('.hero .btn--grande').textContent = t.hero.cta;
-
-  // Galeria
-  document.querySelector('.galeria__titulo').textContent = t.galeria.titulo;
-  document.querySelector('[data-filtro="todos"]').textContent = t.galeria.filtroTodos;
-
-  // Como funciona
-  document.querySelector('.como-funciona__etiqueta').textContent = t.comoFunciona.etiqueta;
-  document.querySelector('.como-funciona__titulo').textContent = t.comoFunciona.titulo;
-  document.querySelector('.como-funciona__sub').textContent = t.comoFunciona.sub;
-  const pasosTitulos = document.querySelectorAll('.paso__titulo');
-  const pasosTextos = document.querySelectorAll('.paso__texto');
-  t.comoFunciona.pasos.forEach((paso, i) => {
-    if (pasosTitulos[i]) pasosTitulos[i].textContent = paso.titulo;
-    if (pasosTextos[i]) pasosTextos[i].textContent = paso.texto;
+  // Puntos del carrusel
+  const conPoster = ilustraciones.filter(il => il.mockups && il.mockups.poster);
+  document.querySelectorAll('.hero__punto').forEach((punto, i) => {
+    punto.setAttribute('aria-label', t.ui.ariaIrA(ilusTraducida(conPoster[i]).estilo));
   });
-  document.querySelector('.como-funciona__cta .btn--grande').textContent = t.comoFunciona.cta;
 
-  // Sobre
-  document.querySelector('.sobre__etiqueta').textContent = t.sobre.etiqueta;
-  document.querySelector('.sobre__titulo').innerHTML =
-    t.sobre.titulo1 + '<br/><span class="sobre__acento">' + t.sobre.titulo2 + '</span><br/>' + t.sobre.titulo3;
-  const sobreParrafos = document.querySelectorAll('.sobre__texto p');
-  if (sobreParrafos[0]) sobreParrafos[0].textContent = t.sobre.p1;
-  if (sobreParrafos[1]) sobreParrafos[1].textContent = t.sobre.p2;
-  if (sobreParrafos[2]) sobreParrafos[2].textContent = t.sobre.p3;
-  const datoLabels = document.querySelectorAll('.sobre__dato-label');
-  if (datoLabels[0]) datoLabels[0].textContent = t.sobre.dato1;
-  if (datoLabels[1]) datoLabels[1].textContent = t.sobre.dato2;
-  if (datoLabels[2]) datoLabels[2].textContent = t.sobre.dato3;
-
-  // Testimonios
-  document.querySelector('.testimonios__etiqueta').textContent = t.testimonios.etiqueta;
-  document.querySelector('.testimonios__titulo').textContent = t.testimonios.titulo;
-  document.querySelector('.testimonios__sub').textContent = t.testimonios.sub;
-
-  // Contacto
-  document.querySelector('.contacto__titulo').textContent = t.contacto.titulo;
-  document.querySelector('.contacto p').textContent = t.contacto.sub;
-
-  // Footer
-  document.querySelector('.footer span').textContent = t.footer;
-
-  // Rerenderizar cards con titulos traducidos
-  const listaActual = ilustraciones.map((il, i) => ({
-    ...il,
-    titulo: t.ilustraciones[i]?.titulo || il.titulo,
-    descripcion: t.ilustraciones[i]?.descripcion || il.descripcion,
-  }));
-  renderizarCards(listaActual);
+  // Rerenderizar cards en el idioma activo
+  renderizarCards(ilustraciones.map(ilusTraducida));
   setTimeout(() => iniciarScrollReveal(), 100);
 
   // Rerenderizar testimonios
   renderizarTestimonios();
+  renderizarAntesDespues();
 
   // Actualizar lang del html
   document.documentElement.lang = idioma;
@@ -1093,15 +1143,13 @@ function iniciarToggleIdioma() {
 
 
 /* =============================================
-   5. ARRANQUE
+   4. ARRANQUE
    ============================================= */
 
 function init() {
   iniciarCarrusel(); 
   iniciarHeader();  
-  renderizarFiltros();
   renderizarCards(ilustraciones);
-  iniciarFiltros();
   iniciarModal();
   iniciarCarritoUI(); 
   iniciarScrollReveal();
