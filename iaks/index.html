@@ -84,10 +84,10 @@
   <!-- Texto a la izquierda, obra a la derecha (en movil, una encima de otra) -->
   <div class="hero__contenido">
     <h1 class="hero__titulo" data-i18n-html="hero.titulo">Tu foto.<br/><span class="hero__acento">Otra forma de arte.</span></h1>
-    <p class="hero__sub" data-i18n="hero.sub">Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, listas para convertirse en un regalo único.</p>
+    <p class="hero__sub" data-i18n="hero.sub">Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, cuidando cada detalle para convertirlas en algo especial.</p>
     <div class="hero__botones">
-      <a href="#galeria" class="btn btn--grande" data-i18n="hero.cta">Crear mi regalo</a>
-      <a href="#como-funciona" class="btn btn--grande btn--secundario" data-i18n="hero.cta2">Ver cómo funciona</a>
+      <a href="#galeria" class="btn btn--grande" data-i18n="hero.cta">Explorar estilos</a>
+      <a href="#formatos" class="btn btn--grande btn--secundario" data-i18n="hero.cta2">Empezar por el regalo</a>
     </div>
   </div>
 
@@ -124,6 +124,7 @@
     <div class="galeria__cabecera">
       <h2 class="galeria__titulo" data-i18n="galeria.titulo">Una foto, muchas formas de verla</h2>
       <p class="galeria__sub" data-i18n="galeria.sub">Elige el estilo que más te guste. Después decides en qué quieres llevarlo.</p>
+      <p class="galeria__aviso" id="galeria-aviso" hidden></p>
     </div>
 
     <!-- Las cards se generan desde JS -->
@@ -136,10 +137,23 @@
        ============================================= -->
   <section class="antes-despues" id="antes-despues">
     <div class="antes-despues__cabecera">
-      <h2 class="antes-despues__titulo" data-i18n="antesDespues.titulo">De la foto original a la obra</h2>
-      <p class="antes-despues__sub" data-i18n="antesDespues.sub">Desliza para comparar.</p>
+      <h2 class="antes-despues__titulo" data-i18n="antesDespues.titulo">El arte está en los detalles</h2>
+      <p class="antes-despues__sub" data-i18n="antesDespues.sub">Rostro, expresión, peinado: lo que hace reconocible a cada persona, contado en otro lenguaje. Desliza para comparar.</p>
     </div>
     <div class="antes-despues__grid" id="antes-despues-grid"></div>
+  </section>
+
+  <!-- =============================================
+       FORMATOS: una creacion en varios regalos (entrada por producto)
+       Las cards se generan desde productos[] de app.js
+       ============================================= -->
+  <section class="formatos" id="formatos">
+    <div class="formatos__cabecera">
+      <h2 class="formatos__titulo" data-i18n="formatos.titulo">Tu creación favorita, en el formato que prefieras</h2>
+      <p class="formatos__sub" data-i18n="formatos.sub">Una misma obra, varios regalos. Si ya sabes qué quieres regalar, empieza por aquí y después elige el estilo.</p>
+    </div>
+    <div class="formatos__grid" id="formatos-grid"></div>
+    <p class="formatos__nota" id="formatos-nota"></p>
   </section>
 
   <!-- =============================================
@@ -163,8 +177,8 @@
           <path d="M8 12l2.5 2.5L16 9"/>
         </svg>
       </div>
-      <h3 class="paso__titulo" data-i18n="como.paso1">Elige tu creación</h3>
-      <p class="paso__texto" data-i18n="como.paso1Texto">Escoge el estilo artístico y el producto que más te gusten.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso1">Elige tu estilo</h3>
+      <p class="paso__texto" data-i18n="como.paso1Texto">Descubre las colecciones y quédate con la que mejor cuente tu foto.</p>
     </div>
 
     <div class="paso__conector"></div>
@@ -178,8 +192,8 @@
           <line x1="12" y1="3" x2="12" y2="15"/>
         </svg>
       </div>
-      <h3 class="paso__titulo" data-i18n="como.paso2">Envíanos tu foto</h3>
-      <p class="paso__texto" data-i18n="como.paso2Texto">Sube la imagen que quieres transformar: una persona, una pareja, tu familia o tu mascota.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso2">Elige el formato</h3>
+      <p class="paso__texto" data-i18n="como.paso2Texto">Lámina, cuadro, taza, llavero o retrato digital: la misma obra, en el regalo que prefieras.</p>
     </div>
 
     <div class="paso__conector"></div>
@@ -192,8 +206,8 @@
           <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
         </svg>
       </div>
-      <h3 class="paso__titulo" data-i18n="como.paso3">Cuidamos cada detalle</h3>
-      <p class="paso__texto" data-i18n="como.paso3Texto">Trabajamos la transformación artística para que conserve lo que hace reconocible a quien aparece en ella.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso3">Comparte tu fotografía</h3>
+      <p class="paso__texto" data-i18n="como.paso3Texto">Sube la imagen que quieres transformar: una persona, una pareja, tu familia o tu mascota.</p>
     </div>
 
     <div class="paso__conector"></div>
@@ -208,8 +222,8 @@
           <path d="M12 8c-1.5-3-5-3-5-1s3 1 5 1c2 0 5 1 5-1s-3.5-2-5 1Z"/>
         </svg>
       </div>
-      <h3 class="paso__titulo" data-i18n="como.paso4">Recibe tu regalo</h3>
-      <p class="paso__texto" data-i18n="como.paso4Texto">Cuando el diseño está listo, lo producimos y te lo enviamos en los plazos indicados.</p>
+      <h3 class="paso__titulo" data-i18n="como.paso4">Creamos tu obra</h3>
+      <p class="paso__texto" data-i18n="como.paso4Texto">Trabajamos la transformación con nuestros criterios de calidad y, cuando está lista, la producimos y te la enviamos.</p>
     </div>
 
   </div>
@@ -257,7 +271,7 @@
 
     <div class="sobre__etiqueta" data-i18n="sobre.etiqueta">nuestra historia</div>
 
-    <h2 class="sobre__titulo" data-i18n-html="sobre.titulo">Una foto puede ser<br/><span class="sobre__acento">mucho más</span></h2>
+    <h2 class="sobre__titulo" data-i18n-html="sobre.titulo">La tecnología abre posibilidades.<br/><span class="sobre__acento">El criterio marca la diferencia.</span></h2>
 
     <div class="sobre__texto">
       <p data-i18n="sobre.p1">Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.</p>
@@ -300,8 +314,8 @@
        CTA FINAL + CONTACTO
        ============================================= -->
   <section class="contacto" id="contacto">
-    <h2 class="contacto__titulo" data-i18n="contacto.titulo">Hay una foto que merece convertirse en algo especial.</h2>
-    <a href="#galeria" class="btn btn--grande" data-i18n="contacto.cta">Crear mi regalo personalizado</a>
+    <h2 class="contacto__titulo" data-i18n="contacto.titulo">Hay una fotografía que merece convertirse en algo más.</h2>
+    <a href="#galeria" class="btn btn--grande" data-i18n="contacto.cta">Crear mi regalo</a>
     <p class="contacto__dudas"><span data-i18n="contacto.dudas">¿Tienes una idea o una duda? Escríbenos a</span> <a href="mailto:hola@iaks.art">hola@iaks.art</a></p>
   </section>
 

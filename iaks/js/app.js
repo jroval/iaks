@@ -340,6 +340,7 @@ function renderizarProductosModal(ilus) {
    ============================================= */
 
 let productoSeleccionado = null;
+let productoPreferido = null; // formato elegido antes que el estilo (entrada por producto)
 let previewTimer = null; // fundido del mockup; se cancela al reabrir el modal
 
 function abrirModal(id) {
@@ -364,6 +365,11 @@ function abrirModal(id) {
   document.getElementById('modal-preview-label').textContent = '';
   document.getElementById('modal-seleccion').textContent = tr().ui.eligeFormato;
   document.getElementById('modal-btn-compra').disabled = true;
+
+  const preferido = productos.find(p => p.id === productoPreferido);
+  if (preferido && vistaPrevia(ilus, preferido)) {
+    seleccionarProducto(preferido.id, nombreProducto(preferido), vistaPrevia(ilus, preferido));
+  }
 
   document.getElementById('modal').classList.add('abierto');
   document.getElementById('modal-overlay').classList.add('abierto');
@@ -793,6 +799,40 @@ function renderizarCategorias() {
     </a>`).join('');
 }
 
+// Ilustracion de ejemplo para presentar los formatos
+const ilusEjemploFormatos = 1;
+
+function renderizarFormatos() {
+  const t = tr().formatos;
+  const ilus = ilusTraducida(ilustraciones.find(il => il.id === ilusEjemploFormatos));
+  document.getElementById('formatos-grid').innerHTML = productos.map(prod => `
+    <button class="formato" type="button" onclick="elegirFormato('${prod.id}')">
+      <span class="formato__papel">
+        <img class="formato__img" src="${vistaPrevia(ilus, prod)}" alt="${nombreProducto(prod)}" loading="lazy" />
+      </span>
+      <span class="formato__nombre">${nombreProducto(prod)}</span>
+      <span class="formato__precio">${tr().ui.desde(prod.precio)}</span>
+      <span class="formato__enlace">${t.elegirEstilo}</span>
+    </button>`).join('');
+  document.getElementById('formatos-nota').textContent = t.nota(ilus.estilo);
+  pintarAvisoFormato();
+}
+
+function elegirFormato(id) {
+  productoPreferido = id;
+  pintarAvisoFormato();
+  document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+}
+
+function pintarAvisoFormato() {
+  const aviso = document.getElementById('galeria-aviso');
+  const prod = productos.find(p => p.id === productoPreferido);
+  aviso.hidden = !prod;
+  if (!prod) return;
+  const t = tr().formatos;
+  aviso.innerHTML = `${t.aviso(nombreProducto(prod))} <button type="button" onclick="productoPreferido = null; pintarAvisoFormato()">${t.quitar}</button>`;
+}
+
 function renderizarAntesDespues() {
   const seccion = document.getElementById('antes-despues');
   if (antesDespues.length === 0) {
@@ -864,9 +904,9 @@ const traducciones = {
     },
     hero: {
       titulo: 'Tu foto.<br/><span class="hero__acento">Otra forma de arte.</span>',
-      sub: "Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, listas para convertirse en un regalo único.",
-      cta: "Crear mi regalo",
-      cta2: "Ver cómo funciona",
+      sub: "Transformamos tus fotografías favoritas en creaciones artísticas personalizadas, cuidando cada detalle para convertirlas en algo especial.",
+      cta: "Explorar estilos",
+      cta2: "Empezar por el regalo",
     },
     categorias: {
       titulo: "Descubre qué podemos crear",
@@ -880,13 +920,21 @@ const traducciones = {
       familias: "Familias",
       familiasTexto: "Todos juntos en una pieza para colgar en casa.",
     },
+    formatos: {
+      titulo: "Tu creación favorita, en el formato que prefieras",
+      sub: "Una misma obra, varios regalos. Si ya sabes qué quieres regalar, empieza por aquí y después elige el estilo.",
+      elegirEstilo: "elegir estilo →",
+      nota: estilo => `Ejemplo con el estilo ${estilo}. Las imágenes de producto son orientativas.`,
+      aviso: producto => `Elige el estilo para tu ${producto.toLowerCase()}.`,
+      quitar: "quitar",
+    },
     galeria: {
       titulo: "Una foto, muchas formas de verla",
       sub: "Elige el estilo que más te guste. Después decides en qué quieres llevarlo.",
     },
     antesDespues: {
-      titulo: "De la foto original a la obra",
-      sub: "Desliza para comparar.",
+      titulo: "El arte está en los detalles",
+      sub: "Rostro, expresión, peinado: lo que hace reconocible a cada persona, contado en otro lenguaje. Desliza para comparar.",
       original: "original",
       resultado: "iaks",
       aria: "Comparar la foto original con la transformación",
@@ -895,14 +943,14 @@ const traducciones = {
       etiqueta: "el proceso",
       titulo: "Así funciona",
       sub: "De tu foto a un regalo con personalidad, en cuatro pasos.",
-      paso1: "Elige tu creación",
-      paso1Texto: "Escoge el estilo artístico y el producto que más te gusten.",
-      paso2: "Envíanos tu foto",
-      paso2Texto: "Sube la imagen que quieres transformar: una persona, una pareja, tu familia o tu mascota.",
-      paso3: "Cuidamos cada detalle",
-      paso3Texto: "Trabajamos la transformación artística para que conserve lo que hace reconocible a quien aparece en ella.",
-      paso4: "Recibe tu regalo",
-      paso4Texto: "Cuando el diseño está listo, lo producimos y te lo enviamos en los plazos indicados.",
+      paso1: "Elige tu estilo",
+      paso1Texto: "Descubre las colecciones y quédate con la que mejor cuente tu foto.",
+      paso2: "Elige el formato",
+      paso2Texto: "Lámina, cuadro, taza, llavero o retrato digital: la misma obra, en el regalo que prefieras.",
+      paso3: "Comparte tu fotografía",
+      paso3Texto: "Sube la imagen que quieres transformar: una persona, una pareja, tu familia o tu mascota.",
+      paso4: "Creamos tu obra",
+      paso4Texto: "Trabajamos la transformación con nuestros criterios de calidad y, cuando está lista, la producimos y te la enviamos.",
       cta: "Crear mi regalo",
     },
     porque: {
@@ -920,7 +968,7 @@ const traducciones = {
     },
     sobre: {
       etiqueta: "nuestra historia",
-      titulo: 'Una foto puede ser<br/><span class="sobre__acento">mucho más</span>',
+      titulo: 'La tecnología abre posibilidades.<br/><span class="sobre__acento">El criterio marca la diferencia.</span>',
       p1: "Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.",
       p2: "Exploramos las posibilidades de la inteligencia artificial desde la dirección artística, cuidando los estilos, los detalles y la identidad de cada imagen.",
       p3: "Porque personalizar no debería consistir simplemente en añadir una foto a un objeto.",
@@ -932,8 +980,8 @@ const traducciones = {
       original: "original",
     },
     contacto: {
-      titulo: "Hay una foto que merece convertirse en algo especial.",
-      cta: "Crear mi regalo personalizado",
+      titulo: "Hay una fotografía que merece convertirse en algo más.",
+      cta: "Crear mi regalo",
       dudas: "¿Tienes una idea o una duda? Escríbenos a",
     },
     footer: {
@@ -1023,9 +1071,9 @@ const traducciones = {
     },
     hero: {
       titulo: 'Your photo.<br/><span class="hero__acento">Another kind of art.</span>',
-      sub: "We turn your favourite photos into personalised works of art, ready to become a one-of-a-kind gift.",
-      cta: "Create my gift",
-      cta2: "See how it works",
+      sub: "We turn your favourite photos into personalised works of art, taking care of every detail to turn them into something special.",
+      cta: "Explore styles",
+      cta2: "Start with the gift",
     },
     categorias: {
       titulo: "Discover what we can create",
@@ -1039,13 +1087,21 @@ const traducciones = {
       familias: "Families",
       familiasTexto: "Everyone together in one piece to hang at home.",
     },
+    formatos: {
+      titulo: "Your favourite creation, in the format you prefer",
+      sub: "One artwork, many gifts. If you already know what you want to give, start here and then choose the style.",
+      elegirEstilo: "choose style →",
+      nota: estilo => `Example in the ${estilo} style. Product images are for guidance only.`,
+      aviso: producto => `Choose the style for your ${producto.toLowerCase()}.`,
+      quitar: "clear",
+    },
     galeria: {
       titulo: "One photo, many ways to see it",
       sub: "Pick the style you like best. Then choose what you want it on.",
     },
     antesDespues: {
-      titulo: "From the original photo to the artwork",
-      sub: "Slide to compare.",
+      titulo: "Art is in the details",
+      sub: "Face, expression, hair: what makes each person recognisable, told in another language. Slide to compare.",
       original: "original",
       resultado: "iaks",
       aria: "Compare the original photo with the transformation",
@@ -1054,14 +1110,14 @@ const traducciones = {
       etiqueta: "the process",
       titulo: "How it works",
       sub: "From your photo to a gift with personality, in four steps.",
-      paso1: "Choose your creation",
-      paso1Texto: "Pick the art style and the product you like best.",
-      paso2: "Send us your photo",
-      paso2Texto: "Upload the picture you want to transform: a person, a couple, your family or your pet.",
-      paso3: "We take care of every detail",
-      paso3Texto: "We work on the artistic transformation so it keeps what makes the people in it recognisable.",
-      paso4: "Receive your gift",
-      paso4Texto: "Once the design is ready, we produce it and ship it within the stated delivery times.",
+      paso1: "Choose your style",
+      paso1Texto: "Explore the collections and pick the one that best tells your photo.",
+      paso2: "Choose the format",
+      paso2Texto: "Print, framed portrait, mug, keychain or digital portrait: the same artwork, as the gift you prefer.",
+      paso3: "Share your photo",
+      paso3Texto: "Upload the picture you want to transform: a person, a couple, your family or your pet.",
+      paso4: "We create your artwork",
+      paso4Texto: "We work on the transformation to our quality standards and, once it is ready, we produce it and ship it to you.",
       cta: "Create my gift",
     },
     porque: {
@@ -1079,7 +1135,7 @@ const traducciones = {
     },
     sobre: {
       etiqueta: "our story",
-      titulo: 'A photo can be<br/><span class="sobre__acento">so much more</span>',
+      titulo: 'Technology opens possibilities.<br/><span class="sobre__acento">Judgement makes the difference.</span>',
       p1: "Behind iaks there is a simple idea: a photograph can become something far more special when it is worked on with creative intent.",
       p2: "We explore what artificial intelligence can do through art direction, taking care of the styles, the details and the identity in every image.",
       p3: "Because personalising shouldn't just mean putting a photo on an object.",
@@ -1091,8 +1147,8 @@ const traducciones = {
       original: "original",
     },
     contacto: {
-      titulo: "There's a photo that deserves to become something special.",
-      cta: "Create my personalised gift",
+      titulo: "There's a photo that deserves to become something more.",
+      cta: "Create my gift",
       dudas: "Have an idea or a question? Write to us at",
     },
     footer: {
@@ -1204,6 +1260,7 @@ function aplicarIdioma(idioma) {
   renderizarTestimonios();
   renderizarAntesDespues();
   renderizarCategorias();
+  renderizarFormatos();
 
   // Actualizar lang del html
   document.documentElement.lang = idioma;
