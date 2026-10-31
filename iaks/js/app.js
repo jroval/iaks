@@ -28,51 +28,12 @@
 
 const ilustraciones = [
 
-  // --- ROTULADOR ---
+  // --- COMIC ---
   {
     id: 1,
-    titulo: "A TODO ROTU",
-    estilo: "Rotulador",
-    descripcion: "Rotulador directo, sin red. El trazo lo dice todo.",
-    imagen: "assets/images/mockups/rotulador/taza.png",
-    ilustracion: "assets/images/estilos/rotulador.webp",
-    color: "#f5e642",
-    mockups: {
-      poster:   "assets/images/mockups/rotulador/poster.png",
-      taza:     "assets/images/mockups/rotulador/taza.png",
-      camiseta: "assets/images/mockups/rotulador/camiseta.png",
-      sticker:  "assets/images/mockups/rotulador/sticker.png",
-      llavero:  "assets/images/mockups/rotulador/llavero.png",
-      pin:      "assets/images/mockups/rotulador/pin.png",
-    }
-  },
-
-  // --- LAPIZ ---
-  {
-    id: 2,
-    titulo: "ESTILO LAPIZ",
-    estilo: "Boceto a mano",
-    descripcion: "Trazos suaves y líneas quebradas que cuentan más de lo que muestran.",
-    imagen: "assets/images/mockups/lapiz/poster.png",
-    ilustracion: "assets/images/estilos/lapiz.webp",
-    color: "#f5e642",
-    mockups: {
-      poster:   "assets/images/mockups/lapiz/poster.png",
-      taza:     "assets/images/mockups/lapiz/taza.png",
-      camiseta: "assets/images/mockups/lapiz/camiseta.png",
-      sticker:  "assets/images/mockups/lapiz/sticker.png",
-      llavero:  "assets/images/mockups/lapiz/llavero.png",
-      pin:      "assets/images/mockups/lapiz/pin.png",
-    }
-  },
-
-  // --- COMIC REALISTA ---
-  {
-    id: 3,
-    titulo: "ESTILO COMIC",
-    estilo: "Cómic clásico",
-    descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud.",
-    imagen: "assets/images/mockups/comic-realista/Llavero.png",
+    titulo: "ESTILO CÓMIC",
+    estilo: "Cómic",
+    descripcion: "Línea entintada, sombras marcadas y color: tu foto convertida en viñeta.",
     ilustracion: "assets/images/estilos/comic-realista.webp",
     color: "#f5e642",
     mockups: {
@@ -85,62 +46,45 @@ const ilustraciones = [
     }
   },
 
-  // --- COMIC ANIME ---
+  // --- ROTULADOR ---
+  {
+    id: 2,
+    titulo: "ESTILO ROTULADOR",
+    estilo: "Rotulador",
+    descripcion: "Rotulador directo, sin red. El trazo lo dice todo.",
+    ilustracion: "assets/images/estilos/rotulador.webp",
+    color: "#f5e642",
+    mockups: {
+      poster:   "assets/images/mockups/rotulador/poster.png",
+      taza:     "assets/images/mockups/rotulador/taza.png",
+      camiseta: "assets/images/mockups/rotulador/camiseta.png",
+      sticker:  "assets/images/mockups/rotulador/sticker.png",
+      llavero:  "assets/images/mockups/rotulador/llavero.png",
+      pin:      "assets/images/mockups/rotulador/pin.png",
+    }
+  },
+
+  // --- LAPIZ DE COLORES --- (sin muestra todavia: la card sale como hueco)
+  {
+    id: 3,
+    titulo: "ESTILO LÁPIZ DE COLORES",
+    estilo: "Lápiz de colores",
+    descripcion: "Capas de lápiz sobre papel, con la textura y la calidez del dibujo a color.",
+    ilustracion: null,
+    color: "#f5e642",
+    mockups: {}
+  },
+
+  // --- ACUARELA --- (sin mockups: la vista previa usa la ilustracion)
   {
     id: 4,
-    titulo: "ESTILO ANIME",
-    estilo: "Cómic anime",
-    descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes y mucho dramatismo.",
-    imagen: "assets/images/mockups/comic-anime/camiseta.png",
-    ilustracion: "assets/images/estilos/comic-anime.webp",
+    titulo: "ESTILO ACUARELA",
+    estilo: "Acuarela",
+    descripcion: "Manchas de agua y color que se funden con el papel. Ligera, luminosa y delicada.",
+    ilustracion: "assets/images/estilos/acuarela.webp",
     color: "#f5e642",
-    mockups: {
-      poster:   "assets/images/mockups/comic-anime/poster.png",
-      taza:     "assets/images/mockups/comic-anime/taza.png",
-      camiseta: "assets/images/mockups/comic-anime/camiseta.png",
-      sticker:  "assets/images/mockups/comic-anime/sticker.png",
-      llavero:  "assets/images/mockups/comic-anime/llavero.png",
-      pin:      "assets/images/mockups/comic-anime/pin.png",
-    }
+    mockups: {}
   },
-
-  // --- COMIC FANTASIA ---
-  {
-    id: 5,
-    titulo: "ESTILO FANTASÍA",
-    estilo: "Cómic fantasía",
-    descripcion: "Magia, sofisticación y un aire de cuento.",
-    imagen: "assets/images/mockups/comic-fantasia/sticker.png",
-    ilustracion: "assets/images/estilos/comic-fantasia.webp",
-    color: "#f5e642",
-    mockups: {
-      poster:   "assets/images/mockups/comic-fantasia/poster.png",
-      taza:     "assets/images/mockups/comic-fantasia/taza.png",
-      camiseta: "assets/images/mockups/comic-fantasia/camiseta.png",
-      sticker:  "assets/images/mockups/comic-fantasia/sticker.png",
-      llavero:  "assets/images/mockups/comic-fantasia/llavero.png",
-      pin:      "assets/images/mockups/comic-fantasia/pin.png",
-    }
-  },
-   // --- VECTOR---
-  {
-    id: 6,
-    titulo: "ESTILO VECTOR",
-    estilo: "Vector",
-    descripcion: "Minimalismo moderno: colores planos y formas geométricas.",
-    imagen: "assets/images/mockups/vector/pin.png",
-    ilustracion: "assets/images/estilos/vector.webp",
-    color: "#f5e642",
-    mockups: {
-      poster:   "assets/images/mockups/vector/poster.png",
-      taza:     "assets/images/mockups/vector/taza.png",
-      camiseta: "assets/images/mockups/vector/camiseta.png",
-      sticker:  "assets/images/mockups/vector/sticker.png",
-      llavero:  "assets/images/mockups/vector/llavero.png",
-      pin:      "assets/images/mockups/vector/pin.png",
-    }
-  },
-
 ];
 
 
@@ -255,13 +199,12 @@ function renderizarCards(lista) {
 
     card.innerHTML = `
       <div class="card__imagen-wrap card__imagen-wrap--ilustracion">
-        <img
+        ${ilus.ilustracion ? `<img
           class="card__imagen"
           src="${ilus.ilustracion}"
           alt="${tr().ui.altEjemplo(ilus.estilo)}"
           loading="lazy"
-          onerror="this.parentElement.style.background='${ilus.color}22'; this.style.display='none'"
-        />
+        />` : `<span class="card__pronto">${tr().categorias.pronto}</span>`}
       </div>
       <div class="card__info">
         <div>
@@ -271,12 +214,13 @@ function renderizarCards(lista) {
             <span>${precioMinimo()}</span>
           </div>
         </div>
-        <span class="card__cta">${tr().ui.elegir}</span>
+        ${ilus.ilustracion ? `<span class="card__cta">${tr().ui.elegir}</span>` : ''}
       </div>
     `;
 
     grid.appendChild(card);
-    card.addEventListener('click', () => abrirModal(ilus.id));
+    if (ilus.ilustracion) card.addEventListener('click', () => abrirModal(ilus.id));
+    else card.classList.add('card--pronto');
   });
 
   // Aqui, una sola vez, cuando todas las cards ya estan en el DOM
@@ -286,7 +230,7 @@ function renderizarCards(lista) {
 
 // Imagen que se ensena al elegir un formato
 function vistaPrevia(ilus, prod) {
-  return prod.mockup ? ilus.mockups[prod.mockup] : ilus.ilustracion;
+  return (prod.mockup && ilus.mockups[prod.mockup]) || ilus.ilustracion;
 }
 
 function precioMinimo() {
@@ -800,7 +744,7 @@ function renderizarCategorias() {
 }
 
 // Ilustracion de ejemplo para presentar los formatos
-const ilusEjemploFormatos = 1;
+const ilusEjemploFormatos = 2; // rotulador
 
 function renderizarFormatos() {
   const t = tr().formatos;
@@ -929,7 +873,7 @@ const traducciones = {
       quitar: "quitar",
     },
     galeria: {
-      titulo: "Una foto, muchas formas de verla",
+      titulo: "Cuatro formas de reinterpretar tu historia",
       sub: "Elige el estilo que más te guste. Después decides en qué quieres llevarlo.",
     },
     antesDespues: {
@@ -1067,12 +1011,10 @@ const traducciones = {
     },
     // Ilustraciones
     ilustraciones: [
-      { titulo: "ESTILO ROTU", estilo: "Rotulador", descripcion: "Rotulador directo, sin red. El trazo lo dice todo." },
-      { titulo: "ESTILO LAPIZ", estilo: "Boceto a mano", descripcion: "Trazos suaves y líneas quebradas que cuentan más de lo que muestran." },
-      { titulo: "ESTILO COMIC", estilo: "Cómic clásico", descripcion: "Viñeta urbana con sombras duras, perspectiva imposible y mucha actitud." },
-      { titulo: "ESTILO ANIME", estilo: "Cómic anime", descripcion: "Inspiración directa de los mangas y animes clásicos: ojos grandes y mucho dramatismo." },
-      { titulo: "ESTILO FANTASÍA", estilo: "Cómic fantasía", descripcion: "Magia, sofisticación y un aire de cuento." },
-      { titulo: "ESTILO VECTOR", estilo: "Vector", descripcion: "Minimalismo moderno: colores planos y formas geométricas." },
+      { titulo: "ESTILO CÓMIC", estilo: "Cómic", descripcion: "Línea entintada, sombras marcadas y color: tu foto convertida en viñeta." },
+      { titulo: "ESTILO ROTULADOR", estilo: "Rotulador", descripcion: "Rotulador directo, sin red. El trazo lo dice todo." },
+      { titulo: "ESTILO LÁPIZ DE COLORES", estilo: "Lápiz de colores", descripcion: "Capas de lápiz sobre papel, con la textura y la calidez del dibujo a color." },
+      { titulo: "ESTILO ACUARELA", estilo: "Acuarela", descripcion: "Manchas de agua y color que se funden con el papel. Ligera, luminosa y delicada." },
     ],
   },
 
@@ -1110,7 +1052,7 @@ const traducciones = {
       quitar: "clear",
     },
     galeria: {
-      titulo: "One photo, many ways to see it",
+      titulo: "Four ways to reimagine your story",
       sub: "Pick the style you like best. Then choose what you want it on.",
     },
     antesDespues: {
@@ -1244,12 +1186,10 @@ const traducciones = {
       llavero: "Keychain",
     },
     ilustraciones: [
+      { titulo: "COMIC STYLE", estilo: "Comic", descripcion: "Inked lines, bold shadows and colour: your photo turned into a comic panel." },
       { titulo: "MARKER STYLE", estilo: "Marker", descripcion: "Direct marker, no safety net. The line says it all." },
-      { titulo: "PENCIL STYLE", estilo: "Pencil sketch", descripcion: "Soft strokes and broken lines that tell more than they show." },
-      { titulo: "COMIC STYLE", estilo: "Classic comic", descripcion: "Urban panel with hard shadows, impossible perspective and plenty of attitude." },
-      { titulo: "ANIME STYLE", estilo: "Anime comic", descripcion: "Direct inspiration from classic manga and anime: big eyes and lots of drama." },
-      { titulo: "FANTASY STYLE", estilo: "Fantasy comic", descripcion: "Magic, sophistication and a fairy-tale touch." },
-      { titulo: "VECTOR STYLE", estilo: "Vector", descripcion: "Modern minimalism, with flat colors and geometric shapes." },
+      { titulo: "COLOURED PENCIL STYLE", estilo: "Coloured pencil", descripcion: "Layers of pencil on paper, with the texture and warmth of a colour drawing." },
+      { titulo: "WATERCOLOUR STYLE", estilo: "Watercolour", descripcion: "Washes of colour that blend into the paper. Light, luminous and delicate." },
     ],
   },
 };
