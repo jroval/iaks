@@ -6,6 +6,7 @@
 :root {
   /* Base clara y editorial: las obras son las que ponen el color */
   --color-fondo:       #faf7f2;  /* marfil */
+  --color-fondo-base:  #fffcf7;  /* bajo la textura: con el grano queda en marfil */
   --color-superficie:  #ffffff;
   --color-papel:       #f2ede4;  /* fondo de las laminas */
   --color-borde:       #e3dcd0;
@@ -19,6 +20,9 @@
   --acento-suave:      #fbe9ef;
 
   --sombra:            0 12px 32px rgba(29, 27, 24, 0.08);
+
+  /* Textura de papel: grano fino + manchas suaves, en SVG para no cargar imagenes */
+  --textura-papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .31 0 0 0 0 .24 0 0 0 .55 0'/%3E%3C/filter%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .47 0 0 0 0 .36 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.08'/%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.24'/%3E%3C/svg%3E");
 
   --fuente-display:    'Fraunces', Georgia, serif;
   --fuente-texto:      'Instrument Sans', system-ui, sans-serif;
@@ -41,7 +45,8 @@ html {
 }
 
 body {
-  background-color: var(--color-fondo);
+  background-color: var(--color-fondo-base);
+  background-image: var(--textura-papel);
   color: var(--texto-principal);
   font-family: var(--fuente-texto);
   font-size: 16px;
