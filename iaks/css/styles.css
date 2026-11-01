@@ -133,7 +133,11 @@ img {
 }
 
 .header__nav a:hover {
-  color: var(--acento);
+  color: var(--texto-principal);
+  text-decoration: underline;
+  text-decoration-color: var(--acento-suave);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
 }
 
 /* Hamburguesa */
@@ -269,7 +273,8 @@ img {
 
 /* Resalto rosa detras de las palabras clave, como un rotulador */
 .hero__acento,
-.sobre__acento {
+.sobre__acento,
+.resalto {
   background: linear-gradient(transparent 55%, var(--acento-suave) 55%, var(--acento-suave) 92%, transparent 92%);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -2262,6 +2267,44 @@ img {
 }
 
 /* =============================================
+   DETALLES EN ROSA (resalto)
+   ============================================= */
+.categoria__papel {
+  transition: background 0.3s ease;
+}
+
+.categoria:hover .categoria__papel {
+  background: var(--acento-suave);
+}
+
+.categoria__enlace,
+.formato__enlace {
+  text-decoration: underline;
+  text-decoration-color: var(--acento-suave);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+}
+
+/* Precios en pastilla rosa */
+.formato__precio,
+.card__formatos span {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--acento-suave);
+  color: var(--texto-principal);
+  font-weight: 600;
+}
+
+.formato__precio {
+  margin-top: 4px;
+}
+
+.paso__numero {
+  color: #c4609a;
+}
+
+/* =============================================
    ANTES / DESPUES
    ============================================= */
 .antes-despues {
@@ -2325,8 +2368,8 @@ img {
   top: 0;
   bottom: 0;
   left: var(--pos);
-  width: 2px;
-  background: var(--color-fondo);
+  width: 3px;
+  background: var(--acento-suave);
   pointer-events: none;
 }
 
@@ -2341,7 +2384,7 @@ img {
 }
 
 .comparador__etiqueta--original { left: 0.75rem; }
-.comparador__etiqueta--resultado { right: 0.75rem; }
+.comparador__etiqueta--resultado { right: 0.75rem; background: var(--acento-suave); color: var(--texto-principal); font-weight: 600; }
 
 .comparador__rango {
   background: transparent;

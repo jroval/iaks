@@ -838,7 +838,7 @@ const traducciones = {
       cta2: "Empezar por el regalo",
     },
     categorias: {
-      titulo: "Descubre qué podemos crear",
+      titulo: 'Descubre qué podemos <span class="resalto">crear</span>',
       sub: "Personas, parejas, familias y también quien te espera en casa moviendo la cola.",
       verEstilos: "ver estilos →",
       pronto: "muestra en camino",
@@ -850,7 +850,7 @@ const traducciones = {
       familiasTexto: "Todos juntos en una pieza para colgar en casa.",
     },
     formatos: {
-      titulo: "Tu creación favorita, en el formato que prefieras",
+      titulo: 'Tu creación favorita, en el formato <span class="resalto">que prefieras</span>',
       sub: "Una misma obra, varios regalos. Si ya sabes qué quieres regalar, empieza por aquí y después elige el estilo.",
       elegirEstilo: "elegir estilo →",
       nota: estilo => `Ejemplo con el estilo ${estilo}. Las imágenes de producto son orientativas.`,
@@ -858,18 +858,18 @@ const traducciones = {
       quitar: "quitar",
     },
     galeria: {
-      titulo: "Cuatro formas de reinterpretar tu historia",
+      titulo: 'Cuatro formas de reinterpretar <span class="resalto">tu historia</span>',
       sub: "Elige el estilo que más te guste. Después decides en qué quieres llevarlo.",
     },
     antesDespues: {
-      titulo: "El arte está en los detalles",
+      titulo: 'El arte está en <span class="resalto">los detalles</span>',
       sub: "Rostro, expresión, peinado: lo que hace reconocible a cada persona, contado en otro lenguaje. Desliza para comparar.",
       original: "original",
       resultado: "iaks",
       aria: "Comparar la foto original con la transformación",
     },
     como: {
-      titulo: "Así funciona",
+      titulo: 'Así <span class="resalto">funciona</span>',
       sub: "De tu foto a un regalo con personalidad, en cuatro pasos.",
       paso1: "Elige tu estilo",
       paso1Texto: "Descubre las colecciones y quédate con la que mejor cuente tu foto.",
@@ -905,7 +905,7 @@ const traducciones = {
       original: "original",
     },
     condiciones: {
-      titulo: "Sin sorpresas",
+      titulo: 'Sin <span class="resalto">sorpresas</span>',
       sub: "Lo que conviene saber antes de encargar tu obra.",
       c1: "Apruebas tu obra antes de producirla",
       c1Texto: "Te enviamos la creación terminada y no imprimimos, enmarcamos ni estampamos nada hasta que nos des tu confirmación.",
@@ -919,7 +919,7 @@ const traducciones = {
       c5Texto: "Al ser piezas hechas a medida, no se admiten devoluciones por cambio de opinión. Si tu pedido llega dañado, te enviamos uno nuevo.",
     },
     contacto: {
-      titulo: "Hay una fotografía que merece convertirse en algo más.",
+      titulo: 'Hay una fotografía que merece convertirse en <span class="resalto">algo más.</span>',
       cta: "Crear mi regalo",
       dudas: "¿Tienes una idea o una duda? Escríbenos a",
     },
@@ -1011,7 +1011,7 @@ const traducciones = {
       cta2: "Start with the gift",
     },
     categorias: {
-      titulo: "Discover what we can create",
+      titulo: 'Discover what we can <span class="resalto">create</span>',
       sub: "People, couples, families and whoever is waiting for you at home, tail wagging.",
       verEstilos: "see styles →",
       pronto: "sample on its way",
@@ -1023,7 +1023,7 @@ const traducciones = {
       familiasTexto: "Everyone together in one piece to hang at home.",
     },
     formatos: {
-      titulo: "Your favourite creation, in the format you prefer",
+      titulo: 'Your favourite creation, in the format <span class="resalto">you prefer</span>',
       sub: "One artwork, many gifts. If you already know what you want to give, start here and then choose the style.",
       elegirEstilo: "choose style →",
       nota: estilo => `Example in the ${estilo} style. Product images are for guidance only.`,
@@ -1031,18 +1031,18 @@ const traducciones = {
       quitar: "clear",
     },
     galeria: {
-      titulo: "Four ways to reimagine your story",
+      titulo: 'Four ways to reimagine <span class="resalto">your story</span>',
       sub: "Pick the style you like best. Then choose what you want it on.",
     },
     antesDespues: {
-      titulo: "Art is in the details",
+      titulo: 'Art is in <span class="resalto">the details</span>',
       sub: "Face, expression, hair: what makes each person recognisable, told in another language. Slide to compare.",
       original: "original",
       resultado: "iaks",
       aria: "Compare the original photo with the transformation",
     },
     como: {
-      titulo: "How it works",
+      titulo: 'How it <span class="resalto">works</span>',
       sub: "From your photo to a gift with personality, in four steps.",
       paso1: "Choose your style",
       paso1Texto: "Explore the collections and pick the one that best tells your photo.",
@@ -1078,7 +1078,7 @@ const traducciones = {
       original: "original",
     },
     condiciones: {
-      titulo: "No surprises",
+      titulo: 'No <span class="resalto">surprises</span>',
       sub: "What you should know before ordering your artwork.",
       c1: "You approve your artwork before production",
       c1Texto: "We send you the finished creation and we don’t print, frame or press anything until you confirm it.",
@@ -1092,7 +1092,7 @@ const traducciones = {
       c5Texto: "As every piece is made to order, returns for change of mind are not accepted. If your order arrives damaged, we send you a new one.",
     },
     contacto: {
-      titulo: "There's a photo that deserves to become something more.",
+      titulo: "There's a photo that deserves to become <span class='resalto'>something more.</span>",
       cta: "Create my gift",
       dudas: "Have an idea or a question? Write to us at",
     },
