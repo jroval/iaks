@@ -112,7 +112,13 @@ img {
   font-size: 2rem;
   letter-spacing: 1px;
   color: var(--texto-principal);
+  text-decoration: none;
+  transition: color var(--transicion);
   z-index: 1;
+}
+
+.header__logo:hover {
+  color: var(--acento-suave);
 }
 
 .header__acciones {
