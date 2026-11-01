@@ -31,7 +31,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -96,8 +96,6 @@
     <div class="hero__carrusel" id="hero-carrusel"></div>
 
     <!-- Flechas de navegacion -->
-    <button class="hero__flecha hero__flecha--prev" id="hero-prev" aria-label="anterior" data-i18n-aria="ui.ariaAnterior">&#8592;</button>
-    <button class="hero__flecha hero__flecha--next" id="hero-next" aria-label="siguiente" data-i18n-aria="ui.ariaSiguiente">&#8594;</button>
 
     <!-- Puntos indicadores -->
     <div class="hero__puntos" id="hero-puntos"></div>
@@ -162,7 +160,6 @@
   <section class="como-funciona" id="como-funciona">
 
   <div class="como-funciona__cabecera">
-    <p class="como-funciona__etiqueta" data-i18n="como.etiqueta">el proceso</p>
     <h2 class="como-funciona__titulo" data-i18n="como.titulo">Así funciona</h2>
     <p class="como-funciona__sub" data-i18n="como.sub">De tu foto a un regalo con personalidad, en cuatro pasos.</p>
   </div>
@@ -235,62 +232,43 @@
 </section>
 
   <!-- =============================================
-       POR QUE IAKS
-       ============================================= -->
-  <section class="porque" id="porque">
-    <h2 class="porque__titulo" data-i18n="porque.titulo">Por qué iaks</h2>
-    <ul class="porque__lista">
-      <li class="porque__item">
-        <h3 class="porque__item-titulo" data-i18n="porque.p1">Dirección artística</h3>
-        <p class="porque__item-texto" data-i18n="porque.p1Texto">Cada imagen sigue una intención estética, no el resultado por defecto de una herramienta.</p>
-      </li>
-      <li class="porque__item">
-        <h3 class="porque__item-titulo" data-i18n="porque.p2">Identidad reconocible</h3>
-        <p class="porque__item-texto" data-i18n="porque.p2Texto">Rostro, peinado y expresión se respetan en la medida que permite cada estilo.</p>
-      </li>
-      <li class="porque__item">
-        <h3 class="porque__item-titulo" data-i18n="porque.p3">Estilos seleccionados</h3>
-        <p class="porque__item-texto" data-i18n="porque.p3Texto">Pocos estilos, bien trabajados y coherentes entre sí.</p>
-      </li>
-      <li class="porque__item">
-        <h3 class="porque__item-titulo" data-i18n="porque.p4">Atención al detalle</h3>
-        <p class="porque__item-texto" data-i18n="porque.p4Texto">Revisamos y corregimos cada resultado antes de darlo por bueno.</p>
-      </li>
-      <li class="porque__item">
-        <h3 class="porque__item-titulo" data-i18n="porque.p5">Pensado para regalar</h3>
-        <p class="porque__item-texto" data-i18n="porque.p5Texto">Productos elegidos para que la ilustración luzca como lo que es: un regalo.</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- =============================================
        NUESTRA HISTORIA
        ============================================= -->
   <section class="sobre" id="sobre">
-  <div class="sobre__contenido">
-
-    <div class="sobre__etiqueta" data-i18n="sobre.etiqueta">nuestra historia</div>
-
-    <h2 class="sobre__titulo" data-i18n-html="sobre.titulo">La tecnología abre posibilidades.<br/><span class="sobre__acento">El criterio marca la diferencia.</span></h2>
-
-    <div class="sobre__texto">
-      <p data-i18n="sobre.p1">Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.</p>
-      <p data-i18n="sobre.p2">Exploramos las posibilidades de la inteligencia artificial desde la dirección artística, cuidando los estilos, los detalles y la identidad de cada imagen.</p>
-      <p data-i18n="sobre.p3">Porque personalizar no debería consistir simplemente en añadir una foto a un objeto.</p>
-    </div>
-
-  </div>
-
-  <div class="sobre__visual">
-    <div class="sobre__marco">
-      <div class="sobre__marco-inner">
-        <img src="assets/images/iaks.png" alt="ilustración de iaks enmarcada en un salón" class="sobre__imagen" data-i18n-alt="ui.altSobre"/>
+    <div class="sobre__arriba">
+      <div class="sobre__contenido">
+        <h2 class="sobre__titulo" data-i18n-html="sobre.titulo">La tecnología abre posibilidades.<br/><span class="sobre__acento">El criterio marca la diferencia.</span></h2>
+        <div class="sobre__texto">
+          <p data-i18n="sobre.p1">Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.</p>
+          <p data-i18n="sobre.p2">Exploramos las posibilidades de la inteligencia artificial desde la dirección artística, cuidando los estilos, los detalles y la identidad de cada imagen.</p>
+          <p data-i18n="sobre.p3">Porque personalizar no consiste simplemente en añadir una foto a un objeto.</p>
+        </div>
       </div>
-      <div class="sobre__marco-deco"></div>
+      <img src="assets/images/iaks.png" alt="ilustración de iaks enmarcada en un salón" class="sobre__imagen" data-i18n-alt="ui.altSobre"/>
     </div>
-  </div>
-
-</section>
+    <ul class="sobre__pilares">
+      <li class="sobre__pilar">
+        <h3 data-i18n="porque.p1">Dirección artística</h3>
+        <p data-i18n="porque.p1Texto">Cada imagen sigue una intención estética, no el resultado por defecto de una herramienta.</p>
+      </li>
+      <li class="sobre__pilar">
+        <h3 data-i18n="porque.p2">Identidad reconocible</h3>
+        <p data-i18n="porque.p2Texto">Rostro, peinado y expresión se respetan en la medida que permite cada estilo.</p>
+      </li>
+      <li class="sobre__pilar">
+        <h3 data-i18n="porque.p3">Estilos seleccionados</h3>
+        <p data-i18n="porque.p3Texto">Pocos estilos, bien trabajados y coherentes entre sí.</p>
+      </li>
+      <li class="sobre__pilar">
+        <h3 data-i18n="porque.p4">Atención al detalle</h3>
+        <p data-i18n="porque.p4Texto">Revisamos y corregimos cada resultado antes de darlo por bueno.</p>
+      </li>
+      <li class="sobre__pilar">
+        <h3 data-i18n="porque.p5">Pensado para regalar</h3>
+        <p data-i18n="porque.p5Texto">Productos elegidos para que la ilustración luzca como lo que es: un regalo.</p>
+      </li>
+    </ul>
+  </section>
 
   <!-- =============================================
        EXPERIENCIAS REALES (oculta hasta tener la primera)
@@ -299,7 +277,6 @@
 <section class="testimonios" id="testimonios">
 
   <div class="testimonios__cabecera">
-    <p class="testimonios__etiqueta" data-i18n="testimonios.etiqueta">lo que dicen</p>
     <h2 class="testimonios__titulo" data-i18n="testimonios.titulo">Experiencias reales</h2>
     <p class="testimonios__sub" data-i18n="testimonios.sub">Regalos que ya han encontrado su sitio.</p>
   </div>
@@ -314,32 +291,39 @@
        CONDICIONES (confianza)
        ============================================= -->
   <section class="condiciones" id="condiciones">
-    <div class="condiciones__cabecera">
-      <h2 class="condiciones__titulo" data-i18n="condiciones.titulo">Sin sorpresas</h2>
-      <p class="condiciones__sub" data-i18n="condiciones.sub">Lo que conviene saber antes de encargar tu obra.</p>
+    <div class="condiciones__panel">
+      <div class="condiciones__cabecera">
+        <h2 class="condiciones__titulo" data-i18n="condiciones.titulo">Sin sorpresas</h2>
+        <p class="condiciones__sub" data-i18n="condiciones.sub">Lo que conviene saber antes de encargar tu obra.</p>
+      </div>
+      <ul class="condiciones__lista">
+        <li class="condiciones__item condiciones__item--clave">
+          <span class="condiciones__icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <h3 data-i18n="condiciones.c1">Apruebas tu obra antes de producirla</h3>
+          <p data-i18n="condiciones.c1Texto">Te enviamos la creación terminada y no imprimimos, enmarcamos ni estampamos nada hasta que nos des tu confirmación.</p>
+        </li>
+        <li class="condiciones__item">
+          <span class="condiciones__icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg></span>
+          <h3 data-i18n="condiciones.c2">Envíos dentro de España</h3>
+          <p data-i18n="condiciones.c2Texto">De momento solo enviamos a España. Verás el plazo y el coste del envío antes de pagar.</p>
+        </li>
+        <li class="condiciones__item">
+          <span class="condiciones__icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></span>
+          <h3 data-i18n="condiciones.c3">Materiales de calidad</h3>
+          <p data-i18n="condiciones.c3Texto">Buscamos la mejor calidad de impresión para cada formato. En cada producto detallaremos papel, marco y acabados.</p>
+        </li>
+        <li class="condiciones__item">
+          <span class="condiciones__icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <h3 data-i18n="condiciones.c4">Tus fotos son privadas</h3>
+          <p data-i18n="condiciones.c4Texto">Solo las usamos para crear tu pedido. No se publican sin tu permiso y las eliminamos cuando el encargo ha terminado.</p>
+        </li>
+        <li class="condiciones__item">
+          <span class="condiciones__icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M3 21v-5h5"/></svg></span>
+          <h3 data-i18n="condiciones.c5">Si llega dañado, te enviamos otro</h3>
+          <p data-i18n="condiciones.c5Texto">Al ser piezas hechas a medida, no se admiten devoluciones por cambio de opinión. Si tu pedido llega dañado, te enviamos uno nuevo.</p>
+        </li>
+      </ul>
     </div>
-    <dl class="condiciones__lista">
-      <div class="condiciones__item">
-        <dt data-i18n="condiciones.c1">Apruebas tu obra antes de producirla</dt>
-        <dd data-i18n="condiciones.c1Texto">Te enviamos la creación terminada y no imprimimos, enmarcamos ni estampamos nada hasta que nos des tu confirmación.</dd>
-      </div>
-      <div class="condiciones__item">
-        <dt data-i18n="condiciones.c2">Envíos dentro de España</dt>
-        <dd data-i18n="condiciones.c2Texto">De momento solo enviamos a España. Verás el plazo y el coste del envío antes de pagar.</dd>
-      </div>
-      <div class="condiciones__item">
-        <dt data-i18n="condiciones.c3">Materiales de calidad</dt>
-        <dd data-i18n="condiciones.c3Texto">Buscamos la mejor calidad de impresión para cada formato. En cada producto detallaremos papel, marco y acabados.</dd>
-      </div>
-      <div class="condiciones__item">
-        <dt data-i18n="condiciones.c4">Tus fotos son privadas</dt>
-        <dd data-i18n="condiciones.c4Texto">Solo las usamos para crear tu pedido. No se publican sin tu permiso y las eliminamos cuando el encargo ha terminado.</dd>
-      </div>
-      <div class="condiciones__item">
-        <dt data-i18n="condiciones.c5">Si llega dañado, te enviamos otro</dt>
-        <dd data-i18n="condiciones.c5Texto">Al ser piezas hechas a medida, no se admiten devoluciones por cambio de opinión. Si tu pedido llega dañado, te enviamos uno nuevo.</dd>
-      </div>
-    </dl>
   </section>
 
   <!-- =============================================
@@ -382,7 +366,7 @@
 
       <div class="modal__columna-preview">
         <div class="modal__preview-wrap">
-          <img class="modal__preview" id="modal-preview" src="" alt="" />
+          <img class="modal__preview" id="modal-preview" src="assets/images/estilos/rotulador.webp" alt="" />
           <span class="modal__preview-label" id="modal-preview-label"></span>
         </div>
       </div>
@@ -437,7 +421,7 @@
               <span data-i18n="ui.uploadTexto">arrastra tu foto o haz clic</span>
               <span class="campo__upload-sub" data-i18n="ui.uploadSub">jpg o png · máx. 10 MB</span>
             </div>
-            <img class="campo__upload-preview" id="upload-preview" src="" alt="" />
+            <div class="campo__upload-preview" id="upload-preview" aria-hidden="true"></div>
           </div>
         </div>
 

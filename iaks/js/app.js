@@ -35,7 +35,6 @@ const ilustraciones = [
     estilo: "Cómic",
     descripcion: "Línea entintada, sombras marcadas y color: tu foto convertida en viñeta.",
     ilustracion: "assets/images/estilos/comic-realista.webp",
-    color: "#f5e642",
     mockups: {
       poster:   "assets/images/mockups/comic-realista/poster.png",
       taza:     "assets/images/mockups/comic-realista/taza.png",
@@ -53,25 +52,18 @@ const ilustraciones = [
     estilo: "Rotulador",
     descripcion: "Rotulador directo, sin red. El trazo lo dice todo.",
     ilustracion: "assets/images/estilos/rotulador.webp",
-    color: "#f5e642",
-    mockups: {
-      poster:   "assets/images/mockups/rotulador/poster.png",
-      taza:     "assets/images/mockups/rotulador/taza.png",
-      camiseta: "assets/images/mockups/rotulador/camiseta.png",
-      sticker:  "assets/images/mockups/rotulador/sticker.png",
-      llavero:  "assets/images/mockups/rotulador/llavero.png",
-      pin:      "assets/images/mockups/rotulador/pin.png",
-    }
+    // Los mockups de producto eran de la ilustracion anterior: solo queda su cartel para el carrusel del hero
+    cartel: "assets/images/mockups/rotulador/poster.png",
+    mockups: {}
   },
 
-  // --- LAPIZ DE COLORES --- (sin muestra todavia: la card sale como hueco)
+  // --- LAPIZ DE COLORES --- (sin mockups: la vista previa usa la ilustracion)
   {
     id: 3,
     titulo: "ESTILO LÁPIZ DE COLORES",
     estilo: "Lápiz de colores",
     descripcion: "Capas de lápiz sobre papel, con la textura y la calidez del dibujo a color.",
-    ilustracion: null,
-    color: "#f5e642",
+    ilustracion: "assets/images/estilos/lapiz-colores.webp",
     mockups: {}
   },
 
@@ -82,7 +74,6 @@ const ilustraciones = [
     estilo: "Acuarela",
     descripcion: "Manchas de agua y color que se funden con el papel. Ligera, luminosa y delicada.",
     ilustracion: "assets/images/estilos/acuarela.webp",
-    color: "#f5e642",
     mockups: {}
   },
 ];
@@ -179,6 +170,11 @@ const antesDespues = [
     original: "assets/images/antes-despues/andrea-original.webp",
     resultado: "assets/images/antes-despues/andrea-comic.webp",
     estilo: "comic-realista",
+  },
+  {
+    original: "assets/images/antes-despues/perro-original.webp",
+    resultado: "assets/images/antes-despues/perro-lapiz.webp",
+    estilo: "lapiz-colores",
   },
 ];
 
@@ -388,7 +384,7 @@ function abrirFormularioPedido() {
   document.getElementById('pedido-nombre').value = '';
   document.getElementById('pedido-email').value = '';
   document.getElementById('pedido-nota').value = '';
-  document.getElementById('upload-preview').src = '';
+  document.getElementById('upload-preview').style.backgroundImage = '';
   document.getElementById('campo-upload').classList.remove('con-foto');
   document.getElementById('modal-confirmacion').classList.remove('activa');
   document.getElementById('modal-pedido-enviar').style.display = 'block';
@@ -416,7 +412,7 @@ function enviarPedido() {
     return;
   }
   if (!foto) {
-    document.getElementById('campo-upload').style.borderColor = 'var(--neon-rosa)';
+    document.getElementById('campo-upload').style.borderColor = 'var(--acento)';
     setTimeout(() => {
       document.getElementById('campo-upload').style.borderColor = '';
     }, 1500);
@@ -457,7 +453,7 @@ function iniciarModal() {
     if (!archivo) return;
     const reader = new FileReader();
     reader.onload = (ev) => {
-      document.getElementById('upload-preview').src = ev.target.result;
+      document.getElementById('upload-preview').style.backgroundImage = `url(${ev.target.result})`;
       document.getElementById('campo-upload').classList.add('con-foto');
     };
     reader.readAsDataURL(archivo);
@@ -484,8 +480,8 @@ function iniciarCarrusel() {
 
   // Cogemos solo las ilustraciones que tienen mockup de poster
   const imagenes = ilustraciones
-    .filter(il => il.mockups && il.mockups.poster)
-    .map(il => ({ src: il.mockups.poster, titulo: il.titulo }));
+    .filter(il => il.cartel || il.mockups.poster)
+    .map(il => ({ src: il.cartel || il.mockups.poster, titulo: il.titulo }));
 
   if (imagenes.length === 0) return;
 
@@ -503,17 +499,6 @@ function iniciarCarrusel() {
     punto.setAttribute('aria-label', img.titulo); // aplicarIdioma lo traduce
     punto.addEventListener('click', () => irADiapositiva(i));
     contenedorPuntos.appendChild(punto);
-  });
-
-  // Flechas
-  document.getElementById('hero-prev').addEventListener('click', () => {
-    const total = document.querySelectorAll('.hero__diapositiva').length;
-    irADiapositiva((carruselActual - 1 + total) % total);
-  });
-
-  document.getElementById('hero-next').addEventListener('click', () => {
-    const total = document.querySelectorAll('.hero__diapositiva').length;
-    irADiapositiva((carruselActual + 1) % total);
   });
 
   // Arrancar el timer automatico
@@ -647,8 +632,8 @@ function mostrarFeedbackCarrito() {
   const btn = document.getElementById('modal-btn-compra');
   const textoOriginal = btn.textContent;
   btn.textContent = 'añadido';
-  btn.style.borderColor = 'var(--neon-cyan)';
-  btn.style.color = 'var(--neon-cyan)';
+  btn.style.borderColor = 'var(--acento)';
+  btn.style.color = 'var(--acento)';
   setTimeout(() => {
     btn.textContent = textoOriginal;
     btn.style.borderColor = '';
@@ -744,7 +729,7 @@ function renderizarCategorias() {
 }
 
 // Ilustracion de ejemplo para presentar los formatos
-const ilusEjemploFormatos = 2; // rotulador
+const ilusEjemploFormatos = 1; // comic: sus mockups son de la misma ilustracion
 
 function renderizarFormatos() {
   const t = tr().formatos;
@@ -884,7 +869,6 @@ const traducciones = {
       aria: "Comparar la foto original con la transformación",
     },
     como: {
-      etiqueta: "el proceso",
       titulo: "Así funciona",
       sub: "De tu foto a un regalo con personalidad, en cuatro pasos.",
       paso1: "Elige tu estilo",
@@ -898,7 +882,6 @@ const traducciones = {
       cta: "Crear mi regalo",
     },
     porque: {
-      titulo: "Por qué iaks",
       p1: "Dirección artística",
       p1Texto: "Cada imagen sigue una intención estética, no el resultado por defecto de una herramienta.",
       p2: "Identidad reconocible",
@@ -911,14 +894,12 @@ const traducciones = {
       p5Texto: "Productos elegidos para que la ilustración luzca como lo que es: un regalo.",
     },
     sobre: {
-      etiqueta: "nuestra historia",
       titulo: 'La tecnología abre posibilidades.<br/><span class="sobre__acento">El criterio marca la diferencia.</span>',
       p1: "Detrás de iaks hay una idea sencilla: una fotografía puede convertirse en algo mucho más especial cuando se trabaja con intención creativa.",
       p2: "Exploramos las posibilidades de la inteligencia artificial desde la dirección artística, cuidando los estilos, los detalles y la identidad de cada imagen.",
-      p3: "Porque personalizar no debería consistir simplemente en añadir una foto a un objeto.",
+      p3: "Porque personalizar no consiste simplemente en añadir una foto a un objeto.",
     },
     testimonios: {
-      etiqueta: "lo que dicen",
       titulo: "Experiencias reales",
       sub: "Regalos que ya han encontrado su sitio.",
       original: "original",
@@ -984,8 +965,6 @@ const traducciones = {
       totalEstimado: "total estimado",
       tramitar: "tramitar pedido",
       avisoPrecios: "los precios son orientativos, se confirman al tramitar",
-      ariaAnterior: "anterior",
-      ariaSiguiente: "siguiente",
       ariaCerrar: "cerrar",
       ariaModal: "elige estilo y formato",
       ariaIrA: estilo => "ir a " + estilo.toLowerCase(),
@@ -1063,7 +1042,6 @@ const traducciones = {
       aria: "Compare the original photo with the transformation",
     },
     como: {
-      etiqueta: "the process",
       titulo: "How it works",
       sub: "From your photo to a gift with personality, in four steps.",
       paso1: "Choose your style",
@@ -1077,7 +1055,6 @@ const traducciones = {
       cta: "Create my gift",
     },
     porque: {
-      titulo: "Why iaks",
       p1: "Art direction",
       p1Texto: "Every image follows a clear aesthetic intent, not a tool's default output.",
       p2: "Recognisable identity",
@@ -1090,14 +1067,12 @@ const traducciones = {
       p5Texto: "Products chosen so the illustration looks like what it is: a gift.",
     },
     sobre: {
-      etiqueta: "our story",
       titulo: 'Technology opens possibilities.<br/><span class="sobre__acento">Judgement makes the difference.</span>',
       p1: "Behind iaks there is a simple idea: a photograph can become something far more special when it is worked on with creative intent.",
       p2: "We explore what artificial intelligence can do through art direction, taking care of the styles, the details and the identity in every image.",
-      p3: "Because personalising shouldn't just mean putting a photo on an object.",
+      p3: "Because personalising isn't simply about putting a photo on an object.",
     },
     testimonios: {
-      etiqueta: "what they say",
       titulo: "Real experiences",
       sub: "Gifts that have already found their place.",
       original: "original",
@@ -1162,8 +1137,6 @@ const traducciones = {
       totalEstimado: "estimated total",
       tramitar: "checkout",
       avisoPrecios: "prices are estimates and confirmed at checkout",
-      ariaAnterior: "previous",
-      ariaSiguiente: "next",
       ariaCerrar: "close",
       ariaModal: "choose style and format",
       ariaIrA: estilo => "go to " + estilo.toLowerCase(),
@@ -1215,7 +1188,7 @@ function aplicarIdioma(idioma) {
   document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = leer(el.dataset.i18nAlt); });
 
   // Puntos del carrusel
-  const conPoster = ilustraciones.filter(il => il.mockups && il.mockups.poster);
+  const conPoster = ilustraciones.filter(il => il.cartel || il.mockups.poster);
   document.querySelectorAll('.hero__punto').forEach((punto, i) => {
     punto.setAttribute('aria-label', t.ui.ariaIrA(ilusTraducida(conPoster[i]).estilo));
   });
