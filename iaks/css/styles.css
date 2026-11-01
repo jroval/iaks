@@ -4,23 +4,23 @@
    Cambiando un valor aquí lo cambias en toda la web.
    ============================================= */
 :root {
-  /* Base neutra de galeria: el color lo ponen las obras y la trama azul/magenta */
-  --color-fondo:       #f4f4f2;  /* gris galeria */
-  --color-superficie:  #fafaf8;  /* casi blanco: nunca blanco puro */
-  --color-papel:       #ebebe7;  /* fondo de las laminas */
-  --color-borde:       #dcdcd6;
+    --color-fondo:       #fcffff;  /* claro: White */
+  --color-superficie:  #f5f8fc;
+  --color-papel:       #eef1f7;  /* fondo de las laminas */
+  --color-borde:       #dce2ee;
 
-  --texto-principal:   #1c1c1c;  /* grafito */
-  --texto-secundario:  #5a5a55;
+  --texto-principal:   #09318d;  /* oscuro: Deep Blue */
+  --texto-secundario:  #4b5b8c;
 
-  /* Un solo acento, usado con moderacion */
-  --acento:            #c81d5e;
-  --acento-hover:      #a3164b;
-  --acento-suave:      #fbe9ef;
+  /* El rosa es demasiado claro para texto: el azul hace de acento en enlaces e iconos
+     y el rosa (Ballerina) resalta fondos, como un rotulador fluorescente */
+  --acento:            #09318d;
+  --acento-hover:      #062466;
+  --acento-suave:      #eed2e2;  /* resalto: Ballerina */
 
   --sombra:            0 12px 32px rgba(28, 28, 28, 0.08);
 
-  /* Trama de comic: puntos que se juntan y se separan como un sombreado (tile sin costuras) */
+  /* Trama de comic en azul y rosa: puntos que se juntan y se separan como un sombreado (tile sin costuras) */
   --textura-papel: url('../assets/images/textura-trama.png');
 
   --fuente-display:    'Bricolage Grotesque', 'Hanken Grotesk', sans-serif;
@@ -96,7 +96,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2.5rem;
-  background: rgba(244, 244, 242, 0.9);
+  background: rgba(252, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.4s ease;
@@ -267,8 +267,13 @@ img {
   letter-spacing: -0.02em;
 }
 
-.hero__acento {
-  color: var(--acento);
+/* Resalto rosa detras de las palabras clave, como un rotulador */
+.hero__acento,
+.sobre__acento {
+  background: linear-gradient(transparent 55%, var(--acento-suave) 55%, var(--acento-suave) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.08em;
 }
 
 .hero__sub {
@@ -325,9 +330,9 @@ img {
 }
 
 .btn:hover {
-  background: var(--acento);
-  border-color: var(--acento);
-  color: var(--color-fondo);
+  background: var(--acento-suave);
+  border-color: var(--acento-suave);
+  color: var(--texto-principal);
 }
 
 .hero__botones {
@@ -537,9 +542,9 @@ img {
 }
 
 .card:hover .card__cta {
-  background: var(--acento);
-  border-color: var(--acento);
-  color: var(--color-fondo);
+  background: var(--acento-suave);
+  border-color: var(--acento-suave);
+  color: var(--texto-principal);
 }
 
 /* Info visible siempre (debajo de la imagen) */
@@ -870,11 +875,11 @@ img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  border: 1px solid var(--color-borde);
+  border: 1px solid var(--acento-suave);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-superficie);
+  background: var(--acento-suave);
   color: var(--acento);
   margin-top: 1.5rem;
   transition: all var(--transicion);
@@ -1178,10 +1183,6 @@ img {
   font-weight: 600;
 }
 
-.sobre__acento {
-  color: var(--acento);
-}
-
 /* Tarjetas de papel translucido: separan el texto de la trama sin taparla del todo */
 .sobre__texto,
 .sobre__pilar {
@@ -1228,14 +1229,14 @@ img {
   padding: 1.4rem 1.25rem;
 }
 
-/* Raya magenta corta: el mismo acento que tenian los pilares, ahora dentro de la tarjeta */
+/* Raya rosa corta encima de cada pilar */
 .sobre__pilar::before {
   content: "";
   display: block;
   width: 28px;
-  height: 3px;
+  height: 4px;
   border-radius: 2px;
-  background: var(--acento);
+  background: var(--acento-suave);
   margin-bottom: 0.9rem;
 }
 
@@ -1342,7 +1343,7 @@ img {
 .footer__logo {
   font-family: 'Yeseva One', serif;
   font-size: 1.5rem;
-  color: var(--color-papel);
+  color: var(--color-fondo);
 }
 
 .footer__enlaces {
@@ -1351,7 +1352,7 @@ img {
   gap: 0.5rem 1.5rem;
 }
 
-/* El magenta no se lee sobre grafito: al pasar el raton, subrayado en rosa suave */
+/* Sobre el azul del footer, al pasar el raton: subrayado en rosa */
 .footer__enlaces a:hover {
   color: var(--acento-suave);
   text-decoration: underline;
